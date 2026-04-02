@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Terms of Service | JT Fence Inc.',
+  title: 'Terms of Service',
 }
 
 export default function TermsPage() {
@@ -91,7 +91,7 @@ export default function TermsPage() {
             </p>
             <ul className="list-disc list-inside text-secondary-600 space-y-2">
               <li>By email: info@jtfenceboston.com</li>
-              <li>By phone: (781) 420-5858</li>
+              <li>By phone: (617) 555-0123</li>
             </ul>
           </section>
         </div>

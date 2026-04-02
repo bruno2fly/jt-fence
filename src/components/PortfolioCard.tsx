@@ -1,5 +1,4 @@
 import { MapPin, ArrowRight } from 'lucide-react';
-import Image from 'next/image';
 
 interface PortfolioCardProps {
   title: string;
@@ -7,7 +6,6 @@ interface PortfolioCardProps {
   serviceType: string;
   location: string;
   imageAlt: string;
-  image?: string;
   href?: string;
 }
 
@@ -17,27 +15,17 @@ export default function PortfolioCard({
   serviceType,
   location,
   imageAlt,
-  image,
   href = '#',
 }: PortfolioCardProps) {
   return (
     <div className="group rounded-lg overflow-hidden border border-[#E8E4DF] hover:shadow-lg transition-shadow h-full flex flex-col bg-white">
-      {/* Image */}
-      <div className="relative w-full h-48 overflow-hidden">
-        {image ? (
-          <Image
-            src={image}
-            alt={imageAlt}
-            fill
-            className="object-cover group-hover:scale-105 transition-transform duration-300"
-          />
-        ) : (
-          <div className="w-full h-full bg-gradient-to-br from-[#E8E4DF] to-[#D4CEC5] flex items-center justify-center">
-            <div className="text-center">
-              <div className="text-[#9A9590] text-sm font-body">{imageAlt}</div>
-            </div>
+      {/* Image Placeholder */}
+      <div className="relative w-full h-48 bg-gradient-to-br from-[#E8E4DF] to-[#D4CEC5] overflow-hidden">
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="text-center">
+            <div className="text-[#9A9590] text-sm font-body">{imageAlt}</div>
           </div>
-        )}
+        </div>
         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors"></div>
       </div>
 
@@ -62,7 +50,14 @@ export default function PortfolioCard({
           </span>
         </div>
 
-
+        {/* View More Link */}
+        <a
+          href={href}
+          className="inline-flex items-center text-[#C9A84C] font-body font-semibold text-sm group-hover:translate-x-1 transition-transform"
+        >
+          View Project
+          <ArrowRight size={16} className="ml-2" />
+        </a>
       </div>
     </div>
   );

@@ -1,16 +1,13 @@
 import { Metadata } from 'next';
-import {
-  Hero,
-  TrustBadges,
-  ServiceCard,
-  TestimonialCard,
-  FAQAccordion,
-  CTABanner,
-  PortfolioCard,
-  AreaCard,
-  ProcessSteps,
-  SectionIntro,
-} from '@/components';
+import Hero from '@/components/Hero';
+import ServiceCard from '@/components/ServiceCard';
+import TestimonialCard from '@/components/TestimonialCard';
+import FAQAccordion from '@/components/FAQAccordion';
+import CTABanner from '@/components/CTABanner';
+import PortfolioCard from '@/components/PortfolioCard';
+import AreaCard from '@/components/AreaCard';
+import ProcessSteps from '@/components/ProcessSteps';
+import SectionIntro from '@/components/SectionIntro';
 import { services } from '@/data/services';
 import { testimonials } from '@/data/testimonials';
 import { faqs } from '@/data/faqs';
@@ -20,9 +17,8 @@ import { company } from '@/data/company';
 import { metadata as metadataMap } from '@/data/metadata';
 import {
   Hammer,
-  Wrench,
   Shield,
-  Home,
+  Home as HomeIcon,
   TreePine,
   Sparkles,
   Heart,
@@ -32,28 +28,9 @@ export const metadata: Metadata = {
   title: metadataMap['/'].title,
   description: metadataMap['/'].description,
   keywords: metadataMap['/'].keywords,
-  alternates: {
-    canonical: '/',
-  },
   openGraph: {
-    type: 'website',
     title: metadataMap['/'].ogTitle,
     description: metadataMap['/'].ogDescription,
-    url: 'https://jtfenceboston.com',
-    images: [
-      {
-        url: '/images/og-image.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'JT Fence Inc. - Premium Fencing Services',
-      },
-    ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: metadataMap['/'].ogTitle,
-    description: metadataMap['/'].ogDescription,
-    images: ['/images/og-image.jpg'],
   },
 };
 
@@ -79,7 +56,7 @@ const whyChooseUsReasons = [
     description: 'Professional site management and thorough cleanup after every installation.',
   },
   {
-    icon: Home,
+    icon: HomeIcon,
     title: 'Property Value Enhancement',
     description: 'Your new fence will enhance curb appeal and increase your property value.',
   },
@@ -90,7 +67,7 @@ const whyChooseUsReasons = [
   },
 ];
 
-export default function HomePage() {
+export default function Home() {
   const featuredPortfolio = portfolioItems.filter((item) => item.featured).slice(0, 3);
   const faqItems = faqs
     .filter((faq) => faq.category === 'General' || faq.category === 'Services')
@@ -135,7 +112,6 @@ export default function HomePage() {
         ctaLink="/contact"
         secondaryCtaText="Explore Our Work"
         secondaryCtaLink="/portfolio"
-        backgroundImage="/images/services/PHOTO-2026-03-31-09-23-29.jpg"
       />
 
       {/* Services Overview Section */}
@@ -199,26 +175,16 @@ export default function HomePage() {
           description="See examples of our quality craftsmanship across wood, vinyl, aluminum, and specialized pet fencing installations."
         />
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
-          {featuredPortfolio.map((project, index) => {
-            // Assign different fence photos to each portfolio item
-            const portfolioImages = [
-              '/images/services/PHOTO-2026-03-31-09-23-30.jpg',
-              '/images/services/PHOTO-2026-03-31-09-23-32.jpg',
-              '/images/services/PHOTO-2026-03-31-09-23-31.jpg'
-            ];
-            
-            return (
-              <PortfolioCard
-                key={project.id}
-                title={project.title}
-                description={project.description}
-                serviceType={project.serviceType}
-                location={project.location}
-                imageAlt={project.imageAlt}
-                image={portfolioImages[index % portfolioImages.length]}
-              />
-            );
-          })}
+          {featuredPortfolio.map((project) => (
+            <PortfolioCard
+              key={project.id}
+              title={project.title}
+              description={project.description}
+              serviceType={project.serviceType}
+              location={project.location}
+              imageAlt={project.imageAlt}
+            />
+          ))}
         </div>
         <div className="text-center mt-12">
           <a
@@ -315,6 +281,15 @@ export default function HomePage() {
           />
           <div className="mt-12">
             <FAQAccordion items={faqItems} />
+          </div>
+          <div className="text-center mt-12">
+            <a
+              href="/faq"
+              className="inline-flex items-center px-8 py-3.5 bg-[#1B4332] text-white font-body font-semibold rounded-lg hover:bg-[#0f2b1f] transition-colors"
+            >
+              View All FAQs
+              <span className="ml-2">→</span>
+            </a>
           </div>
         </div>
       </section>

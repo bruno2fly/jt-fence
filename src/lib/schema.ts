@@ -1,4 +1,4 @@
-import { Service, ServiceArea } from '@/data/index'
+import { Service } from '@/data/services'
 import { company } from '@/data/company'
 
 interface FAQItem {

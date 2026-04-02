@@ -186,8 +186,8 @@ export const navigation: Navigation = {
         href: "/portfolio",
       },
       {
-        name: "Have Questions?",
-        href: "/contact",
+        name: "FAQ",
+        href: "/faq",
       },
       {
         name: "Blog",

@@ -170,7 +170,7 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
             className={`w-full px-4 py-3 border rounded-lg font-body text-[#2D3436] placeholder-[#9A9590] focus:outline-none focus:border-[#C9A84C] transition-colors ${
               errors.phone ? 'border-red-500' : 'border-[#E8E4DF]'
             }`}
-            placeholder="(781) 420-5858"
+            placeholder="(555) 123-4567"
           />
           {errors.phone && (
             <p className="text-red-500 text-sm font-body mt-1">{errors.phone}</p>

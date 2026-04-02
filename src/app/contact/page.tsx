@@ -1,9 +1,7 @@
 import { Metadata } from 'next';
-import {
-  Breadcrumbs,
-  SectionIntro,
-  QuoteForm,
-} from '@/components';
+import Breadcrumbs from '@/components/Breadcrumbs';
+import SectionIntro from '@/components/SectionIntro';
+import QuoteForm from '@/components/QuoteForm';
 import { company } from '@/data/company';
 import { serviceAreas } from '@/data/serviceAreas';
 import { metadata as metadataMap } from '@/data/metadata';
@@ -13,28 +11,9 @@ export const metadata: Metadata = {
   title: metadataMap['/contact'].title,
   description: metadataMap['/contact'].description,
   keywords: metadataMap['/contact'].keywords,
-  alternates: {
-    canonical: '/contact',
-  },
   openGraph: {
-    type: 'website',
     title: metadataMap['/contact'].ogTitle,
     description: metadataMap['/contact'].ogDescription,
-    url: 'https://jtfenceboston.com/contact',
-    images: [
-      {
-        url: '/images/og-image.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'JT Fence Inc. - Premium Fencing Services',
-      },
-    ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: metadataMap['/contact'].ogTitle,
-    description: metadataMap['/contact'].ogDescription,
-    images: ['/images/og-image.jpg'],
   },
 };
 
@@ -191,31 +170,6 @@ export default function ContactPage() {
                 </p>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Map */}
-      <section className="bg-white border-y border-[#E8E4DF] py-16 md:py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionIntro
-            eyebrow="Location"
-            title="Find Us"
-            description="Based in Plymouth, we serve the South Shore and surrounding communities."
-            centered={true}
-          />
-          <div className="mt-10 w-full overflow-hidden rounded-lg border border-[#E8E4DF] shadow-sm bg-[#E8E4DF]">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d94551.43894996498!2d-70.72723895!3d41.9584457!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e4b5b0a3f24c59%3A0x7c31b7b2f3e8b1a0!2sPlymouth%2C%20MA!5e0!3m2!1sen!1sus!4v1680000000000!5m2!1sen!1sus"
-              title="Map of Plymouth, MA — JT Fence Inc."
-              width="100%"
-              height={400}
-              className="border-0 w-full min-h-[400px] block"
-              style={{ border: 0 }}
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            />
           </div>
         </div>
       </section>

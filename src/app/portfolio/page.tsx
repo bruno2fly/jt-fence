@@ -1,10 +1,8 @@
 import { Metadata } from 'next';
-import {
-  Breadcrumbs,
-  SectionIntro,
-  PortfolioCard,
-  CTABanner,
-} from '@/components';
+import Breadcrumbs from '@/components/Breadcrumbs';
+import SectionIntro from '@/components/SectionIntro';
+import PortfolioCard from '@/components/PortfolioCard';
+import CTABanner from '@/components/CTABanner';
 import { portfolioItems } from '@/data/portfolio';
 import { company } from '@/data/company';
 import { metadata as metadataMap } from '@/data/metadata';
@@ -33,7 +31,8 @@ export default function PortfolioPage() {
       {/* Page Hero */}
       <section className="relative min-h-[400px] md:min-h-[500px] flex items-center justify-center pt-12 pb-12 overflow-hidden"
         style={{
-          backgroundImage: 'url(/images/services/PHOTO-2026-03-31-09-23-32.jpg)',
+          backgroundImage:
+            'linear-gradient(135deg, #1B4332 0%, #2D3436 100%)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}
@@ -62,32 +61,16 @@ export default function PortfolioPage() {
       {/* Portfolio Grid */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {portfolioItems.map((project, index) => {
-            // Assign different fence photos to portfolio items
-            const portfolioImages = [
-              '/images/services/PHOTO-2026-03-31-09-23-29.jpg',
-              '/images/services/PHOTO-2026-03-31-09-23-30.jpg',
-              '/images/services/PHOTO-2026-03-31-09-23-31.jpg',
-              '/images/services/PHOTO-2026-03-31-09-23-32.jpg',
-              '/images/services/PHOTO-2026-03-31-09-23-28.jpg',
-              '/images/services/PHOTO-2026-03-31-09-23-29 2.jpg',
-              '/images/services/PHOTO-2026-03-31-09-23-29 3.jpg',
-              '/images/services/PHOTO-2026-03-31-09-23-30 2.jpg',
-              '/images/services/PHOTO-2026-03-31-09-23-30 3.jpg'
-            ];
-            
-            return (
-              <PortfolioCard
-                key={project.id}
-                title={project.title}
-                description={project.description}
-                serviceType={project.serviceType}
-                location={project.location}
-                imageAlt={project.imageAlt}
-                image={portfolioImages[index % portfolioImages.length]}
-              />
-            );
-          })}
+          {portfolioItems.map((project) => (
+            <PortfolioCard
+              key={project.id}
+              title={project.title}
+              description={project.description}
+              serviceType={project.serviceType}
+              location={project.location}
+              imageAlt={project.imageAlt}
+            />
+          ))}
         </div>
       </section>
 

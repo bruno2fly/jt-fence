@@ -1,9 +1,15 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { Breadcrumbs, SectionIntro, ServiceCard, FAQAccordion, AreaCard, CTABanner, JsonLd } from '@/components';
+import Breadcrumbs from '@/components/Breadcrumbs';
+import SectionIntro from '@/components/SectionIntro';
+import ServiceCard from '@/components/ServiceCard';
+import FAQAccordion from '@/components/FAQAccordion';
+import AreaCard from '@/components/AreaCard';
+import CTABanner from '@/components/CTABanner';
+import JsonLd from '@/components/JsonLd';
 import { serviceAreas } from '@/data/serviceAreas';
 import { services } from '@/data/services';
-import { Fence, Shield, Home, AlertCircle, DollarSign, CheckCircle } from 'lucide-react';
+import { Fence, Shield, Home, AlertCircle, CheckCircle } from 'lucide-react';
 
 // Generate static params for all service areas
 export async function generateStaticParams() {
@@ -20,34 +26,13 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     return {};
   }
 
-  const path = `/service-areas/${area.slug}`;
-
   return {
     title: area.metaTitle,
     description: area.metaDescription,
     keywords: area.localKeywords,
-    alternates: {
-      canonical: path,
-    },
     openGraph: {
-      type: 'website',
       title: area.metaTitle,
       description: area.metaDescription,
-      url: `https://jtfenceboston.com${path}`,
-      images: [
-        {
-          url: '/images/og-image.jpg',
-          width: 1200,
-          height: 630,
-          alt: 'JT Fence Inc. - Premium Fencing Services',
-        },
-      ],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: area.metaTitle,
-      description: area.metaDescription,
-      images: ['/images/og-image.jpg'],
     },
   };
 }

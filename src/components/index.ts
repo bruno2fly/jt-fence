@@ -1,3 +1,5 @@
+'use client';
+
 // Layout Components
 export { default as Header } from './Header';
 export { default as Footer } from './Footer';
@@ -28,7 +30,3 @@ export { default as ProcessSteps } from './ProcessSteps';
 
 // SEO Components
 export { default as JsonLd } from './JsonLd';
-export { default as LocalBusinessJsonLd } from './LocalBusinessJsonLd';
-
-// Service detail imagery
-export { default as ServiceResponsiveImage } from './ServiceResponsiveImage';

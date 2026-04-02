@@ -1,19 +1,15 @@
 'use client';
 
 import { useMemo } from 'react';
-import {
-  Hero,
-  SectionIntro,
-  FAQAccordion,
-  CTABanner,
-  TestimonialCard,
-  Breadcrumbs,
-  JsonLd,
-  AreaCard,
-  ServiceResponsiveImage,
-} from '@/components';
+import Hero from '@/components/Hero';
+import SectionIntro from '@/components/SectionIntro';
+import FAQAccordion from '@/components/FAQAccordion';
+import CTABanner from '@/components/CTABanner';
+import TestimonialCard from '@/components/TestimonialCard';
+import Breadcrumbs from '@/components/Breadcrumbs';
+import JsonLd from '@/components/JsonLd';
+import AreaCard from '@/components/AreaCard';
 import { Service } from '@/data/services';
-import { getServiceImageSet } from '@/data/serviceImages';
 import { Testimonial } from '@/data/testimonials';
 import { ServiceArea } from '@/data/serviceAreas';
 
@@ -172,8 +168,6 @@ export default function ServiceDetailClient({
   // Get service-specific FAQs
   const serviceFAQs = useMemo(() => getServiceFAQs(service.slug), [service.slug]);
 
-  const imageSet = useMemo(() => getServiceImageSet(service.slug), [service.slug]);
-
   // Build JSON-LD structured data
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -226,30 +220,14 @@ export default function ServiceDetailClient({
         ctaLink="/contact"
         secondaryCtaText="View All Services"
         secondaryCtaLink="/services"
-        backgroundImage={
-          imageSet ? encodeURI(imageSet.hero.src) : undefined
-        }
-        overlayVariant={imageSet ? 'photo' : 'default'}
       />
 
       {/* Intro Section with Full Description */}
       <section className="py-16 md:py-24 bg-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto">
-            <div className="prose prose-lg max-w-none text-[#2D3436]">
-              <p className="text-lg leading-relaxed mb-6">{service.fullDescription}</p>
-            </div>
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="prose prose-lg max-w-none text-[#2D3436]">
+            <p className="text-lg leading-relaxed mb-6">{service.fullDescription}</p>
           </div>
-          {imageSet && (
-            <div className="mt-10 max-w-5xl mx-auto">
-              <ServiceResponsiveImage
-                src={imageSet.intro.src}
-                alt={imageSet.intro.alt}
-                aspect="wide"
-                priority
-              />
-            </div>
-          )}
         </div>
       </section>
 
@@ -262,42 +240,19 @@ export default function ServiceDetailClient({
             description={`Discover the advantages that make ${service.name} an excellent choice for your property.`}
           />
 
-          <div
-            className={`mt-12 grid grid-cols-1 gap-10 items-start ${
-              imageSet ? 'lg:grid-cols-2' : ''
-            }`}
-          >
-            {imageSet && (
-              <div className="order-2 lg:order-1 lg:sticky lg:top-28">
-                <ServiceResponsiveImage
-                  src={imageSet.benefitsHighlight.src}
-                  alt={imageSet.benefitsHighlight.alt}
-                  aspect="landscape"
-                />
-                {imageSet.benefitsHighlight.title && (
-                  <p className="mt-3 text-center font-body text-sm text-[#9A9590]">
-                    {imageSet.benefitsHighlight.title}
-                  </p>
-                )}
-              </div>
-            )}
-            <div className={`space-y-6 ${imageSet ? 'order-1 lg:order-2' : ''}`}>
-              {service.benefits.map((benefit, index) => (
-                <div
-                  key={index}
-                  className="bg-white rounded-lg p-8 border border-[#E8E4DF] hover:shadow-md transition-shadow"
-                >
-                  <div className="flex items-start gap-4">
-                    <div className="flex-shrink-0 w-6 h-6 rounded-full bg-[#C9A84C] flex items-center justify-center">
-                      <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                      </svg>
-                    </div>
-                    <p className="font-body text-[#2D3436] leading-relaxed">{benefit}</p>
+          <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
+            {service.benefits.map((benefit, index) => (
+              <div key={index} className="bg-white rounded-lg p-8 border border-[#E8E4DF] hover:shadow-md transition-shadow">
+                <div className="flex items-start gap-4">
+                  <div className="flex-shrink-0 w-6 h-6 rounded-full bg-[#C9A84C] flex items-center justify-center">
+                    <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
                   </div>
+                  <p className="font-body text-[#2D3436] leading-relaxed">{benefit}</p>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -333,72 +288,20 @@ export default function ServiceDetailClient({
             description={`Choose from our range of ${service.name.toLowerCase()} styles to match your property's aesthetic.`}
           />
 
-          <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {service.styleOptions.map((style, index) => {
-              const styleShot = imageSet?.styleImages[index];
-              return (
-                <div
-                  key={index}
-                  className="bg-white rounded-lg overflow-hidden border border-[#E8E4DF] hover:border-[#C9A84C] hover:shadow-md transition-all flex flex-col"
-                >
-                  {styleShot && (
-                    <div className="border-b border-[#E8E4DF] -mx-px">
-                      <ServiceResponsiveImage
-                        src={styleShot.src}
-                        alt={styleShot.alt}
-                        aspect="landscape"
-                        className="!rounded-none border-0 shadow-none bg-transparent"
-                      />
-                    </div>
-                  )}
-                  <div className="p-6 flex-1 flex flex-col">
-                    <div className="flex items-center gap-3 mb-2">
-                      <div className="w-8 h-8 rounded bg-[#C9A84C]/10 flex items-center justify-center flex-shrink-0">
-                        <span className="font-semibold text-[#C9A84C]">{index + 1}</span>
-                      </div>
-                      <h4 className="font-heading font-semibold text-[#1B4332] text-left leading-snug">
-                        {style}
-                      </h4>
-                    </div>
-                    {styleShot?.caption && (
-                      <p className="font-body text-sm text-[#9A9590] mt-2">{styleShot.caption}</p>
-                    )}
+          <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {service.styleOptions.map((style, index) => (
+              <div key={index} className="bg-white rounded-lg p-6 border border-[#E8E4DF] hover:border-[#C9A84C] hover:shadow-md transition-all">
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-8 h-8 rounded bg-[#C9A84C]/10 flex items-center justify-center">
+                    <span className="font-semibold text-[#C9A84C]">{index + 1}</span>
                   </div>
+                  <h4 className="font-heading font-semibold text-[#1B4332]">{style}</h4>
                 </div>
-              );
-            })}
+              </div>
+            ))}
           </div>
         </div>
       </section>
-
-      {/* On-site detail photography (when provided) */}
-      {imageSet?.detailStrip && imageSet.detailStrip.length > 0 && (
-        <section className="py-16 md:py-20 bg-white border-y border-[#E8E4DF]">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <SectionIntro
-              eyebrow="Our Work"
-              title="Installation & Detail"
-              description="Real project photography from JT Fence Inc. installations across the South Shore."
-            />
-            <div
-              className={`mt-10 grid gap-6 ${
-                imageSet.detailStrip.length > 1
-                  ? 'grid-cols-1 md:grid-cols-2'
-                  : 'grid-cols-1 max-w-4xl mx-auto'
-              }`}
-            >
-              {imageSet.detailStrip.map((img, idx) => (
-                <ServiceResponsiveImage
-                  key={`${img.src}-${idx}`}
-                  src={img.src}
-                  alt={img.alt}
-                  aspect="wide"
-                />
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
 
       {/* Durability & Maintenance Section */}
       <section className="py-16 md:py-24 bg-white">

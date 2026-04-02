@@ -1,10 +1,8 @@
 import { Metadata } from 'next';
-import {
-  Breadcrumbs,
-  SectionIntro,
-  TestimonialCard,
-  CTABanner,
-} from '@/components';
+import Breadcrumbs from '@/components/Breadcrumbs';
+import SectionIntro from '@/components/SectionIntro';
+import TestimonialCard from '@/components/TestimonialCard';
+import CTABanner from '@/components/CTABanner';
 import { testimonials } from '@/data/testimonials';
 import { company } from '@/data/company';
 import { metadata as metadataMap } from '@/data/metadata';
@@ -37,7 +35,8 @@ export default function ReviewsPage() {
       {/* Page Hero */}
       <section className="relative min-h-[400px] md:min-h-[500px] flex items-center justify-center pt-12 pb-12 overflow-hidden"
         style={{
-          backgroundImage: 'url(/images/services/PHOTO-2026-03-31-09-23-31.jpg)',
+          backgroundImage:
+            'linear-gradient(135deg, #1B4332 0%, #2D3436 100%)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}

@@ -65,7 +65,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: "7",
-    name: "Elizabeth \"Liz\" Gonzalez",
+    name: "Elizabeth Gonzalez",
     location: "Kingston, MA",
     rating: 5,
     text: "JT Fence team was absolutely wonderful from start to finish. They explained all our options clearly, helped us choose the best solution for our property, and executed a perfect installation. The fence looks beautiful, enhances our home's curb appeal, and has held up beautifully to weather.",

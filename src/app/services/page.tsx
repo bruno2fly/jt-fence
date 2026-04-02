@@ -1,10 +1,8 @@
 import { Metadata } from 'next';
-import {
-  Breadcrumbs,
-  SectionIntro,
-  ServiceCard,
-  CTABanner,
-} from '@/components';
+import Breadcrumbs from '@/components/Breadcrumbs';
+import SectionIntro from '@/components/SectionIntro';
+import ServiceCard from '@/components/ServiceCard';
+import CTABanner from '@/components/CTABanner';
 import { services } from '@/data/services';
 import { company } from '@/data/company';
 import { metadata as metadataMap } from '@/data/metadata';

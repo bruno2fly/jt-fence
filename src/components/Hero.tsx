@@ -9,8 +9,6 @@ interface HeroProps {
   secondaryCtaText?: string;
   secondaryCtaLink?: string;
   backgroundImage?: string;
-  /** Lighter overlay when using real photography so fence detail stays visible */
-  overlayVariant?: 'default' | 'photo';
 }
 
 export default function Hero({
@@ -21,13 +19,7 @@ export default function Hero({
   secondaryCtaText,
   secondaryCtaLink,
   backgroundImage,
-  overlayVariant = 'default',
 }: HeroProps) {
-  const overlayClass =
-    overlayVariant === 'photo'
-      ? 'bg-gradient-to-r from-[#1B4332]/72 to-[#2D3436]/62'
-      : 'bg-gradient-to-r from-[#1B4332]/95 to-[#2D3436]/85';
-
   return (
     <section
       className="relative min-h-[600px] md:min-h-[700px] flex items-center justify-center pt-20 pb-16 overflow-hidden"
@@ -36,11 +28,11 @@ export default function Hero({
           ? `url(${backgroundImage})`
           : 'linear-gradient(135deg, #1B4332 0%, #2D3436 100%)',
         backgroundSize: 'cover',
-        backgroundPosition: 'center center',
+        backgroundPosition: 'center',
       }}
     >
       {/* Gradient Overlay */}
-      <div className={`absolute inset-0 ${overlayClass}`}></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-[#1B4332]/95 to-[#2D3436]/85"></div>
 
       {/* Content */}
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

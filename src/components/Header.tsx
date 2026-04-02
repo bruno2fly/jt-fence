@@ -40,12 +40,13 @@ export default function Header({ phoneNumber = '(781) 420-5858' }: HeaderProps) 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center flex-shrink-0">
-            <img 
-              src="/images/jtlogo.png" 
-              alt="JT Fence Inc." 
-              className="h-12 w-auto"
-            />
+          <Link href="/" className="flex items-center space-x-1 flex-shrink-0">
+            <span className="font-heading text-2xl font-bold text-[#1B4332]">
+              JT FENCE
+            </span>
+            <span className="font-heading text-sm font-semibold text-[#C9A84C] tracking-wide">
+              INC.
+            </span>
           </Link>
 
           {/* Desktop Navigation */}
