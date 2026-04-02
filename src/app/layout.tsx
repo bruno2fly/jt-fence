@@ -52,7 +52,7 @@ export const metadata: Metadata = {
       'Professional fence installation, repair, and maintenance services throughout Massachusetts with quality craftsmanship and competitive pricing.',
     images: [
       {
-        url: '/og-image.jpg',
+        url: '/images/og-image.jpg',
         width: 1200,
         height: 630,
         alt: 'JT Fence Inc. - Premium Fencing Services',
@@ -64,7 +64,7 @@ export const metadata: Metadata = {
     title: 'JT Fence Inc. - Premium Fence Installation & Repair in Massachusetts',
     description:
       'Professional fence installation, repair, and maintenance services throughout Massachusetts.',
-    images: ['/og-image.jpg'],
+    images: ['/images/og-image.jpg'],
   },
   robots: {
     index: true,

@@ -91,7 +91,7 @@ export default function TermsPage() {
             </p>
             <ul className="list-disc list-inside text-secondary-600 space-y-2">
               <li>By email: info@jtfenceboston.com</li>
-              <li>By phone: (617) 555-0123</li>
+              <li>By phone: (781) 420-5858</li>
             </ul>
           </section>
         </div>
