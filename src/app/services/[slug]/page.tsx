@@ -31,16 +31,34 @@ export async function generateMetadata({
   }
 
   const pageMetadata = metadata[`/services/${service.slug}`];
+  const path = `/services/${service.slug}`;
 
   return {
     title: pageMetadata?.title || service.title,
     description: pageMetadata?.description || service.shortDescription,
     keywords: service.keywords,
+    alternates: {
+      canonical: path,
+    },
     openGraph: {
       title: pageMetadata?.ogTitle || service.title,
       description: pageMetadata?.ogDescription || service.shortDescription,
       type: 'website',
-      url: `https://jtfenceboston.com/services/${service.slug}`,
+      url: `https://jtfenceboston.com${path}`,
+      images: [
+        {
+          url: '/images/og-image.jpg',
+          width: 1200,
+          height: 630,
+          alt: 'JT Fence Inc. - Premium Fencing Services',
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: pageMetadata?.ogTitle || service.title,
+      description: pageMetadata?.ogDescription || service.shortDescription,
+      images: ['/images/og-image.jpg'],
     },
   };
 }

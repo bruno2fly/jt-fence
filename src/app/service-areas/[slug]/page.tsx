@@ -9,7 +9,7 @@ import CTABanner from '@/components/CTABanner';
 import JsonLd from '@/components/JsonLd';
 import { serviceAreas } from '@/data/serviceAreas';
 import { services } from '@/data/services';
-import { Fence, Shield, Home, AlertCircle, CheckCircle } from 'lucide-react';
+import { Fence, Shield, Home, AlertCircle, CheckCircle, Waves } from 'lucide-react';
 
 // Generate static params for all service areas
 export async function generateStaticParams() {
@@ -26,13 +26,34 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     return {};
   }
 
+  const path = `/service-areas/${area.slug}`;
+
   return {
     title: area.metaTitle,
     description: area.metaDescription,
     keywords: area.localKeywords,
+    alternates: {
+      canonical: path,
+    },
     openGraph: {
+      type: 'website',
       title: area.metaTitle,
       description: area.metaDescription,
+      url: `https://jtfenceboston.com${path}`,
+      images: [
+        {
+          url: '/images/og-image.jpg',
+          width: 1200,
+          height: 630,
+          alt: 'JT Fence Inc. - Premium Fencing Services',
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: area.metaTitle,
+      description: area.metaDescription,
+      images: ['/images/og-image.jpg'],
     },
   };
 }
@@ -44,6 +65,7 @@ const getServiceIcon = (slug: string) => {
     'vinyl-fences': <Shield className="w-6 h-6" />,
     'aluminum-fences': <Fence className="w-6 h-6" />,
     'pet-dog-fencing': <AlertCircle className="w-6 h-6" />,
+    'pool-fence': <Waves className="w-6 h-6" />,
   };
   return iconMap[slug] || <Fence className="w-6 h-6" />;
 };

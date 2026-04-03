@@ -4,9 +4,9 @@
   "description": "JT Fence Inc. - Premium Fence Installation in Massachusetts",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --turbo -H 0.0.0.0 -p 3000",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -H 0.0.0.0 -p 3000",
     "lint": "next lint",
     "generate-sitemap": "next-sitemap"
   },

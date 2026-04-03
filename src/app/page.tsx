@@ -4,17 +4,16 @@ import ServiceCard from '@/components/ServiceCard';
 import TestimonialCard from '@/components/TestimonialCard';
 import FAQAccordion from '@/components/FAQAccordion';
 import CTABanner from '@/components/CTABanner';
-import PortfolioCard from '@/components/PortfolioCard';
 import AreaCard from '@/components/AreaCard';
 import ProcessSteps from '@/components/ProcessSteps';
 import SectionIntro from '@/components/SectionIntro';
 import { services } from '@/data/services';
 import { testimonials } from '@/data/testimonials';
 import { faqs } from '@/data/faqs';
-import { portfolioItems } from '@/data/portfolio';
 import { serviceAreas } from '@/data/serviceAreas';
 import { company } from '@/data/company';
 import { metadata as metadataMap } from '@/data/metadata';
+import { getServiceImageSet, homeHeroBackgroundSrc } from '@/data/serviceImages';
 import {
   Hammer,
   Shield,
@@ -28,9 +27,28 @@ export const metadata: Metadata = {
   title: metadataMap['/'].title,
   description: metadataMap['/'].description,
   keywords: metadataMap['/'].keywords,
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
+    type: 'website',
     title: metadataMap['/'].ogTitle,
     description: metadataMap['/'].ogDescription,
+    url: 'https://jtfenceboston.com',
+    images: [
+      {
+        url: '/images/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'JT Fence Inc. - Premium Fencing Services',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: metadataMap['/'].ogTitle,
+    description: metadataMap['/'].ogDescription,
+    images: ['/images/og-image.jpg'],
   },
 };
 
@@ -68,7 +86,6 @@ const whyChooseUsReasons = [
 ];
 
 export default function Home() {
-  const featuredPortfolio = portfolioItems.filter((item) => item.featured).slice(0, 3);
   const faqItems = faqs
     .filter((faq) => faq.category === 'General' || faq.category === 'Services')
     .slice(0, 5)
@@ -110,8 +127,10 @@ export default function Home() {
         subtitle={`JT Fence Inc. delivers exceptional residential and commercial fencing solutions with over ${company.yearsExperience} years of expertise. Transform your property with quality craftsmanship you can trust.`}
         ctaText="Get Your Free Quote"
         ctaLink="/contact"
-        secondaryCtaText="Explore Our Work"
-        secondaryCtaLink="/portfolio"
+        secondaryCtaText="Explore Our Services"
+        secondaryCtaLink="/services"
+        backgroundImage={homeHeroBackgroundSrc}
+        overlayVariant="home"
       />
 
       {/* Services Overview Section */}
@@ -122,15 +141,19 @@ export default function Home() {
           description="From classic wood to modern aluminum, we offer fencing solutions for every property type and aesthetic preference."
         />
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
-          {services.map((service) => (
-            <ServiceCard
-              key={service.slug}
-              title={service.name}
-              description={service.shortDescription}
-              slug={service.slug}
-              icon={<Hammer className="w-6 h-6" />}
-            />
-          ))}
+          {services.map((service) => {
+            const imageSet = getServiceImageSet(service.slug);
+            return (
+              <ServiceCard
+                key={service.slug}
+                title={service.name}
+                description={service.shortDescription}
+                slug={service.slug}
+                imageSrc={imageSet?.hero.src}
+                imageAlt={imageSet?.hero.alt}
+              />
+            );
+          })}
         </div>
       </section>
 
@@ -142,6 +165,7 @@ export default function Home() {
             title="Why Choose JT Fence Inc."
             description="We combine expertise, quality materials, and exceptional service to deliver fencing solutions that exceed expectations."
             centered={true}
+            variant="dark"
           />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
             {whyChooseUsReasons.map((reason, index) => {
@@ -164,36 +188,6 @@ export default function Home() {
               );
             })}
           </div>
-        </div>
-      </section>
-
-      {/* Portfolio Preview Section */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
-        <SectionIntro
-          eyebrow="Our Work"
-          title="Featured Projects"
-          description="See examples of our quality craftsmanship across wood, vinyl, aluminum, and specialized pet fencing installations."
-        />
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
-          {featuredPortfolio.map((project) => (
-            <PortfolioCard
-              key={project.id}
-              title={project.title}
-              description={project.description}
-              serviceType={project.serviceType}
-              location={project.location}
-              imageAlt={project.imageAlt}
-            />
-          ))}
-        </div>
-        <div className="text-center mt-12">
-          <a
-            href="/portfolio"
-            className="inline-flex items-center px-8 py-3.5 bg-[#C9A84C] text-white font-body font-semibold rounded-lg hover:bg-[#B8933F] transition-colors"
-          >
-            View All Projects
-            <span className="ml-2">→</span>
-          </a>
         </div>
       </section>
 
@@ -259,15 +253,6 @@ export default function Home() {
               />
             ))}
           </div>
-          <div className="text-center mt-12">
-            <a
-              href="/reviews"
-              className="inline-flex items-center px-8 py-3.5 bg-[#C9A84C] text-white font-body font-semibold rounded-lg hover:bg-[#B8933F] transition-colors"
-            >
-              Read All Reviews
-              <span className="ml-2">→</span>
-            </a>
-          </div>
         </div>
       </section>
 
@@ -281,15 +266,6 @@ export default function Home() {
           />
           <div className="mt-12">
             <FAQAccordion items={faqItems} />
-          </div>
-          <div className="text-center mt-12">
-            <a
-              href="/faq"
-              className="inline-flex items-center px-8 py-3.5 bg-[#1B4332] text-white font-body font-semibold rounded-lg hover:bg-[#0f2b1f] transition-colors"
-            >
-              View All FAQs
-              <span className="ml-2">→</span>
-            </a>
           </div>
         </div>
       </section>

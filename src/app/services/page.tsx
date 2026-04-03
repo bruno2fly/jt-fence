@@ -6,7 +6,7 @@ import CTABanner from '@/components/CTABanner';
 import { services } from '@/data/services';
 import { company } from '@/data/company';
 import { metadata as metadataMap } from '@/data/metadata';
-import { Hammer } from 'lucide-react';
+import { getServiceImageSet } from '@/data/serviceImages';
 
 export const metadata: Metadata = {
   title: metadataMap['/services'].title,
@@ -47,6 +47,13 @@ const comparisonData = [
     cost: '$18-35/ft',
     bestFor: 'Dog containment, safety',
   },
+  {
+    material: 'Pool fence / barrier',
+    durability: '20+ years (metal/vinyl)',
+    maintenance: 'Low',
+    cost: 'Project quote',
+    bestFor: 'Pool safety, code-ready barriers',
+  },
 ];
 
 export default function ServicesPage() {
@@ -85,7 +92,7 @@ export default function ServicesPage() {
         <SectionIntro
           eyebrow="Professional Solutions"
           title="Complete Fencing Services"
-          description="Whether you need a new installation, professional repair, or specialized pet fencing, JT Fence Inc. delivers exceptional results with quality materials and expert craftsmanship."
+            description="Whether you need wood, vinyl, aluminum, pet containment, or pool barriers and safety fencing, JT Fence Inc. delivers exceptional results with quality materials and expert craftsmanship."
           centered={true}
         />
       </section>
@@ -93,15 +100,19 @@ export default function ServicesPage() {
       {/* All Services Grid */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {services.map((service) => (
-            <ServiceCard
-              key={service.slug}
-              title={service.name}
-              description={service.shortDescription}
-              slug={service.slug}
-              icon={<Hammer className="w-6 h-6" />}
-            />
-          ))}
+          {services.map((service) => {
+            const imageSet = getServiceImageSet(service.slug);
+            return (
+              <ServiceCard
+                key={service.slug}
+                title={service.name}
+                description={service.shortDescription}
+                slug={service.slug}
+                imageSrc={imageSet?.hero.src}
+                imageAlt={imageSet?.hero.alt}
+              />
+            );
+          })}
         </div>
       </section>
 

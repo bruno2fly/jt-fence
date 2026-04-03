@@ -28,7 +28,7 @@ export const services: Service[] = [
       "Excellent privacy screening for residential and commercial properties",
       "Customizable designs to match any architectural style or landscaping preference",
       "Environmentally friendly option made from renewable resources",
-      "Cost-effective compared to vinyl and aluminum alternatives",
+      "Excellent value for authentic wood character and long-term curb appeal",
       "Warm, inviting appearance that ages beautifully with character and patina",
     ],
     bestUseCases: [
@@ -198,14 +198,7 @@ export const services: Service[] = [
       "Backyards used for dog training and exercise",
       "Properties where aesthetic appeal remains important",
     ],
-    styleOptions: [
-      "Full Privacy Dog Fencing (Maximum containment and privacy)",
-      "Semi-Privacy Pet Fencing (Monitoring sightlines preserved)",
-      "Picket Style Pet Fencing (Aesthetic appeal with safety features)",
-      "Vinyl Pet Fencing (Low-maintenance pet containment)",
-      "Composite Pet Fencing (Durable aesthetic option)",
-      "Underground Barrier Systems (For persistent diggers)",
-    ],
+    styleOptions: [],
     durabilityInfo:
       "Pet fencing systems are engineered with reinforced materials to withstand constant contact, jumping, and digging from active dogs. Quality pet fencing typically lasts 15-25 years depending on material choice. Reinforced posts, brackets, and hardware are rated for high-impact use. Regular inspection ensures latches and gates remain secure.",
     maintenanceInfo:
@@ -226,5 +219,60 @@ export const services: Service[] = [
       "large dog fence",
     ],
     priceRangeEstimate: "$18-35 per linear foot",
+  },
+  {
+    slug: "pool-fence",
+    name: "Pool Fence & Barriers",
+    title: "Pool Fence Installation & Safety Barriers | Massachusetts",
+    shortDescription:
+      "Code-ready pool barriers and perimeter fencing for in-ground pools—black ornamental metal for clear sightlines, white vinyl for privacy, self-closing gates, and clean integration with pavers and spas. Designed for Massachusetts homeowners who want safety without sacrificing curb appeal.",
+    fullDescription:
+      "A pool fence is not just landscaping—it is the layer that keeps kids, guests, and pets safe around water. JT Fence Inc. designs and installs pool barriers and perimeter fencing for residential backyards across the South Shore, from new builds with fresh pavers to remodels around existing pools and spas. We combine black ornamental aluminum-style fencing where you want an open view and airflow with tall white vinyl privacy fencing where you want seclusion from neighbors or the street. Every layout accounts for gates that swing and latch correctly, corners, elevation changes, and the spacing and height expectations that matter for pool safety and local requirements. Our crews work neatly alongside hardscaping and coping, coordinate with your timeline, and leave crisp lines and hardware you can rely on season after season. Whether you are finishing a pool-and-spa combo, securing a wooded lot, or upgrading an older yard, we bring the same craftsmanship and clear communication that homeowners expect from JT Fence Boston.",
+    benefits: [
+      "Dedicated pool barrier options—ornamental metal for visibility and airflow at the water’s edge",
+      "Tall vinyl privacy fencing for property lines and wind screening away from the pool",
+      "Self-closing, self-latching gate hardware sized for real family traffic",
+      "Layouts planned for corners, slopes, and step-downs—not one-size fence runs",
+      "Powder-coated metal and low-maintenance vinyl suited to New England weather",
+      "Professional integration with stone pavers, coping, and pool decks",
+      "Straight posts, even pickets, and hardware that stays aligned after freeze-thaw cycles",
+      "Free estimates and a team that shows up when we say we will",
+    ],
+    bestUseCases: [
+      "New in-ground pools and full backyard remodels with fresh hardscaping",
+      "Homes that need both a code-ready pool barrier and a privacy perimeter",
+      "Wooded or sloped lots where grade changes affect fence lines",
+      "Pool-and-spa combinations and raised spas with water features",
+      "Replacing aging chain-link or improvised barriers with a finished look",
+      "Coastal and inland Massachusetts properties—salt air–friendly metal options",
+    ],
+    styleOptions: [
+      "Black ornamental metal pool barrier (flat-top picket, open view)",
+      "White vinyl privacy perimeter & screen fencing",
+      "Mixed systems—metal at the pool, vinyl along property lines",
+      "Self-closing gates with latches placed for adult access",
+      "Stone paver & coping integration—posts set for clean lines",
+      "Wooded and open-sky lots—custom runs and corners",
+    ],
+    durabilityInfo:
+      "Quality ornamental aluminum or steel-style pool fencing with a factory powder coat typically lasts many years with minimal rust or fade when installed correctly; vinyl privacy fencing often exceeds two decades with only occasional cleaning. Hinges and latches should be rinsed of pool chemicals and checked seasonally. We use materials selected for outdoor exposure in Massachusetts, including freeze-thaw cycles and UV.",
+    maintenanceInfo:
+      "Rinse metal fencing periodically, especially if splash from the pool carries chemicals. Check gate self-closing action and latch height after seasonal settling. Vinyl can be washed with mild soap and water. Keep plantings trimmed back so gates swing freely and hardware is visible for inspection. We are happy to revisit adjustments after the first winter.",
+    icon: "pool-fence",
+    keywords: [
+      "pool fence",
+      "pool fencing",
+      "pool barrier",
+      "Massachusetts pool fence",
+      "South Shore pool fence",
+      "ornamental pool fence",
+      "vinyl pool fence",
+      "pool safety fence",
+      "self-closing pool gate",
+      "residential pool fence",
+      "JT Fence Boston",
+      "inground pool fence",
+    ],
+    priceRangeEstimate: "Project-based (barrier layout & materials)—request a quote",
   },
 ];

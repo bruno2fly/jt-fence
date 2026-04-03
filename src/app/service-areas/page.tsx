@@ -65,6 +65,31 @@ export default function ServiceAreasPage() {
         </div>
       </section>
 
+      {/* Service region map */}
+      <section className="bg-[#FAF8F5] py-16 md:py-20 border-y border-[#E8E4DF]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <SectionIntro
+            eyebrow="Coverage"
+            title="South Shore Service Region"
+            description="We install and repair fencing across Plymouth County, Cape Cod, and neighboring South Shore communities."
+            centered={true}
+          />
+          <div className="mt-10 w-full overflow-hidden rounded-lg border border-[#E8E4DF] shadow-sm bg-[#E8E4DF]">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d200000!2d-70.72723895!3d41.9584457!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e4b5b0a3f24c59%3A0x7c31b7b2f3e8b1a0!2sPlymouth%2C%20MA!5e0!3m2!1sen!1sus!4v1680000000000!5m2!1sen!1sus"
+              title="South Shore Massachusetts — JT Fence Inc. service area"
+              width="100%"
+              height={400}
+              className="border-0 w-full min-h-[400px] block"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+          </div>
+        </div>
+      </section>
+
       {/* Service Areas Grid */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20">
         <div className="mb-16">

@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Terms of Service',
+  title: 'Terms of Service | JT Fence Inc.',
 }
 
 export default function TermsPage() {

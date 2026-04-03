@@ -32,7 +32,7 @@ export const serviceAreas: ServiceArea[] = [
       "picket fence Plymouth",
       "privacy fence Plymouth",
     ],
-    popularServices: ["wood-fences", "vinyl-fences", "pet-dog-fencing"],
+    popularServices: ["wood-fences", "vinyl-fences", "pet-dog-fencing", "pool-fence"],
     whyChooseUs: [
       "15+ years of fencing installations throughout Plymouth",
       "Understanding of Plymouth's waterfront and historic district requirements",
@@ -62,7 +62,7 @@ export const serviceAreas: ServiceArea[] = [
       "vacation home fencing",
       "residential fence Cape Cod",
     ],
-    popularServices: ["vinyl-fences", "aluminum-fences", "pet-dog-fencing"],
+    popularServices: ["vinyl-fences", "aluminum-fences", "pet-dog-fencing", "pool-fence"],
     whyChooseUs: [
       "Specialized experience with coastal salt-air environments",
       "Expert knowledge of sand and soil conditions affecting fence installation",
@@ -92,7 +92,7 @@ export const serviceAreas: ServiceArea[] = [
       "fence repair Wareham",
       "Wareham fence company",
     ],
-    popularServices: ["vinyl-fences", "wood-fences", "pet-dog-fencing"],
+    popularServices: ["vinyl-fences", "wood-fences", "pet-dog-fencing", "pool-fence"],
     whyChooseUs: [
       "Licensed contractor serving Wareham for 15+ years",
       "Understanding of local zoning and building code requirements",
@@ -122,7 +122,7 @@ export const serviceAreas: ServiceArea[] = [
       "fence installation Duxbury",
       "Duxbury fence company",
     ],
-    popularServices: ["wood-fences", "vinyl-fences", "aluminum-fences"],
+    popularServices: ["wood-fences", "vinyl-fences", "aluminum-fences", "pool-fence"],
     whyChooseUs: [
       "Commitment to premium craftsmanship for high-end residential properties",
       "Experience with waterfront and high-value estate installations",
@@ -152,7 +152,7 @@ export const serviceAreas: ServiceArea[] = [
       "fence repair Kingston",
       "Kingston fence company",
     ],
-    popularServices: ["wood-fences", "vinyl-fences", "pet-dog-fencing"],
+    popularServices: ["wood-fences", "vinyl-fences", "pet-dog-fencing", "pool-fence"],
     whyChooseUs: [
       "15+ years of fencing installations serving Kingston residents",
       "Understanding of Kingston's historic and contemporary architecture",
@@ -182,7 +182,7 @@ export const serviceAreas: ServiceArea[] = [
       "waterfront fencing",
       "Scituate fence company",
     ],
-    popularServices: ["vinyl-fences", "aluminum-fences", "pet-dog-fencing"],
+    popularServices: ["vinyl-fences", "aluminum-fences", "pet-dog-fencing", "pool-fence"],
     whyChooseUs: [
       "Specialized expertise in coastal and salt-air environments",
       "Proven material selection for maximum durability in oceanside locations",
@@ -212,7 +212,7 @@ export const serviceAreas: ServiceArea[] = [
       "Norwell fencing",
       "Norwell fence company",
     ],
-    popularServices: ["wood-fences", "vinyl-fences", "aluminum-fences"],
+    popularServices: ["wood-fences", "vinyl-fences", "aluminum-fences", "pool-fence"],
     whyChooseUs: [
       "Premium craftsmanship and attention to detail for high-value properties",
       "Experience serving Norwell's discerning homeowners",
@@ -242,7 +242,7 @@ export const serviceAreas: ServiceArea[] = [
       "fence repair Hanover",
       "Hanover fence company",
     ],
-    popularServices: ["wood-fences", "vinyl-fences", "pet-dog-fencing"],
+    popularServices: ["wood-fences", "vinyl-fences", "pet-dog-fencing", "pool-fence"],
     whyChooseUs: [
       "15+ years of quality fencing installations in Hanover",
       "Understanding of local building codes and permit requirements",
@@ -272,7 +272,7 @@ export const serviceAreas: ServiceArea[] = [
       "fence repair Pembroke",
       "Pembroke fence company",
     ],
-    popularServices: ["wood-fences", "vinyl-fences", "pet-dog-fencing"],
+    popularServices: ["wood-fences", "vinyl-fences", "pet-dog-fencing", "pool-fence"],
     whyChooseUs: [
       "Established reputation for quality and reliability in Pembroke",
       "Understanding of local architecture and community standards",

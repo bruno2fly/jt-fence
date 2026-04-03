@@ -9,6 +9,8 @@ interface HeroProps {
   secondaryCtaText?: string;
   secondaryCtaLink?: string;
   backgroundImage?: string;
+  /** Overlay strength: default = solid gradient only; photo = lighter (service pages); home = photo + strong tint for main marketing hero */
+  overlayVariant?: 'default' | 'photo' | 'home';
 }
 
 export default function Hero({
@@ -19,7 +21,15 @@ export default function Hero({
   secondaryCtaText,
   secondaryCtaLink,
   backgroundImage,
+  overlayVariant = 'default',
 }: HeroProps) {
+  const overlayClass =
+    overlayVariant === 'photo'
+      ? 'bg-gradient-to-r from-[#1B4332]/72 to-[#2D3436]/62'
+      : overlayVariant === 'home'
+        ? 'bg-gradient-to-br from-[#0a1810]/80 via-[#1B4332]/78 to-[#1a2220]/88'
+        : 'bg-gradient-to-r from-[#1B4332]/95 to-[#2D3436]/85';
+
   return (
     <section
       className="relative min-h-[600px] md:min-h-[700px] flex items-center justify-center pt-20 pb-16 overflow-hidden"
@@ -28,11 +38,12 @@ export default function Hero({
           ? `url(${backgroundImage})`
           : 'linear-gradient(135deg, #1B4332 0%, #2D3436 100%)',
         backgroundSize: 'cover',
-        backgroundPosition: 'center',
+        backgroundPosition: 'center center',
+        backgroundRepeat: 'no-repeat',
       }}
     >
-      {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#1B4332]/95 to-[#2D3436]/85"></div>
+      {/* Photo darkening + brand tint so headline and CTAs stay readable */}
+      <div className={`absolute inset-0 ${overlayClass}`} aria-hidden />
 
       {/* Content */}
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

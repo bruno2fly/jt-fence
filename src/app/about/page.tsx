@@ -10,6 +10,7 @@ import {
   Heart,
   Zap,
 } from 'lucide-react';
+import { aboutPageHeroBackgroundSrc, encodeImageSrc } from '@/data/serviceImages';
 
 export const metadata: Metadata = {
   title: metadataMap['/about'].title,
@@ -71,20 +72,20 @@ export default function About() {
       />
 
       {/* Page Hero */}
-      <section className="relative min-h-[400px] md:min-h-[500px] flex items-center justify-center pt-12 pb-12 overflow-hidden"
+      <section
+        className="relative min-h-[400px] md:min-h-[500px] flex items-center justify-center pt-12 pb-12 overflow-hidden"
         style={{
-          backgroundImage:
-            'linear-gradient(135deg, #1B4332 0%, #2D3436 100%)',
+          backgroundImage: `url(${encodeImageSrc(aboutPageHeroBackgroundSrc)})`,
           backgroundSize: 'cover',
-          backgroundPosition: 'center',
+          backgroundPosition: 'center 40%',
         }}
       >
-        <div className="absolute inset-0 bg-gradient-to-r from-[#1B4332]/95 to-[#2D3436]/85"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-[#0a1810]/88 via-[#1B4332]/80 to-[#1a2220]/90" aria-hidden />
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="font-heading text-4xl md:text-5xl font-bold text-[#FAF8F5] mb-6 leading-tight">
+          <h1 className="font-heading text-4xl md:text-5xl font-bold text-[#FAF8F5] mb-6 leading-tight [text-shadow:0_2px_24px_rgba(0,0,0,0.45)]">
             About JT Fence Inc.
           </h1>
-          <p className="font-body text-lg md:text-xl text-[#E8E4DF] max-w-2xl mx-auto leading-relaxed">
+          <p className="font-body text-lg md:text-xl text-[#E8E4DF] max-w-2xl mx-auto leading-relaxed [text-shadow:0_1px_12px_rgba(0,0,0,0.4)]">
             Serving South Shore Massachusetts with quality fencing solutions since 2008
           </p>
         </div>

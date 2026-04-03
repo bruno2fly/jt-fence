@@ -1,6 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  basePath: '/jtfence',
   reactStrictMode: true,
   eslint: {
     ignoreDuringBuilds: true,
@@ -50,7 +49,10 @@ const nextConfig = {
     ]
   },
   redirects: async () => {
-    return []
+    return [
+      { source: '/portfolio', destination: '/services', permanent: true },
+      { source: '/reviews', destination: '/', permanent: true },
+    ]
   },
   rewrites: async () => {
     return {

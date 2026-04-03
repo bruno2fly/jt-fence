@@ -27,6 +27,7 @@ export default function Header({ phoneNumber = '(781) 420-5858' }: HeaderProps) 
     { label: 'Vinyl Fences', href: '/services/vinyl-fences' },
     { label: 'Aluminum Fences', href: '/services/aluminum-fences' },
     { label: 'Pet & Dog Fencing', href: '/services/pet-dog-fencing' },
+    { label: 'Pool Fence & Barriers', href: '/services/pool-fence' },
   ];
 
   return (
@@ -40,13 +41,12 @@ export default function Header({ phoneNumber = '(781) 420-5858' }: HeaderProps) 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-1 flex-shrink-0">
-            <span className="font-heading text-2xl font-bold text-[#1B4332]">
-              JT FENCE
-            </span>
-            <span className="font-heading text-sm font-semibold text-[#C9A84C] tracking-wide">
-              INC.
-            </span>
+          <Link href="/" className="flex items-center flex-shrink-0">
+            <img
+              src="/images/jtlogo.png"
+              alt="JT Fence Inc."
+              className="h-12 w-auto"
+            />
           </Link>
 
           {/* Desktop Navigation */}
@@ -87,18 +87,6 @@ export default function Header({ phoneNumber = '(781) 420-5858' }: HeaderProps) 
               </div>
             </div>
 
-            <Link
-              href="/portfolio"
-              className="text-[#2D3436] font-body hover:text-[#C9A84C] transition-colors text-sm"
-            >
-              Portfolio
-            </Link>
-            <Link
-              href="/reviews"
-              className="text-[#2D3436] font-body hover:text-[#C9A84C] transition-colors text-sm"
-            >
-              Reviews
-            </Link>
             <Link
               href="/process"
               className="text-[#2D3436] font-body hover:text-[#C9A84C] transition-colors text-sm"
@@ -197,20 +185,6 @@ export default function Header({ phoneNumber = '(781) 420-5858' }: HeaderProps) 
               )}
             </div>
 
-            <Link
-              href="/portfolio"
-              className="block px-4 py-2 text-[#2D3436] font-body hover:text-[#C9A84C] transition-colors"
-              onClick={() => setIsOpen(false)}
-            >
-              Portfolio
-            </Link>
-            <Link
-              href="/reviews"
-              className="block px-4 py-2 text-[#2D3436] font-body hover:text-[#C9A84C] transition-colors"
-              onClick={() => setIsOpen(false)}
-            >
-              Reviews
-            </Link>
             <Link
               href="/process"
               className="block px-4 py-2 text-[#2D3436] font-body hover:text-[#C9A84C] transition-colors"

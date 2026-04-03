@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import LocalBusinessJsonLd from '@/components/LocalBusinessJsonLd'
 import './globals.css'
 
 export const viewport: Viewport = {
@@ -13,7 +14,6 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   title: {
-    template: '%s | JT Fence Inc. - Premium Fence Installation Massachusetts',
     default: 'JT Fence Inc. - Premium Fence Installation & Repair in Massachusetts',
   },
   description:
@@ -45,7 +45,6 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://jtfenceboston.com',
     siteName: 'JT Fence Inc.',
     title: 'JT Fence Inc. - Premium Fence Installation & Repair in Massachusetts',
     description:
@@ -103,6 +102,7 @@ export default function RootLayout({
         />
       </head>
       <body className="flex flex-col min-h-screen font-body">
+        <LocalBusinessJsonLd />
         <Header />
         <main className="flex-grow">{children}</main>
         <Footer />

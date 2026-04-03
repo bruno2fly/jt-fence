@@ -2,7 +2,8 @@
  * Service-specific photography for /services/[slug] pages.
  * Images are partitioned by service — the same file is never reused on two different service URLs.
  *
- * Source assets: /public/images/wood/ (project batch). For wood-fences, alt text describes wood fencing.
+ * Source assets: /public/images/wood/ (project batch), /public/images/wood/fb/, and /public/images/wood/gemini/ (style-specific wood photography).
+ * For wood-fences, alt text describes wood fencing only.
  * For vinyl / aluminum / pet pages, alts describe the product line sold; when you add true material-specific
  * photography, place files under e.g. /public/images/vinyl/ and replace the matching `src` strings below.
  *
@@ -72,11 +73,67 @@ const W = [
   '/images/wood/PHOTO-2026-03-31-09-23-32.jpg',
 ] as const;
 
+/** JT Fence Facebook wood fence photography — used for /services/wood-fences and homepage hero */
+const FB_WOOD = [
+  '/images/wood/fb/fb-01.jpg',
+  '/images/wood/fb/fb-02.jpg',
+  '/images/wood/fb/fb-03.jpg',
+  '/images/wood/fb/fb-04.jpg',
+  '/images/wood/fb/fb-05.jpg',
+  '/images/wood/fb/fb-06.jpg',
+  '/images/wood/fb/fb-07.jpg',
+  '/images/wood/fb/fb-08.jpg',
+  '/images/wood/fb/fb-09.jpg',
+] as const;
+
+/** Wood style shots — Split Rail, Post and Board, Mixed Materials (Gemini project art) */
+const WOOD_STYLE = {
+  splitRailCape: '/images/wood/gemini/wood-split-rail-cape.png',
+  postBoardColonial: '/images/wood/gemini/wood-post-board-colonial.png',
+  mixedWoodMetal: '/images/wood/gemini/wood-mixed-materials.png',
+} as const;
+
+/** Pet & dog fencing — hero + feature photography only (no style grid on page) */
+const PET_DOG = {
+  heroHorizontal:
+    '/images/pet/pet-hero-horizontal-fence.png',
+  yardVinylSecure:
+    '/images/pet/pet-yard-vinyl-secure.png',
+} as const;
+
+/** Vinyl category photography — one asset per style on /services/vinyl-fences */
+const VINYL = {
+  privacy: '/images/vinyl/vinyl-privacy.png',
+  semiPrivacy: '/images/vinyl/vinyl-semi-privacy.png',
+  picket: '/images/vinyl/vinyl-picket.png',
+  lattice: '/images/vinyl/vinyl-lattice.png',
+  postRail: '/images/vinyl/vinyl-post-rail.png',
+  decorative: '/images/vinyl/vinyl-decorative.png',
+} as const;
+
+/** Homepage hero — same flagship shot as the wood-fences service hero */
+export const homeHeroBackgroundSrc: string = FB_WOOD[0];
+
+/** About page hero — yard sign & on-site branding (public/images/about/) */
+export const aboutPageHeroBackgroundSrc = '/images/about/yard-sign-banner.png';
+
+/** Pool & spa barrier projects — public/images/pool/ */
+const POOL = {
+  aerialHome: '/images/pool/pool-01-aerial-home.png',
+  paversInstall: '/images/pool/pool-02-pavers-install.png',
+  metalVinyl: '/images/pool/pool-03-metal-vinyl.png',
+  poolSpaWide: '/images/pool/pool-04-pool-spa-wide.png',
+  woodedPool: '/images/pool/pool-05-wooded-pool.png',
+  promoEstimate: '/images/pool/pool-06-promo-estimate.png',
+  residentialPromo: '/images/pool/pool-07-residential-promo.png',
+} as const;
+
 export type ServiceSlugKey =
   | 'wood-fences'
   | 'vinyl-fences'
   | 'aluminum-fences'
-  | 'pet-dog-fencing';
+  | 'pet-dog-fencing'
+  | 'pool-fence';
 
 export interface ServiceImageSet {
   hero: ServiceImageAsset;
@@ -97,142 +154,130 @@ function asset(
   return { src, alt, category, title, caption };
 }
 
-/* --- wood-fences: indices 0–11 — descriptive wood-specific alts --- */
+/* --- wood-fences: FB_WOOD[0–8] — Facebook project photography, nine images across hero → styles --- */
 const wood: ServiceImageSet = {
   hero: asset(
-    W[0],
-    'Cedar wood privacy fence with natural grain installed along a backyard in Plymouth, MA by JT Fence Inc.',
+    FB_WOOD[0],
+    'Wood privacy fence installation by JT Fence Inc. — natural cedar-toned boards along a Massachusetts residential property',
     'hero'
   ),
   intro: asset(
-    W[1],
-    'Pressure-treated wood fence panels showing clean vertical lines and professional post setting, South Shore Massachusetts',
+    FB_WOOD[1],
+    'Custom wood fencing with professional post setting and straight fence line, South Shore Massachusetts',
     'intro'
   ),
   benefitsHighlight: asset(
-    W[2],
-    'Close-up of wood fence construction and hardware detail on a residential property in Massachusetts',
+    FB_WOOD[2],
+    'Quality wood fence craftsmanship and materials on a residential lot — JT Fence Inc.',
     'benefit',
     'Craftsmanship detail'
   ),
   styleImages: [
     asset(
-      W[3],
-      'Solid wood privacy fencing with tight board spacing for backyard screening in Plymouth, MA',
+      FB_WOOD[3],
+      'Solid wood privacy fencing for backyard screening — JT Fence installation in Massachusetts',
       'style',
       'Privacy Fencing',
       'Solid or semi-solid panels'
     ),
     asset(
-      W[4],
-      'Traditional wood picket fence with pointed tops along a front yard, installed by JT Fence in South Shore MA',
+      FB_WOOD[4],
+      'Traditional wood picket or privacy fence along a residential front or side yard, South Shore MA',
       'style',
       'Picket Fencing',
       'Classic curb appeal'
     ),
     asset(
-      W[5],
-      'Rustic split rail wood fence defining property lines on a Massachusetts residential lot',
+      WOOD_STYLE.splitRailCape,
+      'Rustic wood post-and-rail fence along a green hillside with a gray cedar-shake Cape Cod home, dormers, and central chimney',
       'style',
       'Split Rail',
       'Rustic and open'
     ),
     asset(
-      W[6],
-      'Post and board wood fence in a ranch style along a wide yard perimeter',
+      WOOD_STYLE.postBoardColonial,
+      'Natural wood post-and-rail fence beside a gravel driveway leading to a white clapboard Colonial with black shutters and a red front door',
       'style',
       'Post and Board',
       'Ranch / agricultural look'
     ),
     asset(
-      W[7],
-      'Wood privacy fence with lattice top section for airflow and decorative detail',
+      FB_WOOD[7],
+      'Wood fence with decorative top detail or lattice-style finish for airflow and curb appeal',
       'style',
       'Lattice Top',
       'Airflow + style'
     ),
     asset(
-      W[8],
-      'Custom wood fence line with metal post accents and natural wood finish, JT Fence Inc. installation',
+      WOOD_STYLE.mixedWoodMetal,
+      'Horizontal wood privacy fence with black metal lattice topper, stone patio, and gray cedar-shake Cape Cod style home — wood and metal accents by JT Fence Inc.',
       'style',
       'Mixed Materials',
       'Wood with metal accents'
     ),
   ],
-  detailStrip: [
-    asset(
-      W[9],
-      'Ground-level view of wood fence posts set in concrete for long-term stability in New England weather',
-      'detail'
-    ),
-    asset(
-      W[10],
-      'Residential backyard wood fence installation showing straight runs and finished gate opening',
-      'application'
-    ),
-  ],
 };
 
-/* --- vinyl-fences: indices 12–20 — alts match vinyl product line (TODO:ASSET replace with true vinyl JPGs) --- */
+/* --- vinyl-fences: VINYL.* — category-matched project photography per style option --- */
 const vinyl: ServiceImageSet = {
   hero: asset(
-    W[12],
-    'White vinyl privacy fence along a residential lot in South Shore Massachusetts — low-maintenance PVC fencing by JT Fence Inc.',
+    VINYL.privacy,
+    'Privacy vinyl fence enclosing a gray cedar-shake Cape Cod home with dormers and a central chimney — JT Fence Inc., South Shore Massachusetts',
     'hero'
   ),
   intro: asset(
-    W[13],
-    'Vinyl fence panels with clean routed lines and consistent color, professional installation in MA',
+    VINYL.semiPrivacy,
+    'Semi-privacy vinyl fence along a white clapboard Colonial with black shutters and a red front door',
     'intro'
   ),
   benefitsHighlight: asset(
-    W[14],
-    'Vinyl fence corner and post detail showing durable PVC construction and UV-stable finish',
-    'benefit'
+    VINYL.lattice,
+    'Lattice-top vinyl fence at a tan shingled Craftsman bungalow with tapered columns and a wide porch',
+    'benefit',
+    'Low-maintenance PVC'
   ),
   styleImages: [
     asset(
-      W[15],
-      'Privacy vinyl fencing with full-height solid panels for backyard seclusion in Plymouth, MA',
+      VINYL.privacy,
+      'Privacy vinyl fence enclosing a gray cedar-shake Cape Cod home with dormers and a central chimney',
       'style',
-      'Privacy Vinyl Fencing'
+      'Privacy Vinyl Fencing',
+      'Solid panels for complete privacy'
     ),
     asset(
-      W[16],
-      'Semi-privacy vinyl fencing with subtle spacing for light and airflow on a Massachusetts home',
+      VINYL.semiPrivacy,
+      'Semi-privacy vinyl fence along a white clapboard Colonial with black shutters and a red front door',
       'style',
-      'Semi-Privacy Vinyl Fencing'
+      'Semi-Privacy Vinyl Fencing',
+      'Light and airflow with screening'
     ),
     asset(
-      W[17],
-      'Picket-style vinyl fence in classic white along a front landscape bed, South Shore MA',
+      VINYL.picket,
+      'Picket-style vinyl fence at a light blue Nantucket cottage with window boxes and a covered porch',
       'style',
-      'Picket Style Vinyl'
+      'Picket Style Vinyl',
+      'Classic appearance without maintenance'
     ),
     asset(
-      W[18],
-      'Vinyl privacy fence with decorative lattice top section for a finished, custom look',
+      VINYL.lattice,
+      'Lattice-top vinyl fence at a tan shingled Craftsman bungalow with tapered columns and a wide porch',
       'style',
-      'Lattice Top Vinyl'
+      'Lattice Top Vinyl',
+      'Decorative with modern appeal'
     ),
     asset(
-      W[19],
-      'Post and rail vinyl fence in a ranch profile for large yards and open properties',
+      VINYL.postRail,
+      'Post-and-rail vinyl fence along a red New England farmhouse with gambrel roof and attached barn',
       'style',
-      'Post and Rail Vinyl'
+      'Post and Rail Vinyl',
+      'Ranch or agricultural aesthetic'
     ),
     asset(
-      W[20],
-      'Decorative vinyl fence line with contemporary profile and durable PVC construction',
+      VINYL.decorative,
+      'Decorative vinyl fence with arbor at a dove-gray Victorian with turret, gingerbread trim, and wrap-around porch',
       'style',
-      'Decorative Vinyl'
-    ),
-  ],
-  detailStrip: [
-    asset(
-      W[11],
-      'Vinyl fence gate and latch hardware installed for smooth operation and long service life',
-      'detail'
+      'Decorative Vinyl',
+      'Contemporary and custom designs'
     ),
   ],
 };
@@ -294,66 +339,87 @@ const aluminum: ServiceImageSet = {
   ],
 };
 
-/* --- pet-dog-fencing: indices 30–38 --- */
+/* --- pet-dog-fencing: PET_DOG — dog- & safety-focused page (no material “categories” grid) --- */
 const pet: ServiceImageSet = {
   hero: asset(
-    W[30],
-    'Tall backyard dog fence enclosing a green lawn for safe pet play in Wareham, MA — JT Fence Inc.',
+    PET_DOG.heroHorizontal,
+    'Border Collie on a green lawn inside a modern dark horizontal-slat dog fence with secure gate, gray Cape-style home beyond — JT Fence Inc.',
     'hero'
   ),
   intro: asset(
-    W[31],
-    'Secure residential pet fencing with reinforced height for active dogs, South Shore Massachusetts',
+    PET_DOG.yardVinylSecure,
+    'Bernese Mountain Dog in a landscaped yard secured by tall white vinyl privacy fencing with heavy-duty gate hardware — safe containment, South Shore Massachusetts',
     'intro'
   ),
   benefitsHighlight: asset(
-    W[32],
-    'Pet-safe gate hardware and latch installed to prevent clever dogs from opening the fence',
-    'benefit'
+    PET_DOG.heroHorizontal,
+    'Modern horizontal pet fence and gate keeping a dog safely in the yard — jump and climb resistance designed for your breed',
+    'benefit',
+    'Gates & containment'
+  ),
+  styleImages: [],
+};
+
+/* --- pool-fence: full project photography — barrier + perimeter + promo --- */
+const poolFence: ServiceImageSet = {
+  hero: asset(
+    POOL.poolSpaWide,
+    'In-ground pool and spa with white vinyl privacy fence and black ornamental metal pool barrier on a Massachusetts residential property — JT Fence Inc.',
+    'hero'
+  ),
+  intro: asset(
+    POOL.aerialHome,
+    'Aerial view of grey shingle Cape-style home with black metal pool fence enclosing the pool and manicured lawn — South Shore Massachusetts',
+    'intro'
+  ),
+  benefitsHighlight: asset(
+    POOL.metalVinyl,
+    'Black ornamental metal pool safety fence with white vinyl privacy perimeter fencing — professional installation by JT Fence Boston',
+    'benefit',
+    'Safety + privacy together'
   ),
   styleImages: [
     asset(
-      W[33],
-      'Full privacy pet fencing for maximum containment along a backyard tree line',
+      POOL.paversInstall,
+      'Stone paver pool deck under construction with white vinyl privacy fence and black metal pool barrier — JT Fence Inc.',
       'style',
-      'Full Privacy Dog Fencing'
+      'New builds & remodels',
+      'Integrated with pavers and coping'
     ),
     asset(
-      W[34],
-      'Semi-privacy pet fence allowing you to see your dog while keeping them safely contained',
+      POOL.woodedPool,
+      'Black metal pool fence around rectangular pool in a wooded backyard with stone patio — secure barrier, natural setting',
       'style',
-      'Semi-Privacy Pet Fencing'
+      'Wooded & sloped lots',
+      'Grade changes and tree lines'
     ),
     asset(
-      W[35],
-      'Picket-style pet fencing that blends curb appeal with secure dog containment',
+      POOL.promoEstimate,
+      'Black metal pool fence enclosing a residential pool with autumn trees — JT Fence Boston pool safety projects',
       'style',
-      'Picket Style Pet Fencing'
+      'Code-ready layouts',
+      'Spacing and height for MA requirements'
     ),
     asset(
-      W[36],
-      'Low-maintenance vinyl-style pet fencing option for busy dog owners',
+      POOL.residentialPromo,
+      'Pool deck enclosed by black ornamental fence at a blue-sided Massachusetts home — professional pool barrier installation',
       'style',
-      'Vinyl Pet Fencing'
+      'Premium backyards',
+      'Gates, corners, and long runs'
     ),
     asset(
-      W[37],
-      'Composite-look pet fencing for durability where dogs play along the fence daily',
+      POOL.aerialHome,
+      'Two-story Cape home with pool area fenced for safety — aerial perspective of full backyard layout',
       'style',
-      'Composite Pet Fencing'
+      'Whole-property planning',
+      'Pool zone + perimeter together'
     ),
     asset(
-      W[38],
-      'Fence line prepared for below-ground barrier systems to stop persistent diggers',
+      POOL.poolSpaWide,
+      'Pool and spa with waterfall, lounge area, and mixed vinyl privacy plus metal pool fence — resort-style backyard',
       'style',
-      'Underground Barrier Systems'
-    ),
-  ],
-  detailStrip: [
-    asset(
-      W[39],
-      'Wide backyard view of continuous pet fencing securing the full yard perimeter',
-      'application'
+      'Pool + spa combinations',
+      'Mixed materials on one project'
     ),
   ],
 };
@@ -363,7 +429,47 @@ export const serviceImageSets: Record<ServiceSlugKey, ServiceImageSet> = {
   'vinyl-fences': vinyl,
   'aluminum-fences': aluminum,
   'pet-dog-fencing': pet,
+  'pool-fence': poolFence,
 };
+
+/** All pool project photos — full-width gallery on /services/pool-fence */
+export const poolFenceAllGalleryImages: ServiceImageAsset[] = [
+  asset(
+    POOL.poolSpaWide,
+    'Pool and spa with waterfall, mixed white vinyl privacy and black metal pool fencing on a bright day — Massachusetts',
+    'gallery'
+  ),
+  asset(
+    POOL.aerialHome,
+    'Aerial view of Cape-style home with black metal fence around pool and green lawn — JT Fence Inc.',
+    'gallery'
+  ),
+  asset(
+    POOL.paversInstall,
+    'Stone paver deck under construction with white vinyl and black metal pool fencing — professional install',
+    'gallery'
+  ),
+  asset(
+    POOL.metalVinyl,
+    'Black ornamental pool fence with white vinyl privacy fence in background — South Shore backyard',
+    'gallery'
+  ),
+  asset(
+    POOL.woodedPool,
+    'Wooded backyard with rectangular pool enclosed by black metal fence and grey stone patio',
+    'gallery'
+  ),
+  asset(
+    POOL.promoEstimate,
+    'Black pool barrier around blue pool with autumn trees — JT Fence Boston pool projects',
+    'gallery'
+  ),
+  asset(
+    POOL.residentialPromo,
+    'Residential pool enclosed by black metal fence with blue home and pergola — Massachusetts',
+    'gallery'
+  ),
+];
 
 export function getServiceImageSet(slug: string): ServiceImageSet | null {
   if (slug in serviceImageSets) {

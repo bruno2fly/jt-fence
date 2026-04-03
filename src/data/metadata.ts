@@ -52,12 +52,13 @@ export const metadata: MetadataMap = {
   "/services": {
     title: "Fencing Services | JT Fence Inc. Wood, Vinyl, Aluminum",
     description:
-      "Explore our complete range of fencing services including wood, vinyl, aluminum, and specialized pet fencing solutions. Professional installation in South Shore MA.",
+      "Explore our complete range of fencing services including wood, vinyl, aluminum, pet containment, and pool barriers. Professional installation in South Shore MA.",
     keywords: [
       "fencing services",
       "wood fence",
       "vinyl fence",
       "aluminum fence",
+      "pool fence",
       "pet fencing",
       "dog fence",
       "fence installation",
@@ -148,41 +149,26 @@ export const metadata: MetadataMap = {
     ogDescription:
       "Specialized fencing systems to safely contain your pets. Jump-proof and dig-proof designs for active dogs.",
   },
-  "/portfolio": {
-    title: "Fence Installation Portfolio | JT Fence Inc. South Shore MA",
+  "/services/pool-fence": {
+    title:
+      "Pool Fence Installation MA | Safety Barriers & Privacy | JT Fence Inc.",
     description:
-      "View our portfolio of professional fence installations throughout South Shore Massachusetts. Wood, vinyl, and aluminum fence projects.",
+      "Professional pool fences and barriers for Massachusetts homes—ornamental metal pool enclosures, vinyl privacy, self-closing gates, pavers and spa integration. South Shore & Boston area.",
     keywords: [
-      "fence portfolio",
-      "fence projects",
-      "installed fences",
-      "fence examples",
-      "before and after",
-      "fence installation photos",
-      "South Shore fencing",
-      "professional fence work",
+      "pool fence",
+      "pool fencing Massachusetts",
+      "pool barrier",
+      "pool safety fence",
+      "ornamental pool fence",
+      "vinyl pool fence",
+      "self-closing pool gate",
+      "inground pool fence",
+      "South Shore MA",
+      "JT Fence Boston",
     ],
-    ogTitle: "Fence Installation Portfolio | JT Fence Inc.",
+    ogTitle: "Pool Fence & Barriers | JT Fence Inc.",
     ogDescription:
-      "See our professional fence installations throughout South Shore Massachusetts. Quality craftsmanship on display.",
-  },
-  "/reviews": {
-    title: "Customer Reviews | JT Fence Inc. Rated 5-Stars",
-    description:
-      "Read reviews and testimonials from satisfied customers throughout South Shore Massachusetts. Rated 5-stars for quality and service.",
-    keywords: [
-      "fence reviews",
-      "customer testimonials",
-      "5 star reviews",
-      "contractor reviews",
-      "fence company reviews",
-      "South Shore MA reviews",
-      "local reviews",
-      "customer satisfaction",
-    ],
-    ogTitle: "5-Star Customer Reviews | JT Fence Inc.",
-    ogDescription:
-      "See why customers throughout South Shore Massachusetts trust JT Fence Inc. for their fencing needs.",
+      "Code-ready pool barriers, privacy fencing, and expert installation for backyards across Massachusetts.",
   },
   "/process": {
     title: "Our Fencing Process | JT Fence Inc. Installation Steps",

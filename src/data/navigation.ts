@@ -44,6 +44,10 @@ export const navigation: Navigation = {
           name: "Pet & Dog Fencing",
           href: "/services/pet-dog-fencing",
         },
+        {
+          name: "Pool Fence & Barriers",
+          href: "/services/pool-fence",
+        },
       ],
     },
     {
@@ -87,14 +91,6 @@ export const navigation: Navigation = {
           href: "/service-areas/pembroke-ma",
         },
       ],
-    },
-    {
-      name: "Portfolio",
-      href: "/portfolio",
-    },
-    {
-      name: "Reviews",
-      href: "/reviews",
     },
     {
       name: "Process",
@@ -146,6 +142,10 @@ export const navigation: Navigation = {
         href: "/services/pet-dog-fencing",
       },
       {
+        name: "Pool Fence & Barriers",
+        href: "/services/pool-fence",
+      },
+      {
         name: "Fence Repair",
         href: "/services#repair",
       },
@@ -178,16 +178,8 @@ export const navigation: Navigation = {
         href: "/process",
       },
       {
-        name: "Customer Reviews",
-        href: "/reviews",
-      },
-      {
-        name: "Portfolio",
-        href: "/portfolio",
-      },
-      {
-        name: "FAQ",
-        href: "/faq",
+        name: "Have Questions?",
+        href: "/contact",
       },
       {
         name: "Blog",
