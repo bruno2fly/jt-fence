@@ -186,10 +186,28 @@ export default function Footer({
                 Cape Cod, MA
               </Link>
               <Link
-                href="/service-areas/wareham-ma"
+                href="/service-areas/hingham-ma"
                 className="block font-body text-sm text-[#E8E4DF] hover:text-[#C9A84C] transition-colors"
               >
-                Wareham, MA
+                Hingham, MA
+              </Link>
+              <Link
+                href="/service-areas/falmouth-ma"
+                className="block font-body text-sm text-[#E8E4DF] hover:text-[#C9A84C] transition-colors"
+              >
+                Falmouth, MA
+              </Link>
+              <Link
+                href="/service-areas/hyannis-ma"
+                className="block font-body text-sm text-[#E8E4DF] hover:text-[#C9A84C] transition-colors"
+              >
+                Hyannis, MA
+              </Link>
+              <Link
+                href="/service-areas/sandwich-ma"
+                className="block font-body text-sm text-[#E8E4DF] hover:text-[#C9A84C] transition-colors"
+              >
+                Sandwich, MA
               </Link>
             </nav>
           </div>

@@ -38,5 +38,5 @@ export const company: Company = {
     "Massachusetts Home Improvement Contractor",
   ],
   serviceRadius:
-    "South Shore MA including Plymouth, Cape Cod, Wareham, Duxbury, Kingston, Scituate, Norwell, Hanover, and Pembroke",
+    "South Shore MA and Cape Cod including Plymouth, Marshfield, Hingham, Cohasset, Carver, Duxbury, Kingston, Scituate, Norwell, Hanover, Pembroke, Wareham, Sagamore, Buzzards Bay, Sandwich, Mashpee, Falmouth, Pocasset, Hyannis, Centerville, Osterville, Marstons Mills, Dennis, Dennis Port, Chatham, Orleans, Brewster, Harwich, Harwich Port, and New Seabury",
 };

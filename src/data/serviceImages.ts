@@ -27,51 +27,11 @@ export interface ServiceImageAsset {
   category: ServiceImageCategory;
 }
 
-/** Sorted list — disjoint slices per service (no URL reused across slugs) */
-const W = [
-  '/images/wood/PHOTO-2026-03-31-09-23-28.jpg',
-  '/images/wood/PHOTO-2026-03-31-09-23-29 10.jpg',
-  '/images/wood/PHOTO-2026-03-31-09-23-29 2.jpg',
-  '/images/wood/PHOTO-2026-03-31-09-23-29 3.jpg',
-  '/images/wood/PHOTO-2026-03-31-09-23-29 4.jpg',
-  '/images/wood/PHOTO-2026-03-31-09-23-29 5.jpg',
-  '/images/wood/PHOTO-2026-03-31-09-23-29 6.jpg',
-  '/images/wood/PHOTO-2026-03-31-09-23-29 7.jpg',
-  '/images/wood/PHOTO-2026-03-31-09-23-29 8.jpg',
-  '/images/wood/PHOTO-2026-03-31-09-23-29 9.jpg',
-  '/images/wood/PHOTO-2026-03-31-09-23-29.jpg',
-  '/images/wood/PHOTO-2026-03-31-09-23-30 10.jpg',
-  '/images/wood/PHOTO-2026-03-31-09-23-30 11.jpg',
-  '/images/wood/PHOTO-2026-03-31-09-23-30 12.jpg',
-  '/images/wood/PHOTO-2026-03-31-09-23-30 13.jpg',
-  '/images/wood/PHOTO-2026-03-31-09-23-30 14.jpg',
-  '/images/wood/PHOTO-2026-03-31-09-23-30 15.jpg',
-  '/images/wood/PHOTO-2026-03-31-09-23-30 16.jpg',
-  '/images/wood/PHOTO-2026-03-31-09-23-30 2.jpg',
-  '/images/wood/PHOTO-2026-03-31-09-23-30 3.jpg',
-  '/images/wood/PHOTO-2026-03-31-09-23-30 4.jpg',
-  '/images/wood/PHOTO-2026-03-31-09-23-30 5.jpg',
-  '/images/wood/PHOTO-2026-03-31-09-23-30 6.jpg',
-  '/images/wood/PHOTO-2026-03-31-09-23-30 7.jpg',
-  '/images/wood/PHOTO-2026-03-31-09-23-30 8.jpg',
-  '/images/wood/PHOTO-2026-03-31-09-23-30 9.jpg',
-  '/images/wood/PHOTO-2026-03-31-09-23-30.jpg',
-  '/images/wood/PHOTO-2026-03-31-09-23-31 2.jpg',
-  '/images/wood/PHOTO-2026-03-31-09-23-31 3.jpg',
-  '/images/wood/PHOTO-2026-03-31-09-23-31 4.jpg',
-  '/images/wood/PHOTO-2026-03-31-09-23-31.jpg',
-  '/images/wood/PHOTO-2026-03-31-09-23-32 10.jpg',
-  '/images/wood/PHOTO-2026-03-31-09-23-32 11.jpg',
-  '/images/wood/PHOTO-2026-03-31-09-23-32 2.jpg',
-  '/images/wood/PHOTO-2026-03-31-09-23-32 3.jpg',
-  '/images/wood/PHOTO-2026-03-31-09-23-32 4.jpg',
-  '/images/wood/PHOTO-2026-03-31-09-23-32 5.jpg',
-  '/images/wood/PHOTO-2026-03-31-09-23-32 6.jpg',
-  '/images/wood/PHOTO-2026-03-31-09-23-32 7.jpg',
-  '/images/wood/PHOTO-2026-03-31-09-23-32 8.jpg',
-  '/images/wood/PHOTO-2026-03-31-09-23-32 9.jpg',
-  '/images/wood/PHOTO-2026-03-31-09-23-32.jpg',
-] as const;
+/*
+ * Original wood project batch — retained for future gallery use:
+ * /images/wood/PHOTO-2026-03-31-09-23-28.jpg through PHOTO-2026-03-31-09-23-32 11.jpg
+ * (41 images total in /public/images/wood/)
+ */
 
 /** JT Fence Facebook wood fence photography — used for /services/wood-fences and homepage hero */
 const FB_WOOD = [
@@ -86,22 +46,30 @@ const FB_WOOD = [
   '/images/wood/fb/fb-09.jpg',
 ] as const;
 
-/** Wood style shots — Split Rail, Post and Board, Mixed Materials (Gemini project art) */
+/** Wood style shots — Split Rail, Post and Board, Mixed Materials (Gemini project art) + real project photography */
 const WOOD_STYLE = {
   splitRailCape: '/images/wood/gemini/wood-split-rail-cape.png',
   postBoardColonial: '/images/wood/gemini/wood-post-board-colonial.png',
   mixedWoodMetal: '/images/wood/gemini/wood-mixed-materials.png',
+  privacyNatural01: '/images/wood/wood-privacy-natural-01.jpg',
+  horizontalStainedGate: '/images/wood/wood-horizontal-stained-gate.jpg',
+  spindleTop01: '/images/wood/wood-spindle-top-01.jpg',
+  spindleTop02: '/images/wood/wood-spindle-top-02.jpg',
+  spindleTop03: '/images/wood/wood-spindle-top-03.jpg',
+  spindleTop04: '/images/wood/wood-spindle-top-04.jpg',
 } as const;
 
-/** Pet & dog fencing — hero + feature photography only (no style grid on page) */
+/** Pet & dog fencing — hero + feature photography only (no style grid on page) + real project photography */
 const PET_DOG = {
   heroHorizontal:
     '/images/pet/pet-hero-horizontal-fence.png',
   yardVinylSecure:
     '/images/pet/pet-yard-vinyl-secure.png',
+  aluminumFenceBackyard:
+    '/images/pet/pet-aluminum-fence-backyard.jpg',
 } as const;
 
-/** Vinyl category photography — one asset per style on /services/vinyl-fences */
+/** Vinyl category photography — one asset per style on /services/vinyl-fences + real project photography */
 const VINYL = {
   privacy: '/images/vinyl/vinyl-privacy.png',
   semiPrivacy: '/images/vinyl/vinyl-semi-privacy.png',
@@ -109,6 +77,11 @@ const VINYL = {
   lattice: '/images/vinyl/vinyl-lattice.png',
   postRail: '/images/vinyl/vinyl-post-rail.png',
   decorative: '/images/vinyl/vinyl-decorative.png',
+  privacyWhite01: '/images/vinyl/vinyl-privacy-white-01.jpg',
+  privacyWhite02: '/images/vinyl/vinyl-privacy-white-02.jpg',
+  privacyWhiteGate: '/images/vinyl/vinyl-privacy-white-gate.jpg',
+  semiPrivacyLattice: '/images/vinyl/vinyl-semi-privacy-lattice.jpg',
+  postRailHydrangeas: '/images/vinyl/vinyl-post-rail-hydrangeas.jpg',
 } as const;
 
 /** Homepage hero — same flagship shot as the wood-fences service hero */
@@ -117,7 +90,18 @@ export const homeHeroBackgroundSrc: string = FB_WOOD[0];
 /** About page hero — yard sign & on-site branding (public/images/about/) */
 export const aboutPageHeroBackgroundSrc = '/images/about/yard-sign-banner.png';
 
-/** Pool & spa barrier projects — public/images/pool/ */
+/** Aluminum fencing — real project photography */
+const ALUMINUM = {
+  drivewayGateArched: '/images/aluminum/aluminum-driveway-gate-arched.jpg',
+  railingUnderDeck: '/images/aluminum/aluminum-railing-under-deck.jpg',
+  fenceBackyardPet: '/images/aluminum/aluminum-fence-backyard-pet.jpg',
+  vinylMixedCombo: '/images/aluminum/aluminum-vinyl-mixed-combo.jpg',
+  vinylPropertyLine: '/images/aluminum/aluminum-vinyl-property-line.jpg',
+  cableRailingStairs: '/images/aluminum/aluminum-cable-railing-stairs.jpg',
+  vinylMixedYard: '/images/aluminum/aluminum-vinyl-mixed-yard.jpg',
+} as const;
+
+/** Pool & spa barrier projects — public/images/pool/ + real project photography */
 const POOL = {
   aerialHome: '/images/pool/pool-01-aerial-home.png',
   paversInstall: '/images/pool/pool-02-pavers-install.png',
@@ -126,6 +110,11 @@ const POOL = {
   woodedPool: '/images/pool/pool-05-wooded-pool.png',
   promoEstimate: '/images/pool/pool-06-promo-estimate.png',
   residentialPromo: '/images/pool/pool-07-residential-promo.png',
+  aluminumBackyard01: '/images/pool/pool-aluminum-backyard-01.jpg',
+  aluminumPatioUmbrella: '/images/pool/pool-aluminum-patio-umbrella.jpg',
+  aluminumWoodedNew: '/images/pool/pool-aluminum-wooded-new.jpg',
+  aluminumJtSign01: '/images/pool/pool-aluminum-jt-sign-01.jpg',
+  aluminumJtSign02: '/images/pool/pool-aluminum-jt-sign-02.jpg',
 } as const;
 
 export type ServiceSlugKey =
@@ -154,7 +143,7 @@ function asset(
   return { src, alt, category, title, caption };
 }
 
-/* --- wood-fences: FB_WOOD[0–8] — Facebook project photography, nine images across hero → styles --- */
+/* --- wood-fences: FB_WOOD[0–8] — Facebook project photography, nine images across hero → styles + real project photos --- */
 const wood: ServiceImageSet = {
   hero: asset(
     FB_WOOD[0],
@@ -215,10 +204,54 @@ const wood: ServiceImageSet = {
       'Mixed Materials',
       'Wood with metal accents'
     ),
+    asset(
+      WOOD_STYLE.spindleTop01,
+      'Natural wood fence with decorative spindle top detail — residential project by JT Fence Inc.',
+      'style',
+      'Spindle Top',
+      'Decorative wood detail'
+    ),
+    asset(
+      WOOD_STYLE.spindleTop02,
+      'Natural wood fence with spindle top detail among landscaping and trees',
+      'style',
+      'Spindle Top (Landscape)',
+      'Garden integration'
+    ),
+    asset(
+      WOOD_STYLE.spindleTop03,
+      'Natural wood fence with spindle top detail along street view',
+      'style',
+      'Spindle Top (Street View)',
+      'Curb appeal with detail'
+    ),
+    asset(
+      WOOD_STYLE.spindleTop04,
+      'Natural wood fence with spindle top detail in garden setting',
+      'style',
+      'Spindle Top (Garden)',
+      'Ornamental fencing'
+    ),
+  ],
+  detailStrip: [
+    asset(
+      WOOD_STYLE.privacyNatural01,
+      'Natural cedar/wood privacy fence along landscaped residential yard',
+      'detail',
+      'Natural Cedar Privacy',
+      'Real project photography'
+    ),
+    asset(
+      WOOD_STYLE.horizontalStainedGate,
+      'Dark stained horizontal wood fence with gate, JT Fence Boston branded',
+      'detail',
+      'Stained Horizontal Fence',
+      'Professional finish'
+    ),
   ],
 };
 
-/* --- vinyl-fences: VINYL.* — category-matched project photography per style option --- */
+/* --- vinyl-fences: VINYL.* — category-matched project photography per style option + real project photos --- */
 const vinyl: ServiceImageSet = {
   hero: asset(
     VINYL.privacy,
@@ -280,66 +313,117 @@ const vinyl: ServiceImageSet = {
       'Contemporary and custom designs'
     ),
   ],
-};
-
-/* --- aluminum-fences: indices 21–29 --- */
-const aluminum: ServiceImageSet = {
-  hero: asset(
-    W[21],
-    'Black aluminum picket fence with sleek vertical rails on a modern Massachusetts residential property',
-    'hero'
-  ),
-  intro: asset(
-    W[22],
-    'Aluminum fence line with powder-coated finish resisting rust and salt air near the South Shore coast',
-    'intro'
-  ),
-  benefitsHighlight: asset(
-    W[23],
-    'Close-up of aluminum fence rail and picket connection showing precision metalwork by JT Fence Inc.',
-    'benefit'
-  ),
-  styleImages: [
+  detailStrip: [
     asset(
-      W[24],
-      'Modern vertical picket aluminum fence with even spacing for security and curb appeal',
-      'style',
-      'Modern Vertical Picket'
+      VINYL.privacyWhite01,
+      'White vinyl privacy fence on bright green lawn, sunny residential setting',
+      'detail',
+      'White Vinyl Privacy',
+      'Real project photography'
     ),
     asset(
-      W[25],
-      'Horizontal rail aluminum fence for a minimalist contemporary look',
-      'style',
-      'Horizontal Rail'
+      VINYL.privacyWhite02,
+      'White vinyl privacy fence near residential buildings',
+      'detail',
+      'Vinyl Privacy Installation',
+      'Urban residential'
     ),
     asset(
-      W[26],
-      'Ornamental aluminum fencing with decorative details at a residential entrance',
-      'style',
-      'Ornamental Aluminum'
+      VINYL.privacyWhiteGate,
+      'White vinyl privacy fence with gate section',
+      'detail',
+      'Vinyl Privacy Gate',
+      'Functional access'
     ),
     asset(
-      W[27],
-      'Semi-privacy aluminum fence balancing sight lines with airflow',
-      'style',
-      'Semi-Privacy Aluminum'
+      VINYL.semiPrivacyLattice,
+      'White vinyl semi-privacy fence with lattice top',
+      'detail',
+      'Vinyl Lattice Top',
+      'Light and airflow'
     ),
     asset(
-      W[28],
-      'Flat-top aluminum fence with straight clean lines along a property perimeter',
-      'style',
-      'Modern Flat Top'
-    ),
-    asset(
-      W[29],
-      'Custom aluminum fence layout following grade changes on a landscaped lot',
-      'style',
-      'Custom Design Aluminum'
+      VINYL.postRailHydrangeas,
+      'White vinyl post-and-rail fence with blue hydrangeas, Cape Cod setting',
+      'detail',
+      'Vinyl Post-and-Rail',
+      'Landscaping integration'
     ),
   ],
 };
 
-/* --- pet-dog-fencing: PET_DOG — dog- & safety-focused page (no material “categories” grid) --- */
+/* --- aluminum-fences: real project photography --- */
+const aluminum: ServiceImageSet = {
+  hero: asset(
+    ALUMINUM.drivewayGateArched,
+    'Black aluminum arched driveway gate with wood fence wings — elegant entryway',
+    'hero'
+  ),
+  intro: asset(
+    ALUMINUM.fenceBackyardPet,
+    'Black aluminum fence around backyard with pet containment visible',
+    'intro'
+  ),
+  benefitsHighlight: asset(
+    ALUMINUM.railingUnderDeck,
+    'Black aluminum railing under white deck and stairs — precision installation',
+    'benefit',
+    'Quality metalwork'
+  ),
+  styleImages: [
+    asset(
+      ALUMINUM.drivewayGateArched,
+      'Black aluminum arched driveway gate with wood fence wings — elegant residential entryway',
+      'style',
+      'Driveway Gates',
+      'Decorative and functional'
+    ),
+    asset(
+      ALUMINUM.fenceBackyardPet,
+      'Black aluminum fence around backyard for pet containment and security',
+      'style',
+      'Aluminum Fencing',
+      'Durable and low-maintenance'
+    ),
+    asset(
+      ALUMINUM.railingUnderDeck,
+      'Black aluminum railing under white deck and stairs — sleek contemporary design',
+      'style',
+      'Aluminum Railings',
+      'Safety and style'
+    ),
+    asset(
+      ALUMINUM.vinylMixedCombo,
+      'Black aluminum and white vinyl mixed fence installation — complementary materials',
+      'style',
+      'Mixed Materials',
+      'Aluminum with vinyl accents'
+    ),
+    asset(
+      ALUMINUM.vinylPropertyLine,
+      'Black aluminum with white vinyl along property line — hybrid design',
+      'style',
+      'Aluminum & Vinyl Combo',
+      'Design flexibility'
+    ),
+    asset(
+      ALUMINUM.cableRailingStairs,
+      'White aluminum cable railing along stone staircase — modern minimalist lines',
+      'style',
+      'Cable Railing',
+      'Contemporary aesthetic'
+    ),
+    asset(
+      ALUMINUM.vinylMixedYard,
+      'Black aluminum and vinyl mixed fencing in landscaped yard — professional installation',
+      'style',
+      'Landscaped Integration',
+      'Coordinated design'
+    ),
+  ],
+};
+
+/* --- pet-dog-fencing: PET_DOG — dog- & safety-focused page (no material “categories” grid) + real project photos --- */
 const pet: ServiceImageSet = {
   hero: asset(
     PET_DOG.heroHorizontal,
@@ -358,9 +442,18 @@ const pet: ServiceImageSet = {
     'Gates & containment'
   ),
   styleImages: [],
+  detailStrip: [
+    asset(
+      PET_DOG.aluminumFenceBackyard,
+      'Black aluminum fence around backyard for pet containment — safe and secure',
+      'detail',
+      'Aluminum Pet Fence',
+      'Real project photography'
+    ),
+  ],
 };
 
-/* --- pool-fence: full project photography — barrier + perimeter + promo --- */
+/* --- pool-fence: full project photography — barrier + perimeter + promo + real project photos --- */
 const poolFence: ServiceImageSet = {
   hero: asset(
     POOL.poolSpaWide,
@@ -421,6 +514,27 @@ const poolFence: ServiceImageSet = {
       'Pool + spa combinations',
       'Mixed materials on one project'
     ),
+    asset(
+      POOL.aluminumBackyard01,
+      'Black aluminum pool fence around backyard pool area near upscale home',
+      'style',
+      'Aluminum Pool Fencing',
+      'Modern security'
+    ),
+    asset(
+      POOL.aluminumPatioUmbrella,
+      'Black aluminum pool fence with patio furniture and umbrella',
+      'style',
+      'Poolside Entertainment',
+      'Integrated design'
+    ),
+    asset(
+      POOL.aluminumWoodedNew,
+      'Black aluminum pool fence in wooded new construction setting',
+      'style',
+      'New Construction Pools',
+      'Fresh installations'
+    ),
   ],
 };
 
@@ -467,6 +581,31 @@ export const poolFenceAllGalleryImages: ServiceImageAsset[] = [
   asset(
     POOL.residentialPromo,
     'Residential pool enclosed by black metal fence with blue home and pergola — Massachusetts',
+    'gallery'
+  ),
+  asset(
+    POOL.aluminumBackyard01,
+    'Black aluminum pool fence around backyard pool area near upscale home',
+    'gallery'
+  ),
+  asset(
+    POOL.aluminumPatioUmbrella,
+    'Black aluminum pool fence with patio furniture and umbrella',
+    'gallery'
+  ),
+  asset(
+    POOL.aluminumWoodedNew,
+    'Black aluminum pool fence in wooded new construction setting',
+    'gallery'
+  ),
+  asset(
+    POOL.aluminumJtSign01,
+    'Black aluminum pool fence with JT Fence yard sign visible',
+    'gallery'
+  ),
+  asset(
+    POOL.aluminumJtSign02,
+    'Another angle of pool fence with JT Fence sign',
     'gallery'
   ),
 ];

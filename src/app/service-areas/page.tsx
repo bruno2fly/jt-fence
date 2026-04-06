@@ -42,7 +42,7 @@ export default function ServiceAreasPage() {
                 Plymouth County
               </h3>
               <p className="font-body text-[#2D3436] text-sm leading-relaxed">
-                We serve 7 communities throughout Plymouth County, from the historic shores of Plymouth to the affluent neighborhoods of Norwell and prestigious Duxbury.
+                We serve 11 communities throughout Plymouth County, from the historic shores of Plymouth to the affluent neighborhoods of Hingham, Cohasset, and prestigious Duxbury.
               </p>
             </div>
             <div className="bg-white rounded-lg p-6 border border-[#E8E4DF]">
@@ -50,7 +50,7 @@ export default function ServiceAreasPage() {
                 Barnstable County
               </h3>
               <p className="font-body text-[#2D3436] text-sm leading-relaxed">
-                Cape Cod's unique coastal environment demands specialized expertise. Our team excels at delivering salt-resistant fencing solutions for the Cape's demanding climate.
+                We serve 20+ communities across Cape Cod and Barnstable County, from Sagamore and Sandwich to Chatham and Orleans. Our team excels at delivering salt-resistant fencing solutions for the Cape's demanding coastal climate.
               </p>
             </div>
             <div className="bg-white rounded-lg p-6 border border-[#E8E4DF]">

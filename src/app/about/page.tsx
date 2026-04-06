@@ -191,7 +191,7 @@ export default function About() {
             </div>
             <div className="text-center">
               <div className="font-heading text-4xl md:text-5xl font-bold text-[#C9A84C] mb-2">
-                9
+                30+
               </div>
               <p className="font-body text-[#E8E4DF] text-lg">Service Areas</p>
             </div>
