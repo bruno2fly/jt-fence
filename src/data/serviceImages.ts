@@ -84,8 +84,8 @@ const VINYL = {
   postRailHydrangeas: '/images/vinyl/vinyl-post-rail-hydrangeas.jpg',
 } as const;
 
-/** Homepage hero — same flagship shot as the wood-fences service hero */
-export const homeHeroBackgroundSrc: string = FB_WOOD[0];
+/** Homepage hero — same flagship shot as /services/vinyl-fences for consistent premium vinyl branding */
+export const homeHeroBackgroundSrc: string = VINYL.privacy;
 
 /** About page hero — yard sign & on-site branding (public/images/about/) */
 export const aboutPageHeroBackgroundSrc = '/images/about/yard-sign-banner.png';

@@ -27,7 +27,7 @@ export default function Hero({
     overlayVariant === 'photo'
       ? 'bg-gradient-to-r from-[#1B4332]/72 to-[#2D3436]/62'
       : overlayVariant === 'home'
-        ? 'bg-gradient-to-br from-[#0a1810]/80 via-[#1B4332]/78 to-[#1a2220]/88'
+        ? 'bg-gradient-to-br from-black/55 via-[#0a1810]/88 to-[#1a2220]/92'
         : 'bg-gradient-to-r from-[#1B4332]/95 to-[#2D3436]/85';
 
   return (
@@ -44,6 +44,9 @@ export default function Hero({
     >
       {/* Photo darkening + brand tint so headline and CTAs stay readable */}
       <div className={`absolute inset-0 ${overlayClass}`} aria-hidden />
+      {overlayVariant === 'home' && (
+        <div className="absolute inset-0 bg-black/25" aria-hidden />
+      )}
 
       {/* Content */}
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
