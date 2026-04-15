@@ -146,8 +146,8 @@ function asset(
 /* --- wood-fences: FB_WOOD[0–8] — Facebook project photography, nine images across hero → styles + real project photos --- */
 const wood: ServiceImageSet = {
   hero: asset(
-    FB_WOOD[0],
-    'Wood privacy fence installation by JT Fence Inc. — natural cedar-toned boards along a Massachusetts residential property',
+    '/images/wood/wood-fences-hero-banner.png',
+    'Modern horizontal wood fence with black metal posts and decorative top rail, stone patio and landscaped backyard — JT Fence Inc., Massachusetts',
     'hero'
   ),
   intro: asset(
