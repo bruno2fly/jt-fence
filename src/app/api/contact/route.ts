@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
+import { Resend } from 'resend';
 
 export const runtime = 'nodejs';
 
@@ -32,44 +33,8 @@ function escapeHtml(s: string): string {
     .replace(/"/g, '&quot;');
 }
 
-export async function POST(request: Request) {
-  const gmailUser = process.env.GMAIL_USER;
-  const gmailPass = process.env.GMAIL_APP_PASSWORD;
-
-  if (!gmailUser || !gmailPass) {
-    console.error('Contact API: GMAIL_USER or GMAIL_APP_PASSWORD is not set');
-    return NextResponse.json(
-      { error: 'Email delivery is not configured on the server.' },
-      { status: 503 }
-    );
-  }
-
-  let body: Partial<ContactPayload>;
-  try {
-    body = await request.json();
-  } catch {
-    return NextResponse.json({ error: 'Invalid JSON body' }, { status: 400 });
-  }
-
-  if (!validate(body)) {
-    return NextResponse.json(
-      { error: 'Please fill in all fields with valid information.' },
-      { status: 400 }
-    );
-  }
-
-  const to = process.env.CONTACT_TO_EMAIL?.trim() || DEFAULT_TO;
-  const { name, email, phone, city, serviceType, projectDetails } = body;
-  const phoneDigits = phone.replace(/\D/g, '');
-
-  const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-      user: gmailUser,
-      pass: gmailPass,
-    },
-  });
-
+function buildMessage(body: ContactPayload, phoneDigits: string) {
+  const { name, email, city, serviceType, projectDetails } = body;
   const text = [
     `New quote request from jtfenceboston.com`,
     ``,
@@ -94,15 +59,89 @@ export async function POST(request: Request) {
     <pre style="font-family:sans-serif;white-space:pre-wrap;">${escapeHtml(projectDetails)}</pre>
   `;
 
+  return { text, html };
+}
+
+export async function POST(request: Request) {
+  const resendKey = process.env.RESEND_API_KEY?.trim();
+  const resendFrom = process.env.RESEND_FROM_EMAIL?.trim();
+  const gmailUser = process.env.GMAIL_USER?.trim();
+  const gmailPass = process.env.GMAIL_APP_PASSWORD?.trim();
+
+  const hasResend = Boolean(resendKey && resendFrom);
+  const hasGmail = Boolean(gmailUser && gmailPass);
+
+  if (!hasResend && !hasGmail) {
+    console.error(
+      'Contact API: set RESEND_API_KEY + RESEND_FROM_EMAIL, or GMAIL_USER + GMAIL_APP_PASSWORD'
+    );
+    return NextResponse.json(
+      {
+        error:
+          'Email delivery is not configured. Add environment variables in the hosting dashboard (Vercel → Settings → Environment Variables), then redeploy.',
+      },
+      { status: 503 }
+    );
+  }
+
+  let body: Partial<ContactPayload>;
   try {
-    await transporter.sendMail({
-      from: `JT Fence Website <${gmailUser}>`,
-      to,
-      replyTo: email,
-      subject: `Quote request: ${name} — ${city}`,
-      text,
-      html,
-    });
+    body = await request.json();
+  } catch {
+    return NextResponse.json({ error: 'Invalid JSON body' }, { status: 400 });
+  }
+
+  if (!validate(body)) {
+    return NextResponse.json(
+      { error: 'Please fill in all fields with valid information.' },
+      { status: 400 }
+    );
+  }
+
+  const to = process.env.CONTACT_TO_EMAIL?.trim() || DEFAULT_TO;
+  const { name, email, phone, city, serviceType, projectDetails } = body;
+  const phoneDigits = phone.replace(/\D/g, '');
+  const { text, html } = buildMessage(
+    { name, email, phone, city, serviceType, projectDetails },
+    phoneDigits
+  );
+  const subject = `Quote request: ${name} — ${city}`;
+
+  try {
+    if (hasResend && resendKey && resendFrom) {
+      const resend = new Resend(resendKey);
+      const { error } = await resend.emails.send({
+        from: resendFrom,
+        to: [to],
+        replyTo: email,
+        subject,
+        text,
+        html,
+      });
+      if (error) {
+        console.error('Contact API: Resend error', error);
+        return NextResponse.json(
+          { error: 'Could not send your message. Please try again or call us directly.' },
+          { status: 502 }
+        );
+      }
+    } else if (hasGmail && gmailUser && gmailPass) {
+      const transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+          user: gmailUser,
+          pass: gmailPass,
+        },
+      });
+      await transporter.sendMail({
+        from: `JT Fence Website <${gmailUser}>`,
+        to,
+        replyTo: email,
+        subject,
+        text,
+        html,
+      });
+    }
   } catch (err) {
     console.error('Contact API: failed to send mail', err);
     return NextResponse.json(
