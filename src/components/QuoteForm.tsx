@@ -17,6 +17,8 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
     projectDetails: '',
   });
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const [errors, setErrors] = useState<Record<string, string>>({});
 
   const serviceOptions = [
@@ -68,28 +70,52 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setSubmitError(null);
 
     if (!validateForm()) {
       return;
     }
 
-    console.log('Form submitted:', formData);
-    setSubmitted(true);
-    if (onSuccess) onSuccess();
-
-    setTimeout(() => {
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        city: '',
-        serviceType: '',
-        projectDetails: '',
+    setIsSubmitting(true);
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
       });
-      setSubmitted(false);
-    }, 5000);
+      const data = (await res.json().catch(() => ({}))) as { error?: string };
+
+      if (!res.ok) {
+        setSubmitError(
+          data.error ||
+            'Something went wrong. Please try again or call us directly.'
+        );
+        return;
+      }
+
+      setSubmitted(true);
+      if (onSuccess) onSuccess();
+
+      setTimeout(() => {
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          city: '',
+          serviceType: '',
+          projectDetails: '',
+        });
+        setSubmitted(false);
+      }, 5000);
+    } catch {
+      setSubmitError(
+        'Could not reach the server. Check your connection and try again.'
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   if (submitted) {
@@ -103,7 +129,7 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
           Your quote request has been received. We'll contact you shortly with a free estimate.
         </p>
         <p className="font-body text-sm text-[#9A9590]">
-          Redirecting in a moment...
+          The form will reset shortly if you need to send another message.
         </p>
       </div>
     );
@@ -250,10 +276,17 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
       {/* Submit Button */}
       <button
         type="submit"
-        className="w-full px-6 py-3 bg-[#C9A84C] text-white font-body font-semibold rounded-lg hover:bg-[#B8933F] transition-colors text-base"
+        disabled={isSubmitting}
+        className="w-full px-6 py-3 bg-[#C9A84C] text-white font-body font-semibold rounded-lg hover:bg-[#B8933F] transition-colors text-base disabled:opacity-60 disabled:cursor-not-allowed"
       >
-        Get My Free Quote
+        {isSubmitting ? 'Sending…' : 'Get My Free Quote'}
       </button>
+
+      {submitError && (
+        <p className="font-body text-sm text-red-600 text-center" role="alert">
+          {submitError}
+        </p>
+      )}
 
       <p className="font-body text-sm text-[#9A9590] text-center">
         We'll respond within 24 hours with a free estimate
