@@ -97,6 +97,12 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
 
       setSubmitted(true);
       if (onSuccess) onSuccess();
+      // Fire Google Ads conversion
+      if (typeof window !== 'undefined' && (window as any).gtag) {
+        (window as any).gtag('event', 'conversion', {
+          'send_to': 'AW-389-622-3244/form_submission',
+        });
+      }
 
       setTimeout(() => {
         setFormData({
