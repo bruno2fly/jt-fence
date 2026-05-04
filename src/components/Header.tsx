@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Menu, X, ChevronDown } from 'lucide-react';
 
 interface HeaderProps {
@@ -42,9 +43,11 @@ export default function Header({ phoneNumber = '(781) 420-5858' }: HeaderProps) 
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center flex-shrink-0">
-            <img
+            <Image
               src="/images/jtlogo.png"
               alt="JT Fence Inc."
+              width={48}
+              height={48}
               className="h-12 w-auto"
             />
           </Link>

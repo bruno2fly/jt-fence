@@ -18,7 +18,7 @@ export default function PoolFenceLandingClient() {
     <main style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif', color: '#1a1a1a' }}>
 
       {/* HERO with real photo */}
-      <section style={{ position: 'relative', height: '520px', overflow: 'hidden' }}>
+      <section style={{ position: 'relative', minHeight: 'clamp(300px, 80vh, 520px)', overflow: 'hidden' }}>
         <Image
           src="/images/pool/pool-aluminum-patio-umbrella.jpg"
           alt="Pool fence installation Massachusetts"
@@ -71,7 +71,7 @@ export default function PoolFenceLandingClient() {
       </section>
 
       {/* PHOTO GALLERY STRIP */}
-      <section style={{ padding: '60px 20px', maxWidth: 1100, margin: '0 auto' }}>
+      <section style={{ padding: 'clamp(20px, 5vw, 60px) clamp(16px, 4vw, 20px)', maxWidth: 1100, margin: '0 auto' }}>
         <h2 style={{ fontSize: 28, fontWeight: 800, textAlign: 'center', marginBottom: 12 }}>
           Our Pool Fence Work
         </h2>
@@ -95,7 +95,7 @@ export default function PoolFenceLandingClient() {
       </section>
 
       {/* WHY NOW */}
-      <section style={{ background: '#f0f9ff', padding: '60px 20px' }}>
+      <section style={{ background: '#f0f9ff', padding: 'clamp(20px, 5vw, 60px) clamp(16px, 4vw, 20px)' }}>
         <div style={{ maxWidth: 900, margin: '0 auto' }}>
           <h2 style={{ fontSize: 28, fontWeight: 800, textAlign: 'center', marginBottom: 40 }}>
             Why Install Before Summer?
@@ -117,7 +117,7 @@ export default function PoolFenceLandingClient() {
       </section>
 
       {/* FENCE OPTIONS with photos */}
-      <section style={{ padding: '60px 20px', maxWidth: 900, margin: '0 auto' }}>
+      <section style={{ padding: 'clamp(20px, 5vw, 60px) clamp(16px, 4vw, 20px)', maxWidth: 900, margin: '0 auto' }}>
         <h2 style={{ fontSize: 28, fontWeight: 800, textAlign: 'center', marginBottom: 12 }}>
           Pool Fence Options
         </h2>
@@ -151,7 +151,7 @@ export default function PoolFenceLandingClient() {
                   {item.badge}
                 </span>
               )}
-              <div style={{ height: 200, position: 'relative' }}>
+              <div style={{ aspectRatio: '4/3', position: 'relative' }}>
                 <Image src={item.img} alt={item.name} fill style={{ objectFit: 'cover' }} />
               </div>
               <div style={{ padding: 20 }}>

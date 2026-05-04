@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { Phone, Mail, MapPin } from 'lucide-react';
 
 /* lucide-react@1.7.0 does not export Facebook/Instagram — use inline SVGs */
@@ -38,9 +39,11 @@ export default function Footer({
           {/* Company Info */}
           <div>
             <div className="mb-6">
-              <img
+              <Image
                 src="/images/jtlogo.png"
                 alt="JT Fence Inc."
+                width={40}
+                height={40}
                 className="h-10 w-auto brightness-0 invert"
               />
             </div>

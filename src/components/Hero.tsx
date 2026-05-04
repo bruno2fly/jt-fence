@@ -30,15 +30,18 @@ export default function Hero({
         ? 'bg-gradient-to-br from-black/55 via-[#0a1810]/88 to-[#1a2220]/92'
         : 'bg-gradient-to-r from-[#1B4332]/95 to-[#2D3436]/85';
 
+  const isSmallScreen = typeof window !== 'undefined' && window.innerWidth < 768;
+  const backgroundPosition = isSmallScreen ? 'center 30%' : 'center center';
+
   return (
     <section
-      className="relative min-h-[600px] md:min-h-[700px] flex items-center justify-center pt-20 pb-16 overflow-hidden"
+      className="relative min-h-[400px] sm:min-h-[500px] md:min-h-[600px] lg:min-h-[700px] flex items-center justify-center pt-20 pb-16 overflow-hidden"
       style={{
         backgroundImage: backgroundImage
           ? `url(${backgroundImage})`
           : 'linear-gradient(135deg, #1B4332 0%, #2D3436 100%)',
         backgroundSize: 'cover',
-        backgroundPosition: 'center center',
+        backgroundPosition,
         backgroundRepeat: 'no-repeat',
       }}
     >
