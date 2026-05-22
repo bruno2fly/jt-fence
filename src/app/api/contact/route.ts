@@ -106,7 +106,7 @@ export async function POST(request: Request) {
   const subject = `Quote request: ${name} — ${city}`;
 
   try {
-    const transporter = nodemailer.createTransporter({
+    const transporter = nodemailer.createTransport({
       host: smtpHost,
       port: parseInt(smtpPort),
       secure: parseInt(smtpPort) === 465, // true for 465, false for other ports
