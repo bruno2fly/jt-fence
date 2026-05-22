@@ -1,5 +1,7 @@
 import Link from 'next/link';
+import { Phone } from 'lucide-react';
 import TrustBadges from './TrustBadges';
+import { company } from '@/data/company';
 
 interface HeroProps {
   title: string;
@@ -71,6 +73,13 @@ export default function Hero({
           >
             {ctaText}
           </Link>
+          <a
+            href={`tel:${company.phone}`}
+            className="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-[#1B4332] text-white font-body font-semibold rounded-lg hover:bg-[#0f2118] transition-colors text-base"
+          >
+            <Phone className="h-5 w-5" />
+            Call {company.phone}
+          </a>
           {secondaryCtaText && secondaryCtaLink && (
             <Link
               href={secondaryCtaLink}

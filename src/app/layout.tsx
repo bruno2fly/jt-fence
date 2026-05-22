@@ -3,6 +3,7 @@ import Script from 'next/script'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import LocalBusinessJsonLd from '@/components/LocalBusinessJsonLd'
+import StickyCallButton from '@/components/StickyCallButton'
 import './globals.css'
 
 const GOOGLE_ADS_ID = 'AW-389-622-3244'
@@ -122,6 +123,7 @@ export default function RootLayout({
         <Header />
         <main className="flex-grow">{children}</main>
         <Footer />
+        <StickyCallButton />
       </body>
     </html>
   )
