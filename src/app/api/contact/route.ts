@@ -4,7 +4,7 @@ import { Resend } from 'resend';
 
 export const runtime = 'nodejs';
 
-const DEFAULT_TO = 'jtfenceboston@gmail.com';
+const DEFAULT_TO = 'contact@jtfenceboston.com';
 
 type ContactPayload = {
   name: string;
