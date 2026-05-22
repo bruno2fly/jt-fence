@@ -1,6 +1,5 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
-import { Resend } from 'resend';
 
 export const runtime = 'nodejs';
 
@@ -63,22 +62,21 @@ function buildMessage(body: ContactPayload, phoneDigits: string) {
 }
 
 export async function POST(request: Request) {
-  const resendKey = process.env.RESEND_API_KEY?.trim();
-  const resendFrom = process.env.RESEND_FROM_EMAIL?.trim();
-  const gmailUser = process.env.GMAIL_USER?.trim();
-  const gmailPass = process.env.GMAIL_APP_PASSWORD?.trim();
+  const smtpHost = process.env.SMTP_HOST?.trim();
+  const smtpPort = process.env.SMTP_PORT?.trim();
+  const smtpUser = process.env.SMTP_USER?.trim();
+  const smtpPass = process.env.SMTP_PASS?.trim();
 
-  const hasResend = Boolean(resendKey && resendFrom);
-  const hasGmail = Boolean(gmailUser && gmailPass);
+  const hasSmtp = Boolean(smtpHost && smtpPort && smtpUser && smtpPass);
 
-  if (!hasResend && !hasGmail) {
+  if (!hasSmtp) {
     console.error(
-      'Contact API: set RESEND_API_KEY + RESEND_FROM_EMAIL, or GMAIL_USER + GMAIL_APP_PASSWORD'
+      'Contact API: set SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS'
     );
     return NextResponse.json(
       {
         error:
-          'Email delivery is not configured. Add environment variables in the hosting dashboard (Vercel → Settings → Environment Variables), then redeploy.',
+          'Email delivery is not configured. Add SMTP environment variables in the hosting dashboard (Vercel → Settings → Environment Variables), then redeploy.',
       },
       { status: 503 }
     );
@@ -108,40 +106,24 @@ export async function POST(request: Request) {
   const subject = `Quote request: ${name} — ${city}`;
 
   try {
-    if (hasResend && resendKey && resendFrom) {
-      const resend = new Resend(resendKey);
-      const { error } = await resend.emails.send({
-        from: resendFrom,
-        to: [to],
-        replyTo: email,
-        subject,
-        text,
-        html,
-      });
-      if (error) {
-        console.error('Contact API: Resend error', error);
-        return NextResponse.json(
-          { error: 'Could not send your message. Please try again or call us directly.' },
-          { status: 502 }
-        );
-      }
-    } else if (hasGmail && gmailUser && gmailPass) {
-      const transporter = nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-          user: gmailUser,
-          pass: gmailPass,
-        },
-      });
-      await transporter.sendMail({
-        from: `JT Fence Website <${gmailUser}>`,
-        to,
-        replyTo: email,
-        subject,
-        text,
-        html,
-      });
-    }
+    const transporter = nodemailer.createTransporter({
+      host: smtpHost,
+      port: parseInt(smtpPort),
+      secure: parseInt(smtpPort) === 465, // true for 465, false for other ports
+      auth: {
+        user: smtpUser,
+        pass: smtpPass,
+      },
+    });
+    
+    await transporter.sendMail({
+      from: `JT Fence Website <${smtpUser}>`,
+      to,
+      replyTo: email,
+      subject,
+      text,
+      html,
+    });
   } catch (err) {
     console.error('Contact API: failed to send mail', err);
     return NextResponse.json(
