@@ -6,7 +6,7 @@ import LocalBusinessJsonLd from '@/components/LocalBusinessJsonLd'
 import StickyCallButton from '@/components/StickyCallButton'
 import './globals.css'
 
-const GOOGLE_ADS_ID = 'AW-389-622-3244'
+const GOOGLE_ADS_ID = 'AW-18076313145'
 
 export const viewport: Viewport = {
   width: 'device-width',
