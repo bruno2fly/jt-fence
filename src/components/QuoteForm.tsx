@@ -15,6 +15,7 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
     city: '',
     serviceType: '',
     projectDetails: '',
+    hearAboutUs: '',
   });
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -28,6 +29,15 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
     'Gate Installation',
   ];
 
+  const hearAboutUsOptions = [
+    'Google Search',
+    'Google Ads',
+    'Referral from friend/family',
+    'Social media',
+    'Drove by your job site',
+    'Other',
+  ];
+
   const validateForm = () => {
     const newErrors: Record<string, string> = {};
 
@@ -39,14 +49,22 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
     }
     if (!formData.phone.trim()) {
       newErrors.phone = 'Phone number is required';
-    } else if (!/^\d{10}$/.test(formData.phone.replace(/\D/g, ''))) {
-      newErrors.phone = 'Phone number must be 10 digits';
+    } else {
+      const phoneDigits = formData.phone.replace(/\D/g, '');
+      if (phoneDigits.length !== 10) {
+        newErrors.phone = 'Phone number must be 10 digits';
+      } else if (phoneDigits.startsWith('0') || phoneDigits.startsWith('1')) {
+        newErrors.phone = 'Please enter a valid US phone number';
+      } else if (/^(\d)\1{9}$/.test(phoneDigits)) {
+        newErrors.phone = 'Please enter a valid phone number';
+      }
     }
     if (!formData.city.trim()) newErrors.city = 'City is required';
     if (!formData.serviceType) newErrors.serviceType = 'Service type is required';
     if (!formData.projectDetails.trim()) {
       newErrors.projectDetails = 'Project details are required';
     }
+    if (!formData.hearAboutUs) newErrors.hearAboutUs = 'Please tell us how you heard about us';
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -79,6 +97,34 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
     }
 
     setIsSubmitting(true);
+
+    // reCAPTCHA verification
+    try {
+      if (typeof window !== 'undefined' && (window as any).grecaptcha) {
+        const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || '6LdYourSiteKey_here';
+        const token = await (window as any).grecaptcha.execute(siteKey, {action: 'submit_quote'});
+        
+        // Verify the token on the server
+        const verifyResponse = await fetch('/api/verify-recaptcha', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ token }),
+        });
+        
+        if (!verifyResponse.ok) {
+          const verifyData = await verifyResponse.json().catch(() => ({}));
+          setSubmitError(verifyData.error || 'Security verification failed. Please try again.');
+          setIsSubmitting(false);
+          return;
+        }
+      }
+    } catch (error) {
+      console.error('reCAPTCHA error:', error);
+      setSubmitError('Security verification failed. Please try again.');
+      setIsSubmitting(false);
+      return;
+    }
+
     try {
       const res = await fetch('/api/contact', {
         method: 'POST',
@@ -112,6 +158,7 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
           city: '',
           serviceType: '',
           projectDetails: '',
+          hearAboutUs: '',
         });
         setSubmitted(false);
       }, 5000);
@@ -192,7 +239,7 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
         {/* Phone */}
         <div>
           <label className="block font-body font-semibold text-[#1B4332] mb-2">
-            Phone Number
+            Phone Number *
           </label>
           <input
             type="tel"
@@ -253,6 +300,33 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
         {errors.serviceType && (
           <p className="text-red-500 text-sm font-body mt-1">
             {errors.serviceType}
+          </p>
+        )}
+      </div>
+
+      {/* How did you hear about us */}
+      <div>
+        <label className="block font-body font-semibold text-[#1B4332] mb-2">
+          How did you hear about us? *
+        </label>
+        <select
+          name="hearAboutUs"
+          value={formData.hearAboutUs}
+          onChange={handleChange}
+          className={`w-full px-4 py-3 border rounded-lg font-body text-[#2D3436] focus:outline-none focus:border-[#C9A84C] transition-colors ${
+            errors.hearAboutUs ? 'border-red-500' : 'border-[#E8E4DF]'
+          }`}
+        >
+          <option value="">Please select...</option>
+          {hearAboutUsOptions.map((option) => (
+            <option key={option} value={option}>
+              {option}
+            </option>
+          ))}
+        </select>
+        {errors.hearAboutUs && (
+          <p className="text-red-500 text-sm font-body mt-1">
+            {errors.hearAboutUs}
           </p>
         )}
       </div>

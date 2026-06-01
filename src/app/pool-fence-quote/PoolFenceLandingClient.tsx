@@ -6,12 +6,111 @@ import Link from 'next/link';
 
 export default function PoolFenceLandingClient() {
   const [formData, setFormData] = useState({
-    name: '', phone: '', email: '', city: '', message: ''
+    name: '', phone: '', email: '', city: '', message: '', hearAboutUs: ''
   });
+  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const hearAboutUsOptions = [
+    'Google Search',
+    'Google Ads',
+    'Referral from friend/family',
+    'Social media',
+    'Drove by your job site',
+    'Other',
+  ];
+
+  const validateForm = () => {
+    const newErrors: Record<string, string> = {};
+
+    if (!formData.name.trim()) newErrors.name = 'Name is required';
+    if (!formData.phone.trim()) {
+      newErrors.phone = 'Phone number is required';
+    } else {
+      const phoneDigits = formData.phone.replace(/\D/g, '');
+      if (phoneDigits.length !== 10) {
+        newErrors.phone = 'Phone number must be 10 digits';
+      } else if (phoneDigits.startsWith('0') || phoneDigits.startsWith('1')) {
+        newErrors.phone = 'Please enter a valid US phone number';
+      } else if (/^(\d)\1{9}$/.test(phoneDigits)) {
+        newErrors.phone = 'Please enter a valid phone number';
+      }
+    }
+    if (!formData.city.trim()) newErrors.city = 'City is required';
+    if (!formData.hearAboutUs) newErrors.hearAboutUs = 'Please tell us how you heard about us';
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    window.location.href = `/contact?service=pool-fence&name=${encodeURIComponent(formData.name)}&phone=${encodeURIComponent(formData.phone)}&email=${encodeURIComponent(formData.email)}&city=${encodeURIComponent(formData.city)}`;
+
+    if (!validateForm()) {
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    // reCAPTCHA verification
+    try {
+      if (typeof window !== 'undefined' && (window as any).grecaptcha) {
+        const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || '6LdYourSiteKey_here';
+        const token = await (window as any).grecaptcha.execute(siteKey, {action: 'submit_pool_quote'});
+        
+        // Verify the token on the server
+        const verifyResponse = await fetch('/api/verify-recaptcha', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ token }),
+        });
+        
+        if (!verifyResponse.ok) {
+          alert('Security verification failed. Please try again.');
+          setIsSubmitting(false);
+          return;
+        }
+      }
+    } catch (error) {
+      console.error('reCAPTCHA error:', error);
+      alert('Security verification failed. Please try again.');
+      setIsSubmitting(false);
+      return;
+    }
+
+    // Submit the form data
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ...formData,
+          serviceType: 'Pool Fence Installation',
+          projectDetails: formData.message || 'Pool fence estimate request from landing page',
+        }),
+      });
+
+      if (!res.ok) {
+        alert('Something went wrong. Please try again or call us directly.');
+        setIsSubmitting(false);
+        return;
+      }
+
+      // Success - redirect or show success message
+      window.location.href = '/contact?success=true&service=pool-fence';
+    } catch (error) {
+      console.error('Form submission error:', error);
+      alert('Could not submit form. Please try again or call us directly.');
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+    if (errors[name]) {
+      setErrors(prev => ({ ...prev, [name]: '' }));
+    }
   };
 
   return (
@@ -191,7 +290,7 @@ export default function PoolFenceLandingClient() {
           <form onSubmit={handleSubmit}>
             {[
               { label: 'Your Name', key: 'name', type: 'text', placeholder: 'John Smith', required: true },
-              { label: 'Phone', key: 'phone', type: 'tel', placeholder: '(781) 555-0100', required: true },
+              { label: 'Phone Number', key: 'phone', type: 'tel', placeholder: '(781) 420-5858', required: true },
               { label: 'Email', key: 'email', type: 'email', placeholder: 'john@email.com', required: false },
               { label: 'City / Town', key: 'city', type: 'text', placeholder: 'Plymouth, Hingham, Falmouth...', required: true },
             ].map((field) => (
@@ -201,32 +300,71 @@ export default function PoolFenceLandingClient() {
                 </label>
                 <input
                   type={field.type}
+                  name={field.key}
                   placeholder={field.placeholder}
                   value={(formData as any)[field.key]}
-                  onChange={(e) => setFormData({ ...formData, [field.key]: e.target.value })}
+                  onChange={handleChange}
                   required={field.required}
-                  style={{ width: '100%', padding: '11px 14px', border: '1.5px solid #d1d5db', borderRadius: 8, fontSize: 15, boxSizing: 'border-box' }}
+                  style={{ 
+                    width: '100%', 
+                    padding: '11px 14px', 
+                    border: `1.5px solid ${errors[field.key] ? '#ef4444' : '#d1d5db'}`, 
+                    borderRadius: 8, 
+                    fontSize: 15, 
+                    boxSizing: 'border-box' 
+                  }}
                 />
+                {errors[field.key] && (
+                  <p style={{ color: '#ef4444', fontSize: 12, marginTop: 4 }}>{errors[field.key]}</p>
+                )}
               </div>
             ))}
+            <div style={{ marginBottom: 16 }}>
+              <label style={{ display: 'block', fontSize: 13, fontWeight: 600, marginBottom: 6, color: '#374151' }}>
+                How did you hear about us? *
+              </label>
+              <select
+                name="hearAboutUs"
+                value={formData.hearAboutUs}
+                onChange={handleChange}
+                required
+                style={{ 
+                  width: '100%', 
+                  padding: '11px 14px', 
+                  border: `1.5px solid ${errors.hearAboutUs ? '#ef4444' : '#d1d5db'}`, 
+                  borderRadius: 8, 
+                  fontSize: 15, 
+                  boxSizing: 'border-box' 
+                }}
+              >
+                <option value="">Please select...</option>
+                {hearAboutUsOptions.map((option) => (
+                  <option key={option} value={option}>{option}</option>
+                ))}
+              </select>
+              {errors.hearAboutUs && (
+                <p style={{ color: '#ef4444', fontSize: 12, marginTop: 4 }}>{errors.hearAboutUs}</p>
+              )}
+            </div>
             <div style={{ marginBottom: 20 }}>
               <label style={{ display: 'block', fontSize: 13, fontWeight: 600, marginBottom: 6, color: '#374151' }}>
                 Tell us about your project
               </label>
               <textarea
+                name="message"
                 placeholder="Pool size, patio type, style preference..."
                 rows={3}
                 value={formData.message}
-                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                onChange={handleChange}
                 style={{ width: '100%', padding: '11px 14px', border: '1.5px solid #d1d5db', borderRadius: 8, fontSize: 15, resize: 'vertical', boxSizing: 'border-box' }}
               />
             </div>
-            <button type="submit" style={{
-              width: '100%', background: '#2563eb', color: '#fff',
+            <button type="submit" disabled={isSubmitting} style={{
+              width: '100%', background: isSubmitting ? '#9ca3af' : '#2563eb', color: '#fff',
               border: 'none', borderRadius: 8, padding: '14px',
-              fontSize: 16, fontWeight: 700, cursor: 'pointer'
+              fontSize: 16, fontWeight: 700, cursor: isSubmitting ? 'not-allowed' : 'pointer'
             }}>
-              Request My Free Estimate
+              {isSubmitting ? 'Submitting...' : 'Request My Free Estimate'}
             </button>
             <p style={{ textAlign: 'center', fontSize: 12, color: '#9ca3af', marginTop: 12 }}>
               Or call us: <a href="tel:7814205858" style={{ color: '#2563eb', fontWeight: 600 }}>(781) 420-5858</a>

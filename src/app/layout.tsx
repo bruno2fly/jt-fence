@@ -8,6 +8,7 @@ import PromoPopup from '@/components/PromoPopup'
 import './globals.css'
 
 const GOOGLE_ADS_ID = 'AW-18073723056'
+const RECAPTCHA_SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || '6LdYourSiteKey_here'
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -99,6 +100,11 @@ export default function RootLayout({
         {/* Google Ads Global Site Tag */}
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ADS_ID}`}
+          strategy="afterInteractive"
+        />
+        {/* Google reCAPTCHA v3 */}
+        <Script
+          src={`https://www.google.com/recaptcha/api.js?render=${RECAPTCHA_SITE_KEY}`}
           strategy="afterInteractive"
         />
         <Script id="google-ads" strategy="afterInteractive">

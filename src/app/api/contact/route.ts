@@ -12,6 +12,7 @@ type ContactPayload = {
   city: string;
   serviceType: string;
   projectDetails: string;
+  hearAboutUs?: string;
 };
 
 function validate(payload: Partial<ContactPayload>): payload is ContactPayload {
@@ -21,6 +22,7 @@ function validate(payload: Partial<ContactPayload>): payload is ContactPayload {
   if (!payload.city?.trim()) return false;
   if (!payload.serviceType?.trim()) return false;
   if (!payload.projectDetails?.trim()) return false;
+  if (!payload.hearAboutUs?.trim()) return false;
   return true;
 }
 
@@ -33,7 +35,7 @@ function escapeHtml(s: string): string {
 }
 
 function buildMessage(body: ContactPayload, phoneDigits: string) {
-  const { name, email, city, serviceType, projectDetails } = body;
+  const { name, email, city, serviceType, projectDetails, hearAboutUs } = body;
   const text = [
     `New quote request from jtfenceboston.com`,
     ``,
@@ -42,6 +44,7 @@ function buildMessage(body: ContactPayload, phoneDigits: string) {
     `Phone: ${phoneDigits}`,
     `City: ${city}`,
     `Service: ${serviceType}`,
+    `How they heard about us: ${hearAboutUs || 'Not specified'}`,
     ``,
     `Project details:`,
     projectDetails,
@@ -54,6 +57,7 @@ function buildMessage(body: ContactPayload, phoneDigits: string) {
     <p><strong>Phone:</strong> ${escapeHtml(phoneDigits)}</p>
     <p><strong>City:</strong> ${escapeHtml(city)}</p>
     <p><strong>Service:</strong> ${escapeHtml(serviceType)}</p>
+    <p><strong>How they heard about us:</strong> ${escapeHtml(hearAboutUs || 'Not specified')}</p>
     <p><strong>Project details:</strong></p>
     <pre style="font-family:sans-serif;white-space:pre-wrap;">${escapeHtml(projectDetails)}</pre>
   `;
