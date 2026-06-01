@@ -53,6 +53,7 @@ export default function Footer({
             <div className="space-y-3">
               <a
                 href={`tel:${phoneNumber.replace(/\D/g, '')}`}
+                onClick={() => { if (typeof window !== 'undefined' && window.gtag_report_conversion) window.gtag_report_conversion(`tel:${phoneNumber.replace(/\D/g, '')}`); return false; }}
                 className="flex items-center space-x-2 text-[#E8E4DF] hover:text-[#C9A84C] transition-colors font-body text-sm"
               >
                 <Phone size={16} />

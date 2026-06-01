@@ -107,6 +107,22 @@ export default function RootLayout({
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
             gtag('config', '${GOOGLE_ADS_ID}');
+            
+            // Phone call conversion tracking
+            function gtag_report_conversion(url) {
+              var callback = function () {
+                if (typeof(url) != 'undefined') {
+                  window.location = url;
+                }
+              };
+              gtag('event', 'conversion', {
+                'send_to': 'AW-18073723056/BxqQCLeGm7ccELDBnKpD',
+                'value': 1.0,
+                'currency': 'USD',
+                'event_callback': callback
+              });
+              return false;
+            }
           `}
         </Script>
         <meta name="theme-color" content="#1B4332" />

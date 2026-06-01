@@ -11,6 +11,7 @@ declare global {
         [key: string]: any;
       }
     ) => void;
+    gtag_report_conversion: (url: string) => boolean;
     dataLayer: any[];
   }
 }

@@ -8,6 +8,7 @@ export default function StickyCallButton() {
     <div className="fixed bottom-6 right-6 z-50 lg:hidden">
       <a
         href={`tel:${company.phone}`}
+        onClick={() => { if (typeof window !== 'undefined' && window.gtag_report_conversion) window.gtag_report_conversion(`tel:${company.phone}`); return false; }}
         className="flex h-14 w-14 items-center justify-center rounded-full bg-[#1B4332] text-white shadow-lg hover:bg-[#0f2118] transition-colors duration-200 hover:shadow-xl"
         aria-label="Call JT Fence Now"
       >
