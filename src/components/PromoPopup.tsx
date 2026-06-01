@@ -104,7 +104,7 @@ export default function PromoPopup() {
               onClick={handleCallNow}
               className="w-full bg-primary-600 hover:bg-primary-700 text-white font-bold py-4 px-6 rounded-lg text-lg transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-primary-300"
             >
-              📞 CALL NOW: (781) 420-5858
+              CALL NOW: (781) 420-5858
             </button>
 
             {/* Get Free Estimate Button - Secondary CTA */}
@@ -112,7 +112,7 @@ export default function PromoPopup() {
               onClick={handleGetEstimate}
               className="w-full bg-accent-500 hover:bg-accent-600 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-accent-300"
             >
-              💰 Get FREE Estimate
+              Get FREE Estimate
             </button>
 
             {/* Fine Print */}
