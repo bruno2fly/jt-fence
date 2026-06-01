@@ -7,7 +7,7 @@ import StickyCallButton from '@/components/StickyCallButton'
 import PromoPopup from '@/components/PromoPopup'
 import './globals.css'
 
-const GOOGLE_ADS_ID = 'AW-18076313145'
+const GOOGLE_ADS_ID = 'AW-18073723056'
 
 export const viewport: Viewport = {
   width: 'device-width',

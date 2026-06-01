@@ -34,7 +34,7 @@ export default function PromoPopup() {
     // Track the conversion event
     if (typeof window !== 'undefined' && window.gtag) {
       window.gtag('event', 'conversion', {
-        'send_to': 'AW-18076313145/pool_fence_popup_call'
+        'send_to': 'AW-18073723056/pool_fence_popup_call'
       });
     }
     
@@ -49,7 +49,7 @@ export default function PromoPopup() {
     // Track the conversion event
     if (typeof window !== 'undefined' && window.gtag) {
       window.gtag('event', 'conversion', {
-        'send_to': 'AW-18076313145/pool_fence_popup_estimate'
+        'send_to': 'AW-18073723056/pool_fence_popup_estimate'
       });
     }
     
