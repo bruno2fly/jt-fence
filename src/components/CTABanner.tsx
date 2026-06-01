@@ -41,7 +41,6 @@ export default function CTABanner({
           {phoneCta && (
             <a
               href={`tel:${phoneNumber.replace(/\D/g, '')}`}
-              onClick={() => { if (typeof window !== 'undefined' && window.gtag_report_conversion) window.gtag_report_conversion(`tel:${phoneNumber.replace(/\D/g, '')}`); return false; }}
               className="inline-flex items-center justify-center px-8 py-3.5 border-2 border-[#C9A84C] text-[#C9A84C] font-body font-semibold rounded-lg hover:bg-[#C9A84C] hover:text-white transition-colors text-base"
             >
               {phoneNumber}

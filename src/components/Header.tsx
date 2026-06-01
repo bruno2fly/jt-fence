@@ -113,7 +113,6 @@ export default function Header({ phoneNumber = '(781) 420-5858' }: HeaderProps) 
           {/* Phone Number (Desktop) */}
           <a
             href={`tel:${phoneNumber.replace(/\D/g, '')}`}
-            onClick={() => { if (typeof window !== 'undefined' && window.gtag_report_conversion) window.gtag_report_conversion(`tel:${phoneNumber.replace(/\D/g, '')}`); return false; }}
             className="hidden lg:flex items-center text-[#1B4332] font-body text-sm hover:text-[#C9A84C] transition-colors"
           >
             <span>{phoneNumber}</span>
@@ -212,7 +211,6 @@ export default function Header({ phoneNumber = '(781) 420-5858' }: HeaderProps) 
             </Link>
             <a
               href={`tel:${phoneNumber.replace(/\D/g, '')}`}
-              onClick={() => { if (typeof window !== 'undefined' && window.gtag_report_conversion) window.gtag_report_conversion(`tel:${phoneNumber.replace(/\D/g, '')}`); return false; }}
               className="block px-4 py-2 text-[#1B4332] font-body hover:text-[#C9A84C] transition-colors"
             >
               {phoneNumber}

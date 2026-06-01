@@ -75,7 +75,6 @@ export default function Hero({
           </Link>
           <a
             href={`tel:${company.phone}`}
-            onClick={() => { if (typeof window !== 'undefined' && window.gtag_report_conversion) window.gtag_report_conversion(`tel:${company.phone}`); return false; }}
             className="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-[#1B4332] text-white font-body font-semibold rounded-lg hover:bg-[#0f2118] transition-colors text-base"
           >
             <Phone className="h-5 w-5" />
