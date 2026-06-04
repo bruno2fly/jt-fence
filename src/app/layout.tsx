@@ -4,7 +4,7 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import LocalBusinessJsonLd from '@/components/LocalBusinessJsonLd'
 import StickyCallButton from '@/components/StickyCallButton'
-import PromoPopup from '@/components/PromoPopup'
+
 import './globals.css'
 
 const GOOGLE_ADS_ID = 'AW-18073723056'
@@ -147,7 +147,7 @@ export default function RootLayout({
         <main className="flex-grow">{children}</main>
         <Footer />
         <StickyCallButton />
-        <PromoPopup />
+
       </body>
     </html>
   )
