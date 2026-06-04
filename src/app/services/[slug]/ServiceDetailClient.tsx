@@ -14,6 +14,7 @@ import { Service } from '@/data/services';
 import { getServiceImageSet, poolFenceAllGalleryImages } from '@/data/serviceImages';
 import { Testimonial } from '@/data/testimonials';
 import { ServiceArea } from '@/data/serviceAreas';
+import ZeroDownPromoPopup from '@/components/ZeroDownPromoPopup';
 
 interface ServiceDetailClientProps {
   service: Service;
@@ -700,6 +701,7 @@ export default function ServiceDetailClient({
         phoneCta
         phoneNumber="(781) 420-5858"
       />
+      <ZeroDownPromoPopup />
     </>
   );
 }

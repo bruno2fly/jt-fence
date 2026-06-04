@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import ZeroDownPromoPopup from '@/components/ZeroDownPromoPopup';
 
 export default function PoolFenceLandingClient() {
   const [formData, setFormData] = useState({
@@ -381,6 +382,7 @@ export default function PoolFenceLandingClient() {
           Back to JT Fence Home
         </Link>
       </section>
+      <ZeroDownPromoPopup />
     </main>
   );
 }

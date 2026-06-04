@@ -6,6 +6,7 @@ import { company } from '@/data/company';
 import { serviceAreas } from '@/data/serviceAreas';
 import { metadata as metadataMap } from '@/data/metadata';
 import { Phone, Mail, MapPin, Clock } from 'lucide-react';
+import ZeroDownPromoPopup from '@/components/ZeroDownPromoPopup';
 
 export const metadata: Metadata = {
   title: metadataMap['/contact'].title,
@@ -281,6 +282,7 @@ export default function ContactPage() {
           ))}
         </div>
       </section>
+      <ZeroDownPromoPopup />
     </>
   );
 }

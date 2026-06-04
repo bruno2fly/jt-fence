@@ -22,6 +22,7 @@ import {
   Sparkles,
   Heart,
 } from 'lucide-react';
+import ZeroDownPromoPopup from '@/components/ZeroDownPromoPopup';
 
 export const metadata: Metadata = {
   title: metadataMap['/'].title,
@@ -281,6 +282,7 @@ export default function Home() {
         phoneCta={true}
         phoneNumber={company.phone}
       />
+      <ZeroDownPromoPopup />
     </>
   );
 }
