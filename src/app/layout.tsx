@@ -8,6 +8,7 @@ import StickyCallButton from '@/components/StickyCallButton'
 import './globals.css'
 
 const GOOGLE_ADS_ID = 'AW-18073723056'
+const GA4_MEASUREMENT_ID = 'G-S1K5J1833Q'
 const RECAPTCHA_SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || '6LdYourSiteKey_here'
 
 export const viewport: Viewport = {
@@ -102,32 +103,84 @@ export default function RootLayout({
           src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ADS_ID}`}
           strategy="afterInteractive"
         />
+        {/* Google Analytics 4 (GA4) */}
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA4_MEASUREMENT_ID}`}
+          strategy="afterInteractive"
+        />
         {/* Google reCAPTCHA v3 */}
         <Script
           src={`https://www.google.com/recaptcha/api.js?render=${RECAPTCHA_SITE_KEY}`}
           strategy="afterInteractive"
         />
-        <Script id="google-ads" strategy="afterInteractive">
+        <Script id="google-analytics" strategy="afterInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
+            
+            // Google Ads Configuration
             gtag('config', '${GOOGLE_ADS_ID}');
             
-            // Phone call conversion tracking
+            // Google Analytics 4 Configuration
+            gtag('config', '${GA4_MEASUREMENT_ID}', {
+              page_title: document.title,
+              page_location: window.location.href,
+              send_page_view: true
+            });
+            
+            // Enhanced Measurement Events
+            gtag('config', '${GA4_MEASUREMENT_ID}', {
+              custom_map: {
+                'dimension1': 'service_area',
+                'dimension2': 'fence_type',
+                'dimension3': 'lead_source'
+              }
+            });
+            
+            // Phone call conversion tracking (Google Ads)
             function gtag_report_conversion(url) {
               var callback = function () {
                 if (typeof(url) != 'undefined') {
                   window.location = url;
                 }
               };
+              
+              // Google Ads conversion
               gtag('event', 'conversion', {
                 'send_to': 'AW-18073723056/BxqQCLeGm7ccELDBnKpD',
                 'value': 1.0,
                 'currency': 'USD',
                 'event_callback': callback
               });
+              
+              // GA4 conversion event
+              gtag('event', 'phone_call', {
+                'event_category': 'engagement',
+                'event_label': '(781) 420-5858',
+                'value': 100,
+                'currency': 'USD'
+              });
+              
               return false;
+            }
+            
+            // Custom GA4 Events
+            function trackQuoteRequest() {
+              gtag('event', 'generate_lead', {
+                'event_category': 'form',
+                'event_label': 'quote_request',
+                'value': 150,
+                'currency': 'USD'
+              });
+            }
+            
+            function trackServiceView(serviceType) {
+              gtag('event', 'view_item', {
+                'event_category': 'service',
+                'event_label': serviceType,
+                'content_type': 'service_page'
+              });
             }
           `}
         </Script>
