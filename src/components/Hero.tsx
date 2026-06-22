@@ -1,3 +1,5 @@
+'use client';
+
 import Link from 'next/link';
 import { Phone } from 'lucide-react';
 import TrustBadges from './TrustBadges';
@@ -32,8 +34,8 @@ export default function Hero({
         ? 'bg-gradient-to-br from-black/55 via-[#0a1810]/88 to-[#1a2220]/92'
         : 'bg-gradient-to-r from-[#1B4332]/95 to-[#2D3436]/85';
 
-  const isSmallScreen = typeof window !== 'undefined' && window.innerWidth < 768;
-  const backgroundPosition = isSmallScreen ? 'center 30%' : 'center center';
+  // Use a single responsive position that works well across device sizes
+  const backgroundPosition = 'center 30%';
 
   return (
     <section
@@ -75,6 +77,11 @@ export default function Hero({
           </Link>
           <a
             href={`tel:${company.phone}`}
+            onClick={() => {
+              if (typeof window !== 'undefined' && window.gtag_report_conversion) {
+                window.gtag_report_conversion(`tel:${company.phone}`);
+              }
+            }}
             className="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-[#1B4332] text-white font-body font-semibold rounded-lg hover:bg-[#0f2118] transition-colors text-base"
           >
             <Phone className="h-5 w-5" />
@@ -83,7 +90,7 @@ export default function Hero({
           {secondaryCtaText && secondaryCtaLink && (
             <Link
               href={secondaryCtaLink}
-              className="inline-flex items-center justify-center px-8 py-3.5 border-2 border-[#FAF8F5] text-[#FAF8F5] font-body font-semibold rounded-lg hover:bg-[#FAF8F5] hover:text-[#1B4332] transition-colors text-base"
+              className="hidden sm:inline-flex items-center justify-center px-8 py-3.5 border-2 border-[#FAF8F5] text-[#FAF8F5] font-body font-semibold rounded-lg hover:bg-[#FAF8F5] hover:text-[#1B4332] transition-colors text-base"
             >
               {secondaryCtaText}
             </Link>

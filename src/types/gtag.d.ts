@@ -12,6 +12,8 @@ declare global {
       }
     ) => void;
     gtag_report_conversion: (url: string) => boolean;
+    trackQuoteRequest: () => void;
+    trackServiceView: (serviceType: string) => void;
     dataLayer: any[];
   }
 }

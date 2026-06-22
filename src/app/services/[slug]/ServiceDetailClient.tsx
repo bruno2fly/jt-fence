@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo } from 'react';
+import { useMemo, useEffect } from 'react';
 import Hero from '@/components/Hero';
 import SectionIntro from '@/components/SectionIntro';
 import FAQAccordion from '@/components/FAQAccordion';
@@ -217,6 +217,13 @@ export default function ServiceDetailClient({
   relatedAreas,
 }: ServiceDetailClientProps) {
   // Get installation steps
+  // Track service page view in GA4
+  useEffect(() => {
+    if (typeof window !== 'undefined' && window.trackServiceView) {
+      window.trackServiceView(service.name);
+    }
+  }, [service.name]);
+
   const installationSteps = useMemo(() => getInstallationSteps(service.slug), [service.slug]);
 
   // Get service-specific FAQs

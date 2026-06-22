@@ -11,18 +11,23 @@ export default function ZeroDownPromoPopup() {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
+    // Suppress popup entirely on mobile — it's the #1 mobile bounce driver
+    if (window.innerWidth < 768) return undefined;
+
     // Check if user has already seen the popup today
     const lastSeen = localStorage.getItem('jt-fence-zero-down-popup-seen');
     const today = new Date().toDateString();
-    
+
     if (lastSeen !== today) {
-      // Show popup after 2 seconds
+      // Show popup after 6 seconds on desktop (was 2s — too aggressive)
       const timer = setTimeout(() => {
         setIsVisible(true);
-      }, 2000);
+      }, 6000);
 
       return () => clearTimeout(timer);
     }
+
+    return undefined;
   }, []);
 
   const handleClose = () => {

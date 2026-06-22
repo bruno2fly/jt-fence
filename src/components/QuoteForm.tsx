@@ -143,10 +143,18 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
 
       setSubmitted(true);
       if (onSuccess) onSuccess();
-      // Fire Google Ads conversion
-      if (typeof window !== 'undefined' && (window as any).gtag) {
-        (window as any).gtag('event', 'conversion', {
-          'send_to': 'AW-389-622-3244/form_submission',
+
+      // Fire GA4 generate_lead event
+      if (typeof window !== 'undefined' && window.trackQuoteRequest) {
+        window.trackQuoteRequest();
+      }
+
+      // Fire Google Ads form-submission conversion (correct account ID)
+      if (typeof window !== 'undefined' && window.gtag) {
+        window.gtag('event', 'conversion', {
+          'send_to': 'AW-18073723056/form_submission',
+          'value': 150,
+          'currency': 'USD',
         });
       }
 
