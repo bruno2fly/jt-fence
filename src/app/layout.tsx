@@ -1,9 +1,6 @@
 import type { Metadata, Viewport } from 'next'
 import Script from 'next/script'
-import Header from '@/components/Header'
-import Footer from '@/components/Footer'
 import LocalBusinessJsonLd from '@/components/LocalBusinessJsonLd'
-import StickyCallButton from '@/components/StickyCallButton'
 
 import './globals.css'
 
@@ -196,11 +193,7 @@ export default function RootLayout({
       </head>
       <body className="flex flex-col min-h-screen font-body">
         <LocalBusinessJsonLd />
-        <Header />
-        <main className="flex-grow">{children}</main>
-        <Footer />
-        <StickyCallButton />
-
+        {children}
       </body>
     </html>
   )
