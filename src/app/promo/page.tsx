@@ -265,7 +265,7 @@ export default function PromoPage() {
             <div className="inline-block bg-[#C9A84C] text-[#1B4332] font-bold text-xs px-3 py-1 rounded-full uppercase tracking-wider mb-4">
               🗓 Summer slots filling fast
             </div>
-            <h1 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-4">
+            <h1 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-4 text-white">
               Get a New Fence Installed Fast in Boston &amp; South Shore
             </h1>
             <p className="text-white/85 text-base sm:text-lg leading-relaxed mb-6">
