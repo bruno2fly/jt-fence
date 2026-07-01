@@ -268,9 +268,11 @@ export default function PromoPage() {
             <h1 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-4 text-white">
               Get a New Fence Installed Fast in Boston &amp; South Shore
             </h1>
-            <p className="text-white/85 text-base sm:text-lg leading-relaxed mb-6">
-              Free, no-obligation estimate — and we'll beat any written quote
-              from another licensed fence contractor.
+            <p className="text-white/70 text-sm sm:text-base mb-3">
+              Free, no-obligation estimate. No pressure. No games.
+            </p>
+            <p className="font-heading font-bold text-[#C9A84C] text-xl sm:text-2xl lg:text-3xl leading-snug mb-6">
+              We'll beat any written quote from another licensed fence contractor — guaranteed.
             </p>
 
             {/* Bullets */}
