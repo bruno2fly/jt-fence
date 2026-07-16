@@ -11,9 +11,40 @@ export const metadata: Metadata = {
 };
 
 export default function ServiceAreasPage() {
-  // Group areas by county for better organization
-  const plymouthCounty = serviceAreas.filter((area) => area.county === 'Plymouth County');
-  const barnstableCounty = serviceAreas.filter((area) => area.county === 'Barnstable County');
+  const regionOrder = [
+    'Plymouth County',
+    'Barnstable County',
+    'MetroWest',
+    'South of Boston',
+    'North Shore',
+  ];
+
+  const serviceAreasByRegion = serviceAreas.reduce<Record<string, typeof serviceAreas>>(
+    (regions, area) => {
+      regions[area.county] = regions[area.county] || [];
+      regions[area.county].push(area);
+      return regions;
+    },
+    {}
+  );
+
+  const orderedRegions = [
+    ...regionOrder.filter((region) => serviceAreasByRegion[region]?.length),
+    ...Object.keys(serviceAreasByRegion).filter((region) => !regionOrder.includes(region)),
+  ];
+
+  const regionDescriptions: Record<string, string> = {
+    'Plymouth County':
+      'Serving these South Shore communities with professional fencing installation and repair:',
+    'Barnstable County':
+      "Specialized coastal fencing solutions for Cape Cod and Barnstable County properties:",
+    MetroWest:
+      'Residential fencing for historic towns, wooded suburbs, dense inner neighborhoods, and growing MetroWest communities:',
+    'South of Boston':
+      'Fence installation for established neighborhoods, city-adjacent suburbs, waterfront communities, and family homes south of Boston:',
+    'North Shore':
+      'Quality fencing for North Shore suburbs, historic downtowns, wooded lots, lake-area homes, and upscale residential properties:',
+  };
 
   const breadcrumbItems = [
     { label: 'Home', href: '/' },
@@ -29,7 +60,7 @@ export default function ServiceAreasPage() {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20">
         <SectionIntro
           title="Fence Installation Across Massachusetts"
-          description="JT Fence Inc. proudly serves South Shore Massachusetts and Cape Cod with professional fencing solutions. Whether you're in a bustling coastal town or a quiet residential community, our team brings the same dedication to quality and customer service to every project."
+          description="JT Fence Inc. proudly serves Massachusetts communities from the South Shore and Cape Cod to MetroWest, South of Boston, and the North Shore. Whether you're in a coastal town, historic suburb, or dense urban neighborhood, our team brings the same dedication to quality and customer service to every project."
         />
       </section>
 
@@ -39,18 +70,18 @@ export default function ServiceAreasPage() {
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-white rounded-lg p-6 border border-[#E8E4DF]">
               <h3 className="font-heading text-xl font-semibold text-[#1B4332] mb-3">
-                Plymouth County
+                Five Service Regions
               </h3>
               <p className="font-body text-[#2D3436] text-sm leading-relaxed">
-                We serve 11 communities throughout Plymouth County, from the historic shores of Plymouth to the affluent neighborhoods of Hingham, Cohasset, and prestigious Duxbury.
+                We serve organized coverage across Plymouth County, Barnstable County, MetroWest, South of Boston, and the North Shore.
               </p>
             </div>
             <div className="bg-white rounded-lg p-6 border border-[#E8E4DF]">
               <h3 className="font-heading text-xl font-semibold text-[#1B4332] mb-3">
-                Barnstable County
+                {serviceAreas.length} Local Communities
               </h3>
               <p className="font-body text-[#2D3436] text-sm leading-relaxed">
-                We serve 20+ communities across Cape Cod and Barnstable County, from Sagamore and Sandwich to Chatham and Orleans. Our team excels at delivering salt-resistant fencing solutions for the Cape's demanding coastal climate.
+                From Cape Cod salt-air properties to wooded inland lots and close-set city homes, each service-area page reflects local fencing needs.
               </p>
             </div>
             <div className="bg-white rounded-lg p-6 border border-[#E8E4DF]">
@@ -58,7 +89,7 @@ export default function ServiceAreasPage() {
                 Local Expertise
               </h3>
               <p className="font-body text-[#2D3436] text-sm leading-relaxed">
-                With over 15 years serving these communities, we understand local building codes, municipal requirements, and the unique needs of each neighborhood.
+                With over 15 years serving Massachusetts communities, we understand municipal requirements, neighborhood expectations, and the unique conditions of each property.
               </p>
             </div>
           </div>
@@ -70,8 +101,8 @@ export default function ServiceAreasPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionIntro
             eyebrow="Coverage"
-            title="South Shore Service Region"
-            description="We install and repair fencing across Plymouth County, Cape Cod, and neighboring South Shore communities."
+            title="Massachusetts Service Regions"
+            description="We install and repair fencing across Plymouth County, Cape Cod, MetroWest, South of Boston, the North Shore, and neighboring communities."
             centered={true}
           />
           <div className="mt-10 w-full overflow-hidden rounded-lg border border-[#E8E4DF] shadow-sm bg-[#E8E4DF]">
@@ -92,43 +123,27 @@ export default function ServiceAreasPage() {
 
       {/* Service Areas Grid */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20">
-        <div className="mb-16">
-          <h2 className="font-heading text-3xl md:text-4xl font-bold text-[#1B4332] mb-4">
-            Plymouth County Service Areas
-          </h2>
-          <p className="font-body text-[#2D3436] text-lg mb-12 max-w-2xl">
-            Serving these communities with professional fencing installation and repair:
-          </p>
-          <div className="grid md:grid-cols-3 gap-6">
-            {plymouthCounty.map((area) => (
-              <AreaCard
-                key={area.slug}
-                name={area.name}
-                slug={area.slug}
-                description={area.description.split('\n')[0]}
-              />
-            ))}
+        {orderedRegions.map((region, index) => (
+          <div key={region} className={index < orderedRegions.length - 1 ? 'mb-16' : undefined}>
+            <h2 className="font-heading text-3xl md:text-4xl font-bold text-[#1B4332] mb-4">
+              {region} Service Areas
+            </h2>
+            <p className="font-body text-[#2D3436] text-lg mb-12 max-w-2xl">
+              {regionDescriptions[region] ||
+                'Professional fencing installation and repair for these Massachusetts communities:'}
+            </p>
+            <div className="grid md:grid-cols-3 gap-6">
+              {serviceAreasByRegion[region].map((area) => (
+                <AreaCard
+                  key={area.slug}
+                  name={area.name}
+                  slug={area.slug}
+                  description={area.description.split('\n')[0]}
+                />
+              ))}
+            </div>
           </div>
-        </div>
-
-        <div>
-          <h2 className="font-heading text-3xl md:text-4xl font-bold text-[#1B4332] mb-4">
-            Barnstable County Service Areas
-          </h2>
-          <p className="font-body text-[#2D3436] text-lg mb-12 max-w-2xl">
-            Specialized coastal fencing solutions for Cape Cod properties:
-          </p>
-          <div className="grid md:grid-cols-3 gap-6">
-            {barnstableCounty.map((area) => (
-              <AreaCard
-                key={area.slug}
-                name={area.name}
-                slug={area.slug}
-                description={area.description.split('\n')[0]}
-              />
-            ))}
-          </div>
-        </div>
+        ))}
       </section>
 
       {/* Why Local Matters */}
