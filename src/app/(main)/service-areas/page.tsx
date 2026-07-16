@@ -60,7 +60,7 @@ export default function ServiceAreasPage() {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20">
         <SectionIntro
           title="Fence Installation Across Massachusetts"
-          description="JT Fence Inc. proudly serves Massachusetts communities from the South Shore and Cape Cod to MetroWest, South of Boston, and the North Shore. Whether you're in a coastal town, historic suburb, or dense urban neighborhood, our team brings the same dedication to quality and customer service to every project."
+          description="JT Fence Inc. proudly serves Plymouth County, Barnstable County, MetroWest, South of Boston, and the North Shore with dependable fence installation and repair. Whether you're in a coastal town, historic suburb, wooded neighborhood, or city-adjacent community, our team brings the same dedication to quality and customer service to every project."
         />
       </section>
 
@@ -124,7 +124,11 @@ export default function ServiceAreasPage() {
       {/* Service Areas Grid */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20">
         {orderedRegions.map((region, index) => (
-          <div key={region} className={index < orderedRegions.length - 1 ? 'mb-16' : undefined}>
+          <div
+            key={region}
+            id={region.toLowerCase().replace(/\s+/g, '-')}
+            className={index < orderedRegions.length - 1 ? 'mb-16' : undefined}
+          >
             <h2 className="font-heading text-3xl md:text-4xl font-bold text-[#1B4332] mb-4">
               {region} Service Areas
             </h2>

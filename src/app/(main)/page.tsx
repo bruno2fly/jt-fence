@@ -4,7 +4,6 @@ import ServiceCard from '@/components/ServiceCard';
 import TestimonialCard from '@/components/TestimonialCard';
 import FAQAccordion from '@/components/FAQAccordion';
 import CTABanner from '@/components/CTABanner';
-import AreaCard from '@/components/AreaCard';
 import ProcessSteps from '@/components/ProcessSteps';
 import SectionIntro from '@/components/SectionIntro';
 import { services } from '@/data/services';
@@ -86,6 +85,24 @@ const whyChooseUsReasons = [
   },
 ];
 
+const serviceRegionOrder = [
+  'Plymouth County',
+  'Barnstable County',
+  'MetroWest',
+  'South of Boston',
+  'North Shore',
+];
+
+const serviceRegionDescriptions: Record<string, string> = {
+  'Plymouth County': 'South Shore homes, coastal towns, and established neighborhoods',
+  'Barnstable County': 'Cape Cod properties, salt-air conditions, and seasonal homes',
+  MetroWest: 'Historic suburbs, wooded lots, and growing residential communities',
+  'South of Boston': 'City-adjacent suburbs, waterfront communities, and family homes',
+  'North Shore': 'Historic downtowns, lake-area homes, and upscale residential properties',
+};
+
+const getRegionSlug = (region: string) => region.toLowerCase().replace(/\s+/g, '-');
+
 export default function Home() {
   const faqItems = faqs
     .filter((faq) => faq.category === 'General' || faq.category === 'Services')
@@ -118,7 +135,18 @@ export default function Home() {
     },
   ];
 
-  const serviceAreaPreview = serviceAreas.slice(0, 4);
+  const serviceAreaCountsByRegion = serviceAreas.reduce<Record<string, number>>((counts, area) => {
+    counts[area.county] = (counts[area.county] || 0) + 1;
+    return counts;
+  }, {});
+
+  const serviceRegionCards = serviceRegionOrder.map((region) => ({
+    name: region,
+    href: `/service-areas#${getRegionSlug(region)}`,
+    description: `${serviceAreaCountsByRegion[region] || 0} ${
+      serviceAreaCountsByRegion[region] === 1 ? 'community' : 'communities'
+    } - ${serviceRegionDescriptions[region]}`,
+  }));
 
   return (
     <>
@@ -198,16 +226,24 @@ export default function Home() {
           <SectionIntro
             eyebrow="Local Expertise"
             title="Service Areas"
-            description="We serve the entire South Shore of Massachusetts with professional fencing solutions tailored to each community's unique needs."
+            description="We serve established Massachusetts regions with professional fencing solutions tailored to each community's unique needs."
           />
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
-            {serviceAreaPreview.map((area) => (
-              <AreaCard
-                key={area.slug}
-                name={area.name}
-                slug={area.slug}
-                description={area.description.split('\n')[0]}
-              />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 mt-12">
+            {serviceRegionCards.map((region) => (
+              <a key={region.name} href={region.href} className="group block h-full">
+                <div className="bg-white border border-[#E8E4DF] rounded-lg p-6 hover:shadow-lg hover:border-[#C9A84C] transition-all duration-300 h-full">
+                  <h3 className="font-heading text-xl font-semibold text-[#1B4332] mb-3 group-hover:text-[#C9A84C] transition-colors">
+                    {region.name}
+                  </h3>
+                  <p className="font-body text-[#2D3436] text-sm leading-relaxed mb-6">
+                    {region.description}
+                  </p>
+                  <div className="flex items-center text-[#C9A84C] font-body font-semibold text-sm group-hover:translate-x-1 transition-transform">
+                    View Region
+                    <span className="ml-2">→</span>
+                  </div>
+                </div>
+              </a>
             ))}
           </div>
           <div className="text-center mt-12">
