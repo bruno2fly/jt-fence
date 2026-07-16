@@ -127,7 +127,7 @@ export default function ServiceAreasPage() {
           <div
             key={region}
             id={region.toLowerCase().replace(/\s+/g, '-')}
-            className={index < orderedRegions.length - 1 ? 'mb-16' : undefined}
+            className={`scroll-mt-28 ${index < orderedRegions.length - 1 ? 'mb-16' : ''}`}
           >
             <h2 className="font-heading text-3xl md:text-4xl font-bold text-[#1B4332] mb-4">
               {region} Service Areas
