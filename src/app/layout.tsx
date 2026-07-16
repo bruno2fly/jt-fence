@@ -194,6 +194,11 @@ export default function RootLayout({
       <body className="flex flex-col min-h-screen font-body">
         <LocalBusinessJsonLd />
         {children}
+        {/* Tidio Live Chat */}
+        <Script
+          src="//code.tidio.co/nkvswnasd2halxqf4mhixpjg0qaieiom.js"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   )
