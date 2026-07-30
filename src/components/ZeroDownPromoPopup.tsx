@@ -40,7 +40,7 @@ export default function ZeroDownPromoPopup() {
     // Track the conversion event
     if (typeof window !== 'undefined' && window.gtag) {
       window.gtag('event', 'conversion', {
-        'send_to': 'AW-18073723056/zero_down_popup_call'
+        'send_to': 'AW-18073723056/VYRkCLXSrdkcELDBnKpD'
       });
     }
     
@@ -55,7 +55,7 @@ export default function ZeroDownPromoPopup() {
     // Track the conversion event
     if (typeof window !== 'undefined' && window.gtag) {
       window.gtag('event', 'conversion', {
-        'send_to': 'AW-18073723056/zero_down_popup_quote'
+        'send_to': 'AW-18073723056/xzXvCOaottkcELDBnKpD'
       });
     }
     
