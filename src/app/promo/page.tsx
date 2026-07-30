@@ -1,7 +1,6 @@
 'use client';
 
-// ⚠️  Replace PROMO_QUOTE_LABEL with the actual label from Google Ads → Goals
-const PROMO_CONVERSION = 'AW-18073723056/PROMO_QUOTE_LABEL';
+const PROMO_CONVERSION = 'AW-18073723056/sn4cCMCXttkcELDBnKpD';
 
 import { useState, useCallback, useRef, useEffect } from 'react';
 import Image from 'next/image';

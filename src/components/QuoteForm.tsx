@@ -152,7 +152,7 @@ export default function QuoteForm({ onSuccess }: QuoteFormProps) {
       // Fire Google Ads form-submission conversion (correct account ID)
       if (typeof window !== 'undefined' && window.gtag) {
         window.gtag('event', 'conversion', {
-          'send_to': 'AW-18073723056/form_submission',
+          'send_to': 'AW-18073723056/J-ETCL2XttkcELDBnKpD',
           'value': 150,
           'currency': 'USD',
         });
