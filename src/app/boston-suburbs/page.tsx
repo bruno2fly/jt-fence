@@ -129,11 +129,13 @@ export default function BostonSuburbsPage() {
         </div>
       </header>
 
-      <section ref={heroRef} className="bg-[#1B4332] text-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-10 sm:py-14 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
+      <section ref={heroRef} className="relative overflow-hidden text-white">
+        <Image src="/images/boston-suburbs/hero-colonial-fence.png" alt="Premium white vinyl fence at a colonial home in a Boston suburb" fill priority className="object-cover" />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#1B4332]/92 via-[#1B4332]/85 to-[#0d2818]/90" />
+        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 py-10 sm:py-14 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
           <div className="lg:pt-2">
             <div className="inline-block bg-[#C9A84C] text-[#1B4332] font-bold text-xs px-3 py-1 rounded-full uppercase tracking-wider mb-4">Serving Boston&apos;s Premier Suburbs</div>
-            <h1 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-5">Fencing Crafted for Boston&apos;s Most Distinguished Homes</h1>
+            <h1 className="font-heading text-white text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-5">Fencing Crafted for Boston&apos;s Most Distinguished Homes</h1>
             <p className="text-white/80 text-base sm:text-lg leading-relaxed mb-6">Premium materials, thoughtful site planning, and white-glove installation for estate-scale and refined residential properties in Newton, Weston, Wellesley, Lexington, Winchester, Concord, Brookline, Needham, and beyond.</p>
             <ul className="space-y-3 mb-8">{['15+ years of craftsmanship across MetroWest & Greater Boston', 'Licensed and insured, with Dig Safe and town permits handled for you', 'Professional communication, on-time crews, clean sites, and a workmanship warranty'].map((item) => <li key={item} className="flex items-start gap-2 text-white/90 text-sm sm:text-base"><CheckCircle className="w-5 h-5 text-[#C9A84C] flex-shrink-0 mt-0.5" />{item}</li>)}</ul>
             <div className="flex flex-col sm:flex-row gap-3 lg:hidden"><button onClick={() => scrollToForm('hero')} className="bg-[#C9A84C] text-white font-bold px-6 py-4 rounded-lg">Request a Consultation →</button><a href={PHONE_HREF} onClick={() => handlePhoneClick('hero')} className="flex items-center justify-center gap-2 border-2 border-white/50 text-white font-semibold px-6 py-4 rounded-lg"><PhoneIcon />Call {company.phone}</a></div>
