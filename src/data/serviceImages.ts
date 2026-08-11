@@ -151,8 +151,8 @@ const wood: ServiceImageSet = {
     'hero'
   ),
   intro: asset(
-    FB_WOOD[1],
-    'Custom wood fencing with professional post setting and straight fence line, South Shore Massachusetts',
+    '/images/wood/wood-horizontal-colonial-flag.png',
+    'Horizontal wood fence along a manicured lawn beside a white Colonial home with black shutters and an American flag, South Shore Massachusetts',
     'intro'
   ),
   benefitsHighlight: asset(
