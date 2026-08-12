@@ -19,16 +19,20 @@ const gtagEvent = (name: string, params?: Record<string, unknown>) => {
 
 const TRUST_BADGES = [
   '✓ Licensed & Insured',
-  '✓ 15+ Years Experience',
+  '✓ 14+ Years Experience',
   '✓ Permits Handled for You',
   '✓ Clean Job Sites, On-Time Crews',
   '✓ Workmanship Warranty',
 ];
 
+// Real, independently-verifiable reviews only — no in-house fabricated quotes.
+// Google rating (4.9) confirmed live via Google Maps business profile (Place/CID 5353793838333946389).
+// Yelp review below confirmed cross-referenced via MapQuest's synced Yelp review feed (published 9/23/2019).
+const GOOGLE_PLACE_URL = 'https://www.google.com/maps?cid=5353793838333946389';
+const GOOGLE_RATING = '4.9';
+
 const TESTIMONIALS = [
-  { name: 'Alexandra M.', location: 'Newton, MA', type: 'Custom Wood Privacy Fence', quote: 'JT Fence understood that the new fence had to work with our mature landscaping and the architecture of the house. The layout is beautifully considered, the gates operate perfectly, and the crew treated our property with real care.' },
-  { name: 'Robert H.', location: 'Weston, MA', type: 'Aluminum Estate Fencing', quote: 'Our property required a long perimeter run and careful work around trees and stonework. Communication was excellent, the crew arrived when promised, and the finished installation is precise without calling attention to itself.' },
-  { name: 'Catherine L.', location: 'Wellesley, MA', type: 'Pool Fence + Gates', quote: 'From permitting through the final walkthrough, the process was exceptionally organized. The pool enclosure looks refined, every line is clean, and the team left the site immaculate at the end of each day.' },
+  { name: 'Justin G.', location: 'Yelp Review', type: 'Cedar Fence Replacement', quote: 'We hired Tiago to take away our existing fence and replace it with a new cedar one. Excellent communication from initial contact thru to the end. Was very prompt and did a great job installing the new fence.', date: '9/23/2019' },
 ];
 
 const FENCE_TYPES = [
@@ -139,7 +143,12 @@ export default function BostonSuburbsPage() {
             <div className="inline-block bg-[#C9A84C] text-[#1B4332] font-bold text-xs px-3 py-1 rounded-full uppercase tracking-wider mb-4">Serving Boston&apos;s Premier Suburbs</div>
             <h1 className="font-heading text-white text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-5 drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]">Fencing Crafted for Boston&apos;s Most Distinguished Homes</h1>
             <p className="text-white/90 text-base sm:text-lg leading-relaxed mb-6 drop-shadow-[0_1px_4px_rgba(0,0,0,0.5)]">Premium materials, thoughtful site planning, and white-glove installation for estate-scale and refined residential properties in Newton, Weston, Wellesley, Lexington, Winchester, Concord, Brookline, Needham, and beyond.</p>
-            <ul className="space-y-3 mb-8">{['15+ years of craftsmanship across MetroWest & Greater Boston', 'Licensed and insured, with Dig Safe and town permits handled for you', 'Professional communication, on-time crews, clean sites, and a workmanship warranty'].map((item) => <li key={item} className="flex items-start gap-2 text-white text-sm sm:text-base drop-shadow-[0_1px_3px_rgba(0,0,0,0.6)]"><CheckCircle className="w-5 h-5 text-[#C9A84C] flex-shrink-0 mt-0.5" />{item}</li>)}</ul>
+            <a href={GOOGLE_PLACE_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 border border-white/30 rounded-lg px-3 py-2 mb-6 transition-colors">
+              <span className="text-[#C9A84C] text-sm">★★★★★</span>
+              <span className="text-white font-bold text-sm">{GOOGLE_RATING}</span>
+              <span className="text-white/70 text-xs">on Google — view profile →</span>
+            </a>
+            <ul className="space-y-3 mb-8">{['14+ years of craftsmanship across MetroWest & Greater Boston', 'Licensed and insured, with Dig Safe and town permits handled for you', 'Professional communication, on-time crews, clean sites, and a workmanship warranty'].map((item) => <li key={item} className="flex items-start gap-2 text-white text-sm sm:text-base drop-shadow-[0_1px_3px_rgba(0,0,0,0.6)]"><CheckCircle className="w-5 h-5 text-[#C9A84C] flex-shrink-0 mt-0.5" />{item}</li>)}</ul>
             <div className="flex flex-col sm:flex-row gap-3 lg:hidden"><button onClick={() => scrollToForm('hero')} className="bg-[#C9A84C] text-white font-bold px-6 py-4 rounded-lg">Request My Private Consultation →</button><a href={PHONE_HREF} onClick={() => handlePhoneClick('hero')} className="flex items-center justify-center gap-2 border-2 border-white/50 text-white font-semibold px-6 py-4 rounded-lg"><PhoneIcon />Call {company.phone}</a></div>
           </div>
           <div id="quote-form" className="bg-white rounded-xl shadow-2xl overflow-hidden scroll-mt-24">
@@ -151,7 +160,7 @@ export default function BostonSuburbsPage() {
 
       <section className="bg-[#1B4332] border-t border-white/10 py-4 px-4"><div className="max-w-6xl mx-auto flex flex-wrap justify-center gap-x-6 gap-y-2">{TRUST_BADGES.map((badge) => <span key={badge} className="text-white/90 font-semibold text-xs sm:text-sm">{badge}</span>)}</div></section>
 
-      <section className="py-12 sm:py-16 px-4"><div className="max-w-6xl mx-auto"><div className="text-center mb-8"><p className="text-[#C9A84C] text-2xl">★★★★★</p><h2 className="font-heading text-2xl sm:text-3xl font-bold text-[#1B4332]">Trusted on Exceptional Properties</h2><p className="text-[#9A9590] text-sm mt-2">Careful workmanship and dependable service from consultation through final walkthrough.</p></div><div className="grid grid-cols-1 sm:grid-cols-3 gap-5">{TESTIMONIALS.map((testimonial) => <article key={testimonial.name} className="bg-white border border-[#E8E4DF] rounded-xl p-6 shadow-sm"><p className="text-[#C9A84C] mb-3">★★★★★</p><p className="text-sm leading-relaxed italic mb-4">&ldquo;{testimonial.quote}&rdquo;</p><div className="border-t border-[#E8E4DF] pt-3"><p className="font-semibold text-[#1B4332] text-sm">{testimonial.name}</p><p className="text-[#9A9590] text-xs">{testimonial.location} · {testimonial.type}</p></div></article>)}</div></div></section>
+      <section className="py-12 sm:py-16 px-4"><div className="max-w-4xl mx-auto"><div className="text-center mb-8"><a href={GOOGLE_PLACE_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 hover:opacity-80 transition-opacity"><p className="text-[#C9A84C] text-2xl">★★★★★</p><p className="font-heading text-[#1B4332] font-bold text-lg">{GOOGLE_RATING} on Google</p></a><h2 className="font-heading text-2xl sm:text-3xl font-bold text-[#1B4332] mt-1">Trusted on Exceptional Properties</h2><p className="text-[#9A9590] text-sm mt-2">Real feedback — careful workmanship and dependable service from consultation through final walkthrough.</p></div><div className="max-w-xl mx-auto">{TESTIMONIALS.map((testimonial) => <article key={testimonial.name} className="bg-white border border-[#E8E4DF] rounded-xl p-6 shadow-sm"><p className="text-[#C9A84C] mb-3">★★★★★</p><p className="text-sm leading-relaxed italic mb-4">&ldquo;{testimonial.quote}&rdquo;</p><div className="border-t border-[#E8E4DF] pt-3 flex items-center justify-between"><div><p className="font-semibold text-[#1B4332] text-sm">{testimonial.name}</p><p className="text-[#9A9590] text-xs">{testimonial.type} · {testimonial.date}</p></div><span className="text-[#9A9590] text-xs font-semibold">via {testimonial.location}</span></div></article>)}</div><p className="text-center text-xs text-[#9A9590] mt-6">Verified review — sourced from JT Fence Boston&apos;s public Yelp listing.</p></div></section>
 
       <section className="bg-[#1B4332] py-7 px-4"><div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left"><div><p className="text-white font-heading font-bold text-xl">A considered approach for a lasting investment.</p><p className="text-white/70 text-sm">Begin with a private on-site consultation.</p></div><div className="flex gap-3"><button onClick={() => scrollToForm('mid')} className="bg-[#C9A84C] text-white font-bold px-5 py-3 rounded-lg text-sm">Request My Private Consultation →</button><a href={PHONE_HREF} onClick={() => handlePhoneClick('mid')} className="flex items-center gap-2 border border-white/40 text-white font-semibold px-4 py-3 rounded-lg text-sm"><PhoneIcon />Call Now</a></div></div></section>
 

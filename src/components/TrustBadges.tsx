@@ -4,7 +4,7 @@ export default function TrustBadges() {
   const badges = [
     {
       icon: Award,
-      label: '15+ Years Experience',
+      label: '14+ Years Experience',
     },
     {
       icon: Shield,

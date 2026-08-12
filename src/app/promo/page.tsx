@@ -22,7 +22,7 @@ const gtagEvent = (name: string, params?: Record<string, unknown>) => {
 const TRUST_BADGES = [
   '✓ Licensed & Insured',
   '✓ Dig Safe Compliant',
-  '✓ 15+ Years Experience',
+  '✓ 14+ Years Experience',
   '✓ Free On-Site Estimates',
   '✓ Workmanship Warranty',
 ];

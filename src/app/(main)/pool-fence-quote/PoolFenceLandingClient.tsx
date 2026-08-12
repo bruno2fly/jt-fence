@@ -140,7 +140,7 @@ export default function PoolFenceLandingClient() {
               <span style={{ color: '#93c5fd' }}>Massachusetts</span>
             </h1>
             <p style={{ fontSize: 17, color: 'rgba(255,255,255,0.88)', lineHeight: 1.65, marginBottom: 32, maxWidth: 480 }}>
-              Code-compliant pool barriers installed across South Shore, Plymouth County, and Cape Cod. Licensed, insured, and BBB accredited since 2008.
+              Code-compliant pool barriers installed across South Shore, Plymouth County, and Cape Cod. Licensed and insured since 2012.
             </p>
             <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
               <a href="tel:7814205858" style={{
@@ -164,7 +164,7 @@ export default function PoolFenceLandingClient() {
       {/* TRUST BAR */}
       <section style={{ background: '#f8fafc', borderBottom: '1px solid #e2e8f0', padding: '18px 20px' }}>
         <div style={{ maxWidth: 900, margin: '0 auto', display: 'flex', justifyContent: 'center', gap: 36, flexWrap: 'wrap' }}>
-          {['5-Star Rated', 'BBB Accredited', 'Licensed & Insured', '15+ Years Experience', '500+ Projects Completed'].map((item, i) => (
+          {['5-Star Rated', 'Licensed & Insured', '14+ Years Experience', '500+ Projects Completed'].map((item, i) => (
             <span key={i} style={{ fontSize: 13, fontWeight: 600, color: '#475569' }}>{item}</span>
           ))}
         </div>
@@ -376,7 +376,7 @@ export default function PoolFenceLandingClient() {
 
       <section style={{ background: '#1e293b', color: '#fff', padding: '30px 20px', textAlign: 'center' }}>
         <p style={{ fontSize: 13, color: '#64748b', marginBottom: 8 }}>
-          JT Fence Inc. — Plymouth, MA. Licensed, Insured, BBB Accredited since 2008.
+          JT Fence Inc. — Plymouth, MA. Licensed and Insured since 2012.
         </p>
         <Link href="/" style={{ color: '#7dd3fc', fontSize: 13, textDecoration: 'none' }}>
           Back to JT Fence Home

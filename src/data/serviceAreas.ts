@@ -34,7 +34,7 @@ export const serviceAreas: ServiceArea[] = [
     ],
     popularServices: ["wood-fences", "vinyl-fences", "pet-dog-fencing", "pool-fence"],
     whyChooseUs: [
-      "15+ years of fencing installations throughout Plymouth",
+      "14+ years of fencing installations throughout Plymouth",
       "Understanding of Plymouth's waterfront and historic district requirements",
       "Experience with coastal climate challenges and salt-air resistance",
       "Local reputation built on quality workmanship and customer satisfaction",
@@ -94,7 +94,7 @@ export const serviceAreas: ServiceArea[] = [
     ],
     popularServices: ["vinyl-fences", "wood-fences", "pet-dog-fencing", "pool-fence"],
     whyChooseUs: [
-      "Licensed contractor serving Wareham for 15+ years",
+      "Licensed contractor serving Wareham for 14+ years",
       "Understanding of local zoning and building code requirements",
       "Experience with moisture and humidity considerations in waterfront areas",
       "Commitment to enhancing property values in Wareham community",
@@ -154,7 +154,7 @@ export const serviceAreas: ServiceArea[] = [
     ],
     popularServices: ["wood-fences", "vinyl-fences", "pet-dog-fencing", "pool-fence"],
     whyChooseUs: [
-      "15+ years of fencing installations serving Kingston residents",
+      "14+ years of fencing installations serving Kingston residents",
       "Understanding of Kingston's historic and contemporary architecture",
       "Expertise with local building codes and permitting processes",
       "Commitment to fair pricing and quality workmanship",
@@ -244,7 +244,7 @@ export const serviceAreas: ServiceArea[] = [
     ],
     popularServices: ["wood-fences", "vinyl-fences", "pet-dog-fencing", "pool-fence"],
     whyChooseUs: [
-      "15+ years of quality fencing installations in Hanover",
+      "14+ years of quality fencing installations in Hanover",
       "Understanding of local building codes and permit requirements",
       "Experience with diverse property types in established and newer neighborhoods",
       "Commitment to fair pricing and professional customer service",

@@ -113,7 +113,7 @@ export default function ProcessPage() {
         <SectionIntro
           eyebrow="How We Work"
           title="A Transparent Process You Can Trust"
-          description="We've refined our fence installation process over 15+ years to ensure quality results, clear communication, and customer satisfaction at every step."
+          description="We've refined our fence installation process over 14+ years to ensure quality results, clear communication, and customer satisfaction at every step."
           centered={true}
         />
       </section>

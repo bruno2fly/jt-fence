@@ -48,7 +48,7 @@ const values = [
 const differences = [
   {
     title: 'Premium Craftsmanship',
-    description: 'We source the finest materials and employ time-tested installation techniques perfected over 15+ years. Every fence is built to last.',
+    description: 'We source the finest materials and employ time-tested installation techniques perfected over 14+ years. Every fence is built to last.',
   },
   {
     title: 'Clear Communication',
@@ -86,7 +86,7 @@ export default function About() {
             About JT Fence Inc.
           </h1>
           <p className="font-body text-lg md:text-xl text-[#E8E4DF] max-w-2xl mx-auto leading-relaxed [text-shadow:0_1px_12px_rgba(0,0,0,0.4)]">
-            Serving South Shore Massachusetts with quality fencing solutions since 2008
+            Serving South Shore Massachusetts with quality fencing solutions since 2012
           </p>
         </div>
       </section>
@@ -96,12 +96,12 @@ export default function About() {
         <SectionIntro
           eyebrow="Our Story"
           title="Founded on Quality and Integrity"
-          description="JT Fence Inc. was established in 2008 with a simple mission: deliver premium fencing solutions with exceptional customer service."
+          description="JT Fence Inc. was established in 2012 with a simple mission: deliver premium fencing solutions with exceptional customer service."
           centered={true}
         />
         <div className="mt-12 space-y-8 font-body text-[#2D3436] leading-relaxed text-lg">
           <p>
-            What started as a small operation with a commitment to quality has grown into the trusted fencing contractor throughout South Shore Massachusetts. Over the past 15+ years, we've completed hundreds of installations, earning the trust and loyalty of homeowners and business owners across Plymouth County and surrounding areas.
+            What started as a small operation with a commitment to quality has grown into a trusted fencing contractor throughout South Shore Massachusetts. Over the past 14+ years, we've completed hundreds of installations, earning the trust and loyalty of homeowners and business owners across Plymouth County and surrounding areas.
           </p>
           <p>
             Our growth has been built on a foundation of honest communication, superior craftsmanship, and genuine care for our customers' satisfaction. We don't just install fences—we enhance properties and create lasting value for the families and businesses we serve.

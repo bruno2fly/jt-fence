@@ -260,7 +260,7 @@ export default function ContactPage() {
             },
             {
               title: 'Expert Advice',
-              description: 'Benefit from 15+ years of experience and professional guidance.',
+              description: 'Benefit from 14+ years of experience and professional guidance.',
             },
             {
               title: 'Custom Solutions',

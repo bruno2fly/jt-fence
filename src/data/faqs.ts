@@ -10,7 +10,7 @@ export const faqs: FAQ[] = [
     category: "General",
     question: "How long has JT Fence Inc. been in business?",
     answer:
-      "JT Fence Inc. was founded in 2008 and has been serving the South Shore of Massachusetts for over 15 years. We've completed hundreds of installations and built our reputation on quality craftsmanship, professional service, and satisfied customers throughout our service area.",
+      "JT Fence Inc. was founded in 2012 and has been serving the South Shore of Massachusetts for over 14 years. We've completed hundreds of installations and built our reputation on quality craftsmanship, professional service, and satisfied customers throughout our service area.",
   },
   {
     category: "General",
@@ -22,7 +22,7 @@ export const faqs: FAQ[] = [
     category: "General",
     question: "Is JT Fence Inc. licensed and insured?",
     answer:
-      "Yes, JT Fence Inc. is fully licensed as a Massachusetts Home Improvement Contractor and maintains comprehensive insurance coverage. We're BBB Accredited and carry all necessary permits and certifications to operate legally and responsibly throughout the state.",
+      "Yes, JT Fence Inc. is fully licensed as a Massachusetts Home Improvement Contractor and maintains comprehensive insurance coverage. We carry all necessary permits and certifications to operate legally and responsibly throughout the state.",
   },
   {
     category: "General",

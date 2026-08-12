@@ -29,12 +29,12 @@ export const metadata: MetadataMap = {
     ],
     ogTitle: "JT Fence Inc. | Professional Fencing Services South Shore MA",
     ogDescription:
-      "Quality fence installation and repair throughout South Shore Massachusetts with 15+ years of experience.",
+      "Quality fence installation and repair throughout South Shore Massachusetts with 14+ years of experience.",
   },
   "/about": {
     title: "About JT Fence Inc. | Professional Fencing Contractor MA",
     description:
-      "Learn about JT Fence Inc., a trusted fencing contractor serving South Shore Massachusetts since 2008. Over 15 years of quality craftsmanship and customer satisfaction.",
+      "Learn about JT Fence Inc., a trusted fencing contractor serving South Shore Massachusetts since 2012. Over 14 years of quality craftsmanship and customer satisfaction.",
     keywords: [
       "about JT Fence",
       "fencing contractor",
@@ -45,7 +45,7 @@ export const metadata: MetadataMap = {
       "Massachusetts fence company",
       "quality fencing",
     ],
-    ogTitle: "About JT Fence Inc. - 15+ Years of Quality Fencing",
+    ogTitle: "About JT Fence Inc. - 14+ Years of Quality Fencing",
     ogDescription:
       "Discover the story of JT Fence Inc. and why we're the trusted choice for fencing throughout South Shore Massachusetts.",
   },
@@ -73,7 +73,7 @@ export const metadata: MetadataMap = {
   "/services/wood-fences": {
     title: "Wood Fence Installation | Premium Craftsmanship | JT Fence Inc.",
     description:
-      "Custom wood fence installation throughout South Shore MA. Classic privacy fences, picket fencing, and decorative designs. Over 15 years of experience.",
+      "Custom wood fence installation throughout South Shore MA. Classic privacy fences, picket fencing, and decorative designs. Over 14 years of experience.",
     keywords: [
       "wood fence",
       "wooden fencing",
@@ -221,7 +221,7 @@ export const metadata: MetadataMap = {
     ],
     ogTitle: "Fence Installation in Plymouth, MA | JT Fence Inc.",
     ogDescription:
-      "Quality fence installation and repair services in Plymouth, MA. Professional contractor with 15+ years of experience.",
+      "Quality fence installation and repair services in Plymouth, MA. Professional contractor with 14+ years of experience.",
   },
   "/service-areas/cape-cod-ma": {
     title: "Fence Installation Cape Cod, MA | Coastal Fencing Specialist",

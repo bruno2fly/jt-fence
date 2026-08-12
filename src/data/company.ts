@@ -21,20 +21,19 @@ export const company: Company = {
   phone: "(781) 420-5858",
   email: "contact@jtfenceboston.com",
   location: "Plymouth, MA",
-  founded: 2008,
-  yearsExperience: "15+",
+  founded: 2012,
+  yearsExperience: "14+",
   tagline: "Quality Fencing Solutions for South Shore Massachusetts",
   description:
-    "JT Fence Inc. is the trusted choice for residential and commercial fencing throughout the South Shore of Massachusetts. With over 15 years of experience, we deliver exceptional craftsmanship and customer service on every project.",
+    "JT Fence Inc. is the trusted choice for residential and commercial fencing throughout the South Shore of Massachusetts. With over 14 years of experience, we deliver exceptional craftsmanship and customer service on every project.",
   longDescription:
-    "JT Fence Inc. has been serving the South Shore community since 2008, establishing ourselves as the premier fencing contractor in Plymouth, Cape Cod, and surrounding areas. Our team of skilled professionals combines decades of combined experience with a commitment to excellence and customer satisfaction. We specialize in wood, vinyl, and aluminum fencing solutions, as well as specialized pet and dog fencing systems. Whether you're looking to enhance your property's curb appeal, increase privacy and security, or create a safe space for your pets, JT Fence Inc. delivers superior results on time and within budget. Our meticulous attention to detail, high-quality materials, and proven installation techniques have earned us the trust of hundreds of satisfied homeowners and business owners throughout Massachusetts.",
+    "JT Fence Inc. has been serving the South Shore community since 2012, establishing ourselves as a trusted fencing contractor in Plymouth, Cape Cod, and surrounding areas. Our team of skilled professionals combines years of hands-on experience with a commitment to excellence and customer satisfaction. We specialize in wood, vinyl, and aluminum fencing solutions, as well as specialized pet and dog fencing systems. Whether you're looking to enhance your property's curb appeal, increase privacy and security, or create a safe space for your pets, JT Fence Inc. delivers superior results on time and within budget. Our meticulous attention to detail, high-quality materials, and proven installation techniques have earned us the trust of homeowners and business owners throughout Massachusetts.",
   social: {
     facebook: "https://facebook.com/jtfenceboston",
     instagram: "https://instagram.com/jtfenceboston",
   },
   certifications: [
     "Licensed & Insured",
-    "BBB Accredited",
     "Massachusetts Home Improvement Contractor",
   ],
   serviceRadius:
