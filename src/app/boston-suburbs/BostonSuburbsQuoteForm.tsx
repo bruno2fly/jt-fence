@@ -14,9 +14,7 @@ const FENCE_TYPES = [
   'Aluminum Fence',
   'Pool Fence',
   'Privacy Fence',
-  'Chain-Link Fence',
   'Gate Installation',
-  'Fence Repair',
 ];
 
 export default function BostonSuburbsQuoteForm({
@@ -64,7 +62,6 @@ export default function BostonSuburbsQuoteForm({
     }
     if (!formData.city.trim()) nextErrors.city = 'Town or ZIP required';
     if (!formData.serviceType) nextErrors.serviceType = 'Select a fence type';
-    if (!formData.projectDetails.trim()) nextErrors.projectDetails = 'Brief details required';
     setErrors(nextErrors);
     return Object.keys(nextErrors).length === 0;
   };
@@ -79,7 +76,11 @@ export default function BostonSuburbsQuoteForm({
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...formData, hearAboutUs: 'Google Ads' }),
+        body: JSON.stringify({
+          ...formData,
+          projectDetails: formData.projectDetails.trim() || 'No additional details provided.',
+          hearAboutUs: 'Google Ads',
+        }),
       });
       const data = (await response.json().catch(() => ({}))) as { error?: string };
       if (!response.ok) {
@@ -104,7 +105,7 @@ export default function BostonSuburbsQuoteForm({
         <CheckCircle size={48} className="text-[#1B4332] mx-auto mb-3" />
         <h3 className="font-heading text-xl font-bold text-[#1B4332] mb-2">Request Received!</h3>
         <p className="font-body text-[#2D3436] text-sm leading-relaxed">
-          We&apos;ll call you within 2 hours to schedule your free on-site estimate. Can&apos;t wait? Call us now:{' '}
+          We&apos;ll be in touch same-day (Monday–Saturday) to schedule your private on-site consultation. Can&apos;t wait? Call us now:{' '}
           <a href="tel:+17814205858" className="text-[#C9A84C] font-semibold">(781) 420-5858</a>
         </p>
       </div>
@@ -132,14 +133,13 @@ export default function BostonSuburbsQuoteForm({
         {errors.serviceType && <p className="text-red-500 text-xs mt-1">{errors.serviceType}</p>}
       </div>
       <div>
-        <textarea name="projectDetails" value={formData.projectDetails} onChange={handleChange} rows={3} placeholder="Tell us about your property, preferred material, gates, or project goals" aria-label="Project details" className={`${fieldClass('projectDetails')} resize-none`} />
-        {errors.projectDetails && <p className="text-red-500 text-xs mt-1">{errors.projectDetails}</p>}
+        <textarea name="projectDetails" value={formData.projectDetails} onChange={handleChange} rows={3} placeholder="Optional — property details, preferred material, gates, or project goals" aria-label="Project details (optional)" className={`${fieldClass('projectDetails')} resize-none`} />
       </div>
       <button type="submit" disabled={isSubmitting} className="w-full py-4 bg-[#C9A84C] hover:bg-[#B8933F] active:bg-[#A07830] text-white font-body font-bold text-base rounded-lg transition-colors disabled:opacity-60 disabled:cursor-not-allowed shadow-md">
-        {isSubmitting ? 'Sending…' : 'Request My Consultation →'}
+        {isSubmitting ? 'Sending…' : 'Request My Private Consultation →'}
       </button>
       {submitError && <p className="text-red-600 text-sm text-center font-body" role="alert">{submitError}</p>}
-      <p className="text-center text-xs text-[#9A9590] font-body">Takes 30 seconds. No obligation. We respond within 2 hours.</p>
+      <p className="text-center text-xs text-[#9A9590] font-body">No obligation. Same-day response, Monday–Saturday.</p>
     </form>
   );
 }

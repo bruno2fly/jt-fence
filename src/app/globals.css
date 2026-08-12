@@ -27,6 +27,13 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Tidio chat widget: prevent overlap with mobile sticky CTA/call bars (site-wide, all pages) */
+@media (max-width: 1023px) {
+  #tidio-chat-iframe {
+    bottom: calc(80px + env(safe-area-inset-bottom)) !important;
+  }
+}
+
 body {
   font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, 'Segoe UI',
     Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
