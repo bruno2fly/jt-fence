@@ -1,7 +1,7 @@
 "use client";
 
 // TODO: Bruno will provide the real conversion label from Google Ads — replace REPLACE_WITH_LABEL
-const CAPE_COD_CONVERSION = "AW-18073723056/REPLACE_WITH_LABEL";
+const CAPE_COD_CONVERSION = "AW-18073723056/nq2pCOX92eEcELDBnKpD";
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
