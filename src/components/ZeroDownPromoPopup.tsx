@@ -70,26 +70,18 @@ export default function ZeroDownPromoPopup() {
 
   return (
     <>
-      {/* Backdrop */}
+      {/* Backdrop — scrollable so tall content never traps the user with no way out */}
       <div 
-        className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4"
+        className="fixed inset-0 bg-black bg-opacity-50 z-50 overflow-y-auto"
         onClick={handleClose}
       >
-        {/* Modal */}
-        <div 
-          className="relative max-w-lg w-full bg-white rounded-lg shadow-2xl overflow-hidden transform transition-all duration-300 ease-out scale-100"
-          onClick={(e) => e.stopPropagation()}
-        >
-          {/* Close Button */}
-          <button
-            onClick={handleClose}
-            className="absolute top-4 right-4 z-10 bg-white bg-opacity-90 hover:bg-opacity-100 rounded-full p-2 transition-all duration-200 shadow-lg"
-            aria-label="Close popup"
+        <div className="min-h-full flex items-start sm:items-center justify-center p-4 py-10 sm:py-4">
+          {/* Modal — capped to viewport height, scrolls internally if content is taller */}
+          <div 
+            className="relative max-w-lg w-full max-h-[85vh] overflow-y-auto bg-white rounded-lg shadow-2xl transform transition-all duration-300 ease-out scale-100 my-auto"
+            onClick={(e) => e.stopPropagation()}
           >
-            <X className="w-5 h-5 text-gray-700" />
-          </button>
-
-          {/* Promo Image */}
+            {/* Promo Image */}
           <div className="relative">
             <Image
               src="/promo/zero-down-payment.png"
@@ -125,7 +117,19 @@ export default function ZeroDownPromoPopup() {
               Subject to credit approval and project terms.
             </p>
           </div>
+          </div>
         </div>
+
+        {/* Close Button — fixed to the viewport corner (not the modal), so it's
+            always visible/tappable regardless of modal height or scroll position.
+            Sized for a comfortable mobile touch target. */}
+        <button
+          onClick={handleClose}
+          className="fixed top-4 right-4 z-[60] bg-white hover:bg-gray-100 active:bg-gray-200 rounded-full p-3 sm:p-2 shadow-lg transition-all duration-200"
+          aria-label="Close popup"
+        >
+          <X className="w-6 h-6 sm:w-5 sm:h-5 text-gray-700" />
+        </button>
       </div>
     </>
   );
