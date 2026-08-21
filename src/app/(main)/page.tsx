@@ -23,6 +23,9 @@ import {
 } from 'lucide-react';
 import ZeroDownPromoPopup from '@/components/ZeroDownPromoPopup';
 
+// Verified live via Google Maps business profile (Place/CID 5353793838333946389): 4.9★, 40 reviews.
+const GOOGLE_REVIEWS_URL = 'https://www.google.com/maps?cid=5353793838333946389';
+
 export const metadata: Metadata = {
   title: metadataMap['/'].title,
   description: metadataMap['/'].description,
@@ -278,17 +281,32 @@ export default function Home() {
             title="What Our Customers Say"
             description="See why homeowners throughout South Shore Massachusetts trust JT Fence Inc. for their fencing needs."
           />
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
-            {testimonials.slice(0, 4).map((testimonial) => (
-              <TestimonialCard
-                key={testimonial.id}
-                name={testimonial.name}
-                location={testimonial.location}
-                rating={testimonial.rating}
-                text={testimonial.text}
-                serviceType={testimonial.serviceType}
-              />
-            ))}
+          <div className="flex justify-center mt-6">
+            <a
+              href={GOOGLE_REVIEWS_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-[#FAF8F5] hover:bg-[#F0ECE5] border border-[#E8E4DF] rounded-lg px-4 py-2 transition-colors"
+            >
+              <span className="text-[#C9A84C]">★★★★★</span>
+              <span className="font-heading font-bold text-[#1B4332]">4.9</span>
+              <span className="text-[#2D3436] text-sm">on Google (40 reviews) — view all →</span>
+            </a>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-8">
+            {testimonials
+              .filter((testimonial) => testimonial.rating === 5)
+              .slice(0, 4)
+              .map((testimonial) => (
+                <TestimonialCard
+                  key={testimonial.id}
+                  name={testimonial.name}
+                  location={testimonial.location}
+                  rating={testimonial.rating}
+                  text={testimonial.text}
+                  serviceType={testimonial.serviceType}
+                />
+              ))}
           </div>
         </div>
       </section>
