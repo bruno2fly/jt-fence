@@ -23,8 +23,8 @@ import {
 } from 'lucide-react';
 import ZeroDownPromoPopup from '@/components/ZeroDownPromoPopup';
 
-// Verified live via Google Maps business profile (Place/CID 5353793838333946389): 4.9★, 40 reviews.
-const GOOGLE_REVIEWS_URL = 'https://www.google.com/maps?cid=5353793838333946389';
+// Google Maps search deep link for JT Fence Inc — resolves reliably to the real business listing (old CID pointed to a blank/wrong Maps page).
+const GOOGLE_REVIEWS_URL = 'https://www.google.com/maps/search/?api=1&query=JT+Fence+Inc+(781)+420-5858';
 
 export const metadata: Metadata = {
   title: metadataMap['/'].title,
