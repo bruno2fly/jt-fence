@@ -29,7 +29,7 @@ export default function Hero({
 }: HeroProps) {
   const overlayClass =
     overlayVariant === 'photo'
-      ? 'bg-gradient-to-r from-[#1B4332]/72 to-[#2D3436]/62'
+      ? 'bg-gradient-to-r from-[#1B4332]/85 to-[#2D3436]/80'
       : overlayVariant === 'home'
         ? 'bg-gradient-to-br from-black/55 via-[#0a1810]/88 to-[#1a2220]/92'
         : 'bg-gradient-to-r from-[#1B4332]/95 to-[#2D3436]/85';
@@ -54,16 +54,28 @@ export default function Hero({
       {overlayVariant === 'home' && (
         <div className="absolute inset-0 bg-black/25" aria-hidden />
       )}
+      {overlayVariant === 'photo' && (
+        <div
+          className="absolute inset-0 bg-gradient-to-b from-black/45 via-black/15 to-black/40"
+          aria-hidden
+        />
+      )}
 
       {/* Content */}
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         {/* Heading */}
-        <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-[#FAF8F5] mb-6 leading-tight">
+        <h1
+          className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-[#FAF8F5] mb-6 leading-tight"
+          style={backgroundImage ? { textShadow: '0 2px 18px rgba(0,0,0,0.55)' } : undefined}
+        >
           {title}
         </h1>
 
         {/* Subtitle */}
-        <p className="font-body text-lg md:text-xl text-[#E8E4DF] mb-10 max-w-2xl mx-auto leading-relaxed">
+        <p
+          className="font-body text-lg md:text-xl text-[#E8E4DF] mb-10 max-w-2xl mx-auto leading-relaxed"
+          style={backgroundImage ? { textShadow: '0 1px 12px rgba(0,0,0,0.5)' } : undefined}
+        >
           {subtitle}
         </p>
 
