@@ -161,6 +161,12 @@ export default function Footer({
               >
                 Pool Fence & Barriers
               </Link>
+              <Link
+                href="/services/deck-railings"
+                className="block font-body text-sm text-[#E8E4DF] hover:text-[#C9A84C] transition-colors"
+              >
+                Deck Railings
+              </Link>
             </nav>
           </div>
 

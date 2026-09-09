@@ -57,6 +57,35 @@ const getInstallationSteps = (serviceSlug: string) => {
     baseSteps[3].description = 'Gates are installed with smooth operation, final touch-ups made, and we thoroughly clean the work area. Minimal maintenance education provided.';
   }
 
+  if (serviceSlug === 'deck-railings') {
+    return [
+      {
+        number: 1,
+        title: 'Deck assessment & code check',
+        description:
+          'We inspect your existing deck framing, post spacing, and stair layout, and confirm height and baluster spacing against current Massachusetts building code before designing your railing.',
+      },
+      {
+        number: 2,
+        title: 'Post & bracket installation',
+        description:
+          'Posts are securely fastened to deck framing with structural brackets and hardware rated for outdoor exposure, ensuring a rigid, code-compliant railing base.',
+      },
+      {
+        number: 3,
+        title: 'Rail & baluster assembly',
+        description:
+          'Top and bottom rails, balusters, glass panels, or cable runs are installed level and evenly spaced, with stairs and landings matched to the main railing design.',
+      },
+      {
+        number: 4,
+        title: 'Final walkthrough & cleanup',
+        description:
+          'We check every post, joint, and gate for stability, review low-maintenance care with you, and clean the deck and work area completely.',
+      },
+    ];
+  }
+
   if (serviceSlug === 'pool-fence') {
     return [
       {
@@ -179,6 +208,28 @@ const getServiceFAQs = (serviceSlug: string) => {
         question: 'What about gate latches for escape-artist pets?',
         answer:
           'We install specialized gate latches designed to prevent clever dogs from opening them. These include padlock compatibility and mechanical designs that resist dog manipulation. We test gates during installation to ensure security.',
+      },
+    ],
+    'deck-railings': [
+      {
+        question: 'What deck railing height is required by code in Massachusetts?',
+        answer:
+          'Most residential decks over 30 inches above grade require a railing at least 36 inches high, with baluster spacing that prevents a 4-inch sphere from passing through. We confirm your exact requirements based on your deck height and local code before installing.',
+      },
+      {
+        question: 'Can you replace just my railing without touching the deck itself?',
+        answer:
+          'In most cases, yes. If your deck framing and decking boards are in good condition, we can remove the old railing and install a new system—vinyl, wood, aluminum, or glass—without rebuilding the deck. We inspect framing first to confirm it can support new posts.',
+      },
+      {
+        question: 'Which railing material is lowest maintenance?',
+        answer:
+          'Vinyl and aluminum railings require virtually no upkeep beyond an occasional rinse—no painting, staining, or sealing. Glass panels wipe clean like a window. Wood railings look great but need sealing or staining every 2-3 years like a wood fence.',
+      },
+      {
+        question: 'Do glass or cable railings block the view less than traditional railings?',
+        answer:
+          'Yes. Frameless glass panels and horizontal cable systems are specifically chosen by homeowners who want to preserve a water, woods, or yard view while still meeting code height requirements. They use minimal vertical framing compared to picket-style railings.',
       },
     ],
     'pool-fence': [
@@ -616,7 +667,9 @@ export default function ServiceDetailClient({
                   ? 'Common questions about fence height, diggers, gates, and keeping dogs safe.'
                   : isPoolPage
                     ? 'Gates, mixed materials, pavers, and what to expect on a pool fence project.'
-                    : 'Find answers to common questions about our fencing services.'
+                    : service.slug === 'deck-railings'
+                      ? 'Code requirements, materials, and what to expect on a deck railing project.'
+                      : 'Find answers to common questions about our fencing services.'
             }
           />
 

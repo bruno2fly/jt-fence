@@ -54,6 +54,13 @@ const comparisonData = [
     cost: 'Project quote',
     bestFor: 'Pool safety, code-ready barriers',
   },
+  {
+    material: 'Deck Railings',
+    durability: '15-30 years (material dependent)',
+    maintenance: 'Low to Medium',
+    cost: '$40-90/ft',
+    bestFor: 'Deck & stair safety, code compliance',
+  },
 ];
 
 export default function ServicesPage() {
@@ -92,7 +99,7 @@ export default function ServicesPage() {
         <SectionIntro
           eyebrow="Professional Solutions"
           title="Complete Fencing Services"
-            description="Whether you need wood, vinyl, aluminum, pet containment, or pool barriers and safety fencing, JT Fence Inc. delivers exceptional results with quality materials and expert craftsmanship."
+            description="Whether you need wood, vinyl, aluminum, pet containment, pool barriers, or deck railings, JT Fence Inc. delivers exceptional results with quality materials and expert craftsmanship."
           centered={true}
         />
       </section>

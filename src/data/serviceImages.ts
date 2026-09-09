@@ -122,7 +122,8 @@ export type ServiceSlugKey =
   | 'vinyl-fences'
   | 'aluminum-fences'
   | 'pet-dog-fencing'
-  | 'pool-fence';
+  | 'pool-fence'
+  | 'deck-railings';
 
 export interface ServiceImageSet {
   hero: ServiceImageAsset;
@@ -538,12 +539,101 @@ const poolFence: ServiceImageSet = {
   ],
 };
 
+/** Deck railings — vinyl, wood, glass, and aluminum railing photography */
+const RAILINGS = {
+  vinylWhiteDeck: '/images/railings/railing-vinyl-white-deck.jpg',
+  woodTraditional: '/images/railings/railing-wood-traditional.jpg',
+  glassPanel: '/images/railings/railing-glass-panel.jpg',
+  aluminumHorizontal: '/images/railings/railing-aluminum-horizontal.jpg',
+} as const;
+
+/* --- deck-railings: RAILINGS.* — one image per railing style option --- */
+const deckRailings: ServiceImageSet = {
+  hero: asset(
+    RAILINGS.vinylWhiteDeck,
+    'Raised deck with white vinyl railing on a gray cedar-shake Cape Cod style New England home, wide stairs leading to the lawn — JT Fence Inc.',
+    'hero'
+  ),
+  intro: asset(
+    RAILINGS.aluminumHorizontal,
+    'Modern deck with sleek black aluminum horizontal-slat railing at golden hour overlooking a landscaped backyard',
+    'intro'
+  ),
+  benefitsHighlight: asset(
+    RAILINGS.glassPanel,
+    'Composite deck with frameless glass panel railing preserving an open view of the backyard and pond',
+    'benefit',
+    'Views without compromise'
+  ),
+  styleImages: [
+    asset(
+      RAILINGS.vinylWhiteDeck,
+      'Crisp white vinyl deck railing with square balusters on a New England Cape Cod home',
+      'style',
+      'White Vinyl Railing',
+      'Maintenance-free, classic look'
+    ),
+    asset(
+      RAILINGS.woodTraditional,
+      'Natural cedar wood deck railing with square balusters on a New England colonial home',
+      'style',
+      'Wood Railing',
+      'Matches cedar or clapboard homes'
+    ),
+    asset(
+      RAILINGS.aluminumHorizontal,
+      'Black aluminum horizontal-slat deck railing on a contemporary farmhouse-style home at golden hour',
+      'style',
+      'Aluminum Railing',
+      'Modern, low-profile lines'
+    ),
+    asset(
+      RAILINGS.glassPanel,
+      'Frameless glass panel deck railing with black aluminum posts overlooking a landscaped yard and pond',
+      'style',
+      'Glass Panel Railing',
+      'Unobstructed views, contemporary'
+    ),
+    asset(
+      RAILINGS.glassPanel,
+      'Glass and cable-style deck railing system providing an open sightline to the backyard',
+      'style',
+      'Cable Railing',
+      'Minimalist, coastal and modern homes'
+    ),
+    asset(
+      RAILINGS.woodTraditional,
+      'Wood stair and landing railing matched to the main deck railing system',
+      'style',
+      'Stair & Landing Railings',
+      'Matched to main deck system'
+    ),
+  ],
+  detailStrip: [
+    asset(
+      RAILINGS.vinylWhiteDeck,
+      'White vinyl deck railing detail with wide stairs down to the lawn',
+      'detail',
+      'Vinyl Railing Detail',
+      'Real project style reference'
+    ),
+    asset(
+      RAILINGS.aluminumHorizontal,
+      'Black aluminum horizontal railing detail at deck corner',
+      'detail',
+      'Aluminum Railing Detail',
+      'Clean modern lines'
+    ),
+  ],
+};
+
 export const serviceImageSets: Record<ServiceSlugKey, ServiceImageSet> = {
   'wood-fences': wood,
   'vinyl-fences': vinyl,
   'aluminum-fences': aluminum,
   'pet-dog-fencing': pet,
   'pool-fence': poolFence,
+  'deck-railings': deckRailings,
 };
 
 /** All pool project photos — full-width gallery on /services/pool-fence */

@@ -170,6 +170,27 @@ export const metadata: MetadataMap = {
     ogDescription:
       "Code-ready pool barriers, privacy fencing, and expert installation for backyards across Massachusetts.",
   },
+  "/services/deck-railings": {
+    title:
+      "Deck Railing Installation | Vinyl, Wood, Aluminum & Glass | JT Fence Inc.",
+    description:
+      "Custom deck and stair railing installation and replacement throughout South Shore MA. Vinyl, wood, aluminum, glass, and cable railing systems, built to code. Free estimates.",
+    keywords: [
+      "deck railing",
+      "deck railings",
+      "railing installation",
+      "vinyl deck railing",
+      "wood deck railing",
+      "aluminum deck railing",
+      "glass deck railing",
+      "cable railing",
+      "stair railing",
+      "South Shore MA",
+    ],
+    ogTitle: "Deck Railing Installation | JT Fence Inc.",
+    ogDescription:
+      "Custom deck and stair railings in vinyl, wood, aluminum, and glass—built to code and matched to your home. South Shore Massachusetts.",
+  },
   "/process": {
     title: "Our Fencing Process | JT Fence Inc. Installation Steps",
     description:

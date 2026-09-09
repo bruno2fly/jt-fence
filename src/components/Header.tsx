@@ -29,6 +29,7 @@ export default function Header({ phoneNumber = '(781) 420-5858' }: HeaderProps) 
     { label: 'Aluminum Fences', href: '/services/aluminum-fences' },
     { label: 'Pet & Dog Fencing', href: '/services/pet-dog-fencing' },
     { label: 'Pool Fence & Barriers', href: '/services/pool-fence' },
+    { label: 'Deck Railings', href: '/services/deck-railings' },
   ];
 
   return (
