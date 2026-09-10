@@ -306,7 +306,7 @@ export const services: Service[] = [
       "Natural or Stained Wood Railing (Matches cedar or clapboard homes)",
       "Black Aluminum Railing (Modern, low-profile lines)",
       "Glass Panel Railing (Unobstructed views, contemporary)",
-      "Cable Railing (Minimalist, coastal and modern homes)",
+      "Glass Railing with LED Lighting (Unobstructed views, illuminated for evening entertaining)",
       "Stair & Landing Railings (Matched to main deck system)",
     ],
     durabilityInfo:
