@@ -545,6 +545,7 @@ const RAILINGS = {
   woodTraditional: '/images/railings/railing-wood-traditional.jpg',
   glassPanel: '/images/railings/railing-glass-panel.jpg',
   aluminumHorizontal: '/images/railings/railing-aluminum-horizontal.jpg',
+  cableRailing: '/images/railings/railing-cable-new.jpg',
 } as const;
 
 /* --- deck-railings: RAILINGS.* — one image per railing style option --- */
@@ -595,8 +596,8 @@ const deckRailings: ServiceImageSet = {
       'Unobstructed views, contemporary'
     ),
     asset(
-      RAILINGS.glassPanel,
-      'Glass and cable-style deck railing system providing an open sightline to the backyard',
+      RAILINGS.cableRailing,
+      'Black metal cable railing deck system with horizontal stainless steel cables and glowing blue LED base lighting on a New England Cape Cod style home at dusk',
       'style',
       'Cable Railing',
       'Minimalist, coastal and modern homes'
